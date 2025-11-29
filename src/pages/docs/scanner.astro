@@ -1,0 +1,350 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const dimensions = [
+  {
+    icon: '📝',
+    title: 'Documentation Health',
+    description: 'Measure completeness, freshness, and cross-referencing of your project documentation.',
+    metrics: ['Coverage percentage', 'Last updated timestamps', 'Orphaned docs detection', 'Cross-reference integrity'],
+  },
+  {
+    icon: '🔧',
+    title: 'Technical Debt',
+    description: 'Track TODO comments, code complexity, and dependency staleness across your codebase.',
+    metrics: ['TODO/FIXME count', 'Cyclomatic complexity', 'Dependency age analysis', 'Code smell detection'],
+  },
+  {
+    icon: '✅',
+    title: 'Test Coverage',
+    description: 'Analyze test file distribution, coverage gaps, and testing patterns.',
+    metrics: ['Test file ratio', 'Coverage gaps', 'Test naming patterns', 'Integration test presence'],
+  },
+  {
+    icon: '📋',
+    title: 'Requirements Tracking',
+    description: 'Validate requirements coverage and alignment between specs and implementation.',
+    metrics: ['REQ file coverage', 'Orphaned requirements', 'Implementation links', 'Acceptance criteria'],
+  },
+];
+
+const featureTiers = [
+  { feature: 'Session Monitoring', community: true, pro: true, team: true },
+  { feature: 'Crash Detection', community: true, pro: true, team: true },
+  { feature: 'Desktop Notifications', community: true, pro: true, team: true },
+  { feature: 'Project Audit', community: true, pro: true, team: true },
+  { feature: 'E2E Test Generator (Basic)', community: true, pro: true, team: true },
+  { feature: 'IDE Compatibility Checker', community: true, pro: true, team: true },
+  { feature: 'AI Guardrails Generator', community: true, pro: true, team: true },
+  { feature: 'Documentation Scanner', community: true, pro: true, team: true },
+  { feature: 'Requirements YAML', community: true, pro: true, team: true },
+  { feature: 'Cross-Project Intelligence', community: false, pro: true, team: true },
+  { feature: 'Pattern Learning', community: false, pro: true, team: true },
+  { feature: 'Advanced Docs Search', community: false, pro: true, team: true },
+  { feature: 'Multi-System Detection', community: false, pro: true, team: true },
+  { feature: 'Team Shared Learnings', community: false, pro: false, team: true },
+];
+---
+
+<Layout title="Scanner Guide - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <a href="/docs" class="text-nc-blue-light hover:text-white transition-colors text-sm">
+          ← Back to Documentation
+        </a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-white mb-6">Project Health Scanner</h1>
+      <p class="text-xl text-nc-light/80 mb-12">Deep dive into project health scanning and the four dimensions of analysis.</p>
+
+      <!-- Overview -->
+      <div class="bg-nc-dark rounded-2xl border border-white/10 p-8 mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4">Overview</h2>
+        <p class="text-nc-light/80 mb-6">
+          The Project Health Scanner analyzes your codebase across four key dimensions, providing a comprehensive
+          health score in under 30 seconds. It works with any programming language and integrates with your
+          existing development workflow.
+        </p>
+        <div class="bg-nc-darker rounded-xl p-4">
+          <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Run a full project health scan</span>
+<span class="text-nc-green">nc audit .</span>
+
+<span class="text-nc-light/50"># Save results for tracking over time</span>
+<span class="text-nc-green">nc audit . --save</span>
+
+<span class="text-nc-light/50"># Verbose output with details</span>
+<span class="text-nc-green">nc audit . -v</span></code></pre>
+        </div>
+      </div>
+
+      <!-- Four Dimensions -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-8">Four Dimensions of Health</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {dimensions.map((dim) => (
+            <div class="bg-nc-dark rounded-2xl p-6 border border-white/10">
+              <div class="flex items-start gap-4">
+                <div class="text-4xl">{dim.icon}</div>
+                <div class="flex-1">
+                  <h3 class="text-white font-semibold text-lg mb-2">{dim.title}</h3>
+                  <p class="text-nc-light/70 text-sm mb-4">{dim.description}</p>
+                  <div class="flex flex-wrap gap-2">
+                    {dim.metrics.map((metric) => (
+                      <span class="px-2 py-1 bg-white/5 rounded text-xs text-nc-light/60">{metric}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Documentation Health -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Documentation Health</h2>
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-6">
+          <p class="text-nc-light/80 mb-6">
+            The documentation scanner analyzes all markdown, YAML, and other documentation files in your project.
+          </p>
+
+          <h3 class="text-lg font-bold text-white mb-4">Commands</h3>
+          <div class="bg-nc-darker rounded-xl p-4 mb-6">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Check documentation health</span>
+<span class="text-nc-green">nc docs health</span>
+
+<span class="text-nc-light/50"># Search documentation</span>
+<span class="text-nc-green">nc docs search "authentication"</span>
+
+<span class="text-nc-light/50"># Filter by type</span>
+<span class="text-nc-green">nc docs search "config" --type yaml</span></code></pre>
+          </div>
+
+          <h3 class="text-lg font-bold text-white mb-4">What Gets Analyzed</h3>
+          <ul class="space-y-2 text-nc-light/80">
+            <li class="flex items-start gap-2">
+              <span class="text-nc-green">•</span>
+              <span><strong>Coverage</strong> — Percentage of code with corresponding documentation</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-nc-green">•</span>
+              <span><strong>Freshness</strong> — How recently documents were updated vs. code changes</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-nc-green">•</span>
+              <span><strong>Cross-references</strong> — Broken links and orphaned documents</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-nc-green">•</span>
+              <span><strong>Structure</strong> — README presence, API docs, architecture docs</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- IDE Compatibility -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">IDE Compatibility Checker</h2>
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+          <p class="text-nc-light/80 mb-6">
+            Score your project's AI-readiness across different IDEs and development environments.
+          </p>
+
+          <div class="bg-nc-darker rounded-xl p-4 mb-6">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Check all IDE compatibility</span>
+<span class="text-nc-green">nc test ide-compat</span>
+
+<span class="text-nc-light/50"># Focus on specific IDE</span>
+<span class="text-nc-green">nc test ide-compat --ide cursor</span>
+
+<span class="text-nc-light/50"># Output as JSON for CI</span>
+<span class="text-nc-green">nc test ide-compat --json</span></code></pre>
+          </div>
+
+          <h3 class="text-lg font-bold text-white mb-4">Configuration Files Checked</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-white/5 rounded-xl p-4">
+              <h4 class="text-white font-medium mb-2">VS Code</h4>
+              <ul class="text-sm text-nc-light/70 space-y-1">
+                <li><code>.vscode/settings.json</code></li>
+                <li><code>.vscode/extensions.json</code></li>
+                <li><code>.vscode/launch.json</code></li>
+              </ul>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <h4 class="text-white font-medium mb-2">Cursor</h4>
+              <ul class="text-sm text-nc-light/70 space-y-1">
+                <li><code>.cursorrules</code></li>
+                <li><code>.cursorignore</code></li>
+              </ul>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <h4 class="text-white font-medium mb-2">Claude Code</h4>
+              <ul class="text-sm text-nc-light/70 space-y-1">
+                <li><code>CLAUDE.md</code></li>
+                <li><code>.claude/</code> directory</li>
+              </ul>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <h4 class="text-white font-medium mb-2">General</h4>
+              <ul class="text-sm text-nc-light/70 space-y-1">
+                <li><code>.editorconfig</code></li>
+                <li><code>tsconfig.json</code></li>
+                <li><code>go.mod</code></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E2E Test Generator -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">E2E Test Generator</h2>
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+          <p class="text-nc-light/80 mb-6">
+            Auto-generate test scaffolding for your project based on language and framework detection.
+          </p>
+
+          <div class="bg-nc-darker rounded-xl p-4 mb-6">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Generate test scaffolding</span>
+<span class="text-nc-green">nc test init</span>
+
+<span class="text-nc-light/50"># Specify framework</span>
+<span class="text-nc-green">nc test init --framework vitest</span>
+
+<span class="text-nc-light/50"># Preview without creating files</span>
+<span class="text-nc-green">nc test init --dry-run</span></code></pre>
+          </div>
+
+          <h3 class="text-lg font-bold text-white mb-4">Generated Files</h3>
+          <ul class="space-y-2 text-nc-light/80">
+            <li class="flex items-start gap-2">
+              <span class="text-nc-green">•</span>
+              <span><code class="bg-white/5 px-1 rounded">tests/e2e/</code> — End-to-end tests</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-nc-green">•</span>
+              <span><code class="bg-white/5 px-1 rounded">tests/unit/</code> — Unit tests</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-nc-green">•</span>
+              <span><code class="bg-white/5 px-1 rounded">tests/smoke/</code> — Smoke tests</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-nc-green">•</span>
+              <span><code class="bg-white/5 px-1 rounded">.github/workflows/test.yml</code> — CI workflow</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- AI Guardrails -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">AI Guardrails Generator</h2>
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+          <p class="text-nc-light/80 mb-6">
+            Generate safety rules for AI assistants based on your project type and connected systems.
+          </p>
+
+          <div class="bg-nc-darker rounded-xl p-4 mb-6">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Generate guardrails with CLAUDE.md output</span>
+<span class="text-nc-green">nc guardrails init --claude-md</span>
+
+<span class="text-nc-light/50"># Override project type</span>
+<span class="text-nc-green">nc guardrails init --type trading-bot</span>
+
+<span class="text-nc-light/50"># Export existing guardrails</span>
+<span class="text-nc-green">nc guardrails export --format yaml</span></code></pre>
+          </div>
+
+          <h3 class="text-lg font-bold text-white mb-4">Project Type Rules</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-white/10">
+                  <th class="text-left p-3 text-white font-semibold">Type</th>
+                  <th class="text-left p-3 text-white font-semibold">Default Safety Rules</th>
+                </tr>
+              </thead>
+              <tbody class="text-nc-light/80">
+                <tr class="border-b border-white/5">
+                  <td class="p-3"><code class="text-nc-blue-light">trading-bot</code></td>
+                  <td class="p-3">Verify account, check position sizes, confirm testnet/mainnet</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="p-3"><code class="text-nc-blue-light">database</code></td>
+                  <td class="p-3">Backup before migration, verify WHERE clauses, confirm destructive ops</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="p-3"><code class="text-nc-blue-light">infrastructure</code></td>
+                  <td class="p-3">Check dependent services, verify terraform plans, confirm resource changes</td>
+                </tr>
+                <tr>
+                  <td class="p-3"><code class="text-nc-blue-light">api</code></td>
+                  <td class="p-3">Verify endpoints, check rate limits, validate auth flows</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Tier Matrix -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Feature Tier Matrix</h2>
+        <div class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-white/10">
+                  <th class="text-left p-4 text-white font-semibold">Feature</th>
+                  <th class="text-center p-4 text-white font-semibold">Community</th>
+                  <th class="text-center p-4 text-white font-semibold">Pro</th>
+                  <th class="text-center p-4 text-white font-semibold">Team</th>
+                </tr>
+              </thead>
+              <tbody class="text-nc-light/80">
+                {featureTiers.map((row, i) => (
+                  <tr class={i % 2 === 0 ? 'bg-white/5' : ''}>
+                    <td class="p-4">{row.feature}</td>
+                    <td class="p-4 text-center">
+                      {row.community ? <span class="text-nc-green">✓</span> : <span class="text-nc-light/30">—</span>}
+                    </td>
+                    <td class="p-4 text-center">
+                      {row.pro ? <span class="text-nc-green">✓</span> : <span class="text-nc-light/30">—</span>}
+                    </td>
+                    <td class="p-4 text-center">
+                      {row.team ? <span class="text-nc-green">✓</span> : <span class="text-nc-light/30">—</span>}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-8 border border-white/10">
+        <h2 class="text-xl font-bold text-white mb-4">Related Documentation</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <a href="/docs/cli" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">⌨️</span>
+            <div>
+              <div class="text-white font-medium">CLI Reference</div>
+              <div class="text-nc-light/60 text-sm">Complete command documentation</div>
+            </div>
+          </a>
+          <a href="/pricing" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">💰</span>
+            <div>
+              <div class="text-white font-medium">Pricing</div>
+              <div class="text-nc-light/60 text-sm">Compare tier features</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

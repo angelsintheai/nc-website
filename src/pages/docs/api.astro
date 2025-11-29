@@ -1,0 +1,364 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const endpoints = [
+  {
+    category: 'Health',
+    items: [
+      { method: 'GET', path: '/health', desc: 'Returns daemon health status' },
+    ],
+  },
+  {
+    category: 'Project',
+    items: [
+      { method: 'GET', path: '/api/status', desc: 'Returns current project monitoring status' },
+    ],
+  },
+  {
+    category: 'Sessions',
+    items: [
+      { method: 'GET', path: '/api/sessions', desc: 'List all sessions' },
+      { method: 'GET', path: '/api/sessions/:id', desc: 'Get session by ID' },
+      { method: 'GET', path: '/api/sessions/crashed', desc: 'Get crashed sessions' },
+    ],
+  },
+  {
+    category: 'Claude Sessions',
+    items: [
+      { method: 'GET', path: '/api/claude-sessions', desc: 'List Claude Code sessions' },
+    ],
+  },
+  {
+    category: 'Alerts',
+    items: [
+      { method: 'GET', path: '/api/alerts', desc: 'List active alerts' },
+      { method: 'POST', path: '/api/alerts/dismiss', desc: 'Dismiss an alert' },
+    ],
+  },
+  {
+    category: 'Requirements',
+    items: [
+      { method: 'GET', path: '/api/requirements/all', desc: 'List all requirements' },
+      { method: 'GET', path: '/api/requirements/:project', desc: 'Get project requirements' },
+      { method: 'POST', path: '/api/requirements', desc: 'Create requirement' },
+    ],
+  },
+  {
+    category: 'Audit',
+    items: [
+      { method: 'GET', path: '/api/audit/:project/latest', desc: 'Get latest audit' },
+      { method: 'GET', path: '/api/audit/:project/markdown', desc: 'Get audit as markdown' },
+      { method: 'POST', path: '/api/audit', desc: 'Trigger new audit' },
+    ],
+  },
+  {
+    category: 'Documentation',
+    items: [
+      { method: 'GET', path: '/api/docs/health', desc: 'Get documentation health' },
+      { method: 'GET', path: '/api/docs/search', desc: 'Search documents' },
+    ],
+  },
+];
+---
+
+<Layout title="API Reference - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <a href="/docs" class="text-nc-blue-light hover:text-white transition-colors text-sm">
+          ← Back to Documentation
+        </a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-white mb-6">API Reference</h1>
+      <p class="text-xl text-nc-light/80 mb-12">REST API documentation for programmatic access to Neural Commander.</p>
+
+      <!-- Base URL -->
+      <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-12">
+        <h2 class="text-lg font-bold text-white mb-4">Base URL</h2>
+        <div class="bg-nc-darker rounded-xl p-4">
+          <code class="text-nc-green text-lg">http://localhost:7669</code>
+        </div>
+        <p class="text-nc-light/60 text-sm mt-4">
+          Start the API server with: <code class="bg-white/5 px-2 py-1 rounded">nc daemon --api</code>
+        </p>
+      </div>
+
+      <!-- Quick Reference Table -->
+      <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-12">
+        <h2 class="text-lg font-bold text-white mb-4">Quick Reference</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left p-3 text-white font-semibold w-20">Method</th>
+                <th class="text-left p-3 text-white font-semibold">Endpoint</th>
+                <th class="text-left p-3 text-white font-semibold">Description</th>
+              </tr>
+            </thead>
+            <tbody class="text-nc-light/80">
+              {endpoints.map((group) => (
+                <>
+                  <tr class="bg-white/5">
+                    <td colspan="3" class="p-3 text-white font-semibold">{group.category}</td>
+                  </tr>
+                  {group.items.map((endpoint) => (
+                    <tr class="border-b border-white/5">
+                      <td class="p-3">
+                        <span class={`px-2 py-1 rounded text-xs font-mono font-bold ${endpoint.method === 'GET' ? 'bg-nc-green/20 text-nc-green' : 'bg-nc-blue/20 text-nc-blue-light'}`}>
+                          {endpoint.method}
+                        </span>
+                      </td>
+                      <td class="p-3">
+                        <code class="text-nc-warning">{endpoint.path}</code>
+                      </td>
+                      <td class="p-3 text-nc-light/70">{endpoint.desc}</td>
+                    </tr>
+                  ))}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Detailed Endpoints -->
+      <div class="space-y-8">
+        <!-- Health -->
+        <div id="health" class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden">
+          <div class="p-6 border-b border-white/10">
+            <h2 class="text-xl font-bold text-white">Health Check</h2>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-green/20 text-nc-green">GET</span>
+              <code class="text-nc-warning">/health</code>
+            </div>
+            <p class="text-nc-light/70 mb-4">Returns daemon health status and version information.</p>
+            <h4 class="text-white font-semibold text-sm mb-2">Example Response:</h4>
+            <div class="bg-nc-darker rounded-xl p-4">
+              <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90">{JSON.stringify({
+  status: "healthy",
+  version: "0.99.0",
+  uptime: "2h 15m",
+  api_port: 7669
+}, null, 2)}</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sessions -->
+        <div id="sessions" class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden">
+          <div class="p-6 border-b border-white/10">
+            <h2 class="text-xl font-bold text-white">Sessions</h2>
+          </div>
+          <div class="divide-y divide-white/10">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-green/20 text-nc-green">GET</span>
+                <code class="text-nc-warning">/api/sessions</code>
+              </div>
+              <p class="text-nc-light/70 mb-4">Returns a list of all development sessions.</p>
+              <h4 class="text-white font-semibold text-sm mb-2">Example Response:</h4>
+              <div class="bg-nc-darker rounded-xl p-4">
+                <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90">{JSON.stringify({
+  sessions: [
+    {
+      id: "sess_abc123",
+      project: "my-project",
+      started_at: "2025-01-15T10:30:00Z",
+      status: "active",
+      ide: "cursor"
+    }
+  ],
+  total: 1
+}, null, 2)}</code></pre>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-green/20 text-nc-green">GET</span>
+                <code class="text-nc-warning">/api/sessions/:id</code>
+              </div>
+              <p class="text-nc-light/70 mb-4">Returns details for a specific session.</p>
+              <h4 class="text-white font-semibold text-sm mb-2">Path Parameters:</h4>
+              <ul class="text-sm mb-4">
+                <li><code class="text-nc-blue-light">id</code> <span class="text-nc-light/60">- Session ID</span></li>
+              </ul>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-green/20 text-nc-green">GET</span>
+                <code class="text-nc-warning">/api/sessions/crashed</code>
+              </div>
+              <p class="text-nc-light/70">Returns a list of crashed sessions for recovery.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alerts -->
+        <div id="alerts" class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden">
+          <div class="p-6 border-b border-white/10">
+            <h2 class="text-xl font-bold text-white">Alerts</h2>
+          </div>
+          <div class="divide-y divide-white/10">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-green/20 text-nc-green">GET</span>
+                <code class="text-nc-warning">/api/alerts</code>
+              </div>
+              <p class="text-nc-light/70 mb-4">Returns all active alerts.</p>
+              <h4 class="text-white font-semibold text-sm mb-2">Example Response:</h4>
+              <div class="bg-nc-darker rounded-xl p-4">
+                <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90">{JSON.stringify({
+  alerts: [
+    {
+      id: "ALERT-NEU-001",
+      severity: "warning",
+      title: "Uncommitted Code Detected",
+      message: "106 modified files detected",
+      created_at: "2025-01-15T10:30:00Z"
+    }
+  ],
+  counts: { critical: 0, warning: 1, info: 0 }
+}, null, 2)}</code></pre>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-blue/20 text-nc-blue-light">POST</span>
+                <code class="text-nc-warning">/api/alerts/dismiss</code>
+              </div>
+              <p class="text-nc-light/70 mb-4">Dismiss an alert.</p>
+              <h4 class="text-white font-semibold text-sm mb-2">Request Body:</h4>
+              <div class="bg-nc-darker rounded-xl p-4">
+                <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90">{JSON.stringify({
+  alert_id: "ALERT-NEU-001"
+}, null, 2)}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit -->
+        <div id="audit" class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden">
+          <div class="p-6 border-b border-white/10">
+            <h2 class="text-xl font-bold text-white">Audit</h2>
+          </div>
+          <div class="divide-y divide-white/10">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-green/20 text-nc-green">GET</span>
+                <code class="text-nc-warning">/api/audit/:project/latest</code>
+              </div>
+              <p class="text-nc-light/70 mb-4">Get the latest audit results for a project.</p>
+              <h4 class="text-white font-semibold text-sm mb-2">Path Parameters:</h4>
+              <ul class="text-sm">
+                <li><code class="text-nc-blue-light">project</code> <span class="text-nc-light/60">- Project name or path</span></li>
+              </ul>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-blue/20 text-nc-blue-light">POST</span>
+                <code class="text-nc-warning">/api/audit</code>
+              </div>
+              <p class="text-nc-light/70 mb-4">Trigger a new audit.</p>
+              <h4 class="text-white font-semibold text-sm mb-2">Request Body:</h4>
+              <div class="bg-nc-darker rounded-xl p-4">
+                <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90">{JSON.stringify({
+  project_path: "/path/to/project",
+  save: true,
+  verbose: false
+}, null, 2)}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentation -->
+        <div id="documentation" class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden">
+          <div class="p-6 border-b border-white/10">
+            <h2 class="text-xl font-bold text-white">Documentation</h2>
+          </div>
+          <div class="divide-y divide-white/10">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-green/20 text-nc-green">GET</span>
+                <code class="text-nc-warning">/api/docs/health</code>
+              </div>
+              <p class="text-nc-light/70 mb-4">Get documentation health metrics.</p>
+              <h4 class="text-white font-semibold text-sm mb-2">Example Response:</h4>
+              <div class="bg-nc-darker rounded-xl p-4">
+                <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90">{JSON.stringify({
+  total_documents: 45,
+  coverage_score: 78,
+  stale_documents: 3,
+  missing_areas: ["API endpoints", "Configuration options"]
+}, null, 2)}</code></pre>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-mono font-bold bg-nc-green/20 text-nc-green">GET</span>
+                <code class="text-nc-warning">/api/docs/search</code>
+              </div>
+              <p class="text-nc-light/70 mb-4">Search documentation.</p>
+              <h4 class="text-white font-semibold text-sm mb-2">Query Parameters:</h4>
+              <ul class="text-sm">
+                <li><code class="text-nc-blue-light">q</code> <span class="text-nc-light/60">- Search query</span></li>
+                <li><code class="text-nc-blue-light">type</code> <span class="text-nc-light/60">- Filter by type (md, yaml, etc.)</span></li>
+                <li><code class="text-nc-blue-light">limit</code> <span class="text-nc-light/60">- Max results (default: 10)</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Handling -->
+      <div class="mt-12 bg-nc-dark rounded-2xl border border-white/10 p-6">
+        <h2 class="text-xl font-bold text-white mb-4">Error Handling</h2>
+        <p class="text-nc-light/70 mb-4">All errors follow a standard format:</p>
+        <div class="bg-nc-darker rounded-xl p-4 mb-4">
+          <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90">{JSON.stringify({
+  error: true,
+  code: "NOT_FOUND",
+  message: "Session not found",
+  details: {}
+}, null, 2)}</code></pre>
+        </div>
+        <h4 class="text-white font-semibold text-sm mb-2">Common Error Codes:</h4>
+        <ul class="text-sm space-y-1">
+          <li><code class="text-nc-warning">400</code> <span class="text-nc-light/60">- Bad Request</span></li>
+          <li><code class="text-nc-warning">404</code> <span class="text-nc-light/60">- Not Found</span></li>
+          <li><code class="text-nc-warning">500</code> <span class="text-nc-light/60">- Internal Server Error</span></li>
+        </ul>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="mt-12 bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-8 border border-white/10">
+        <h2 class="text-xl font-bold text-white mb-4">Related Documentation</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <a href="/docs/cli" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">⌨️</span>
+            <div>
+              <div class="text-white font-medium">CLI Reference</div>
+              <div class="text-nc-light/60 text-sm">Command line documentation</div>
+            </div>
+          </a>
+          <a href="/docs/quickstart" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">🚀</span>
+            <div>
+              <div class="text-white font-medium">Quick Start</div>
+              <div class="text-nc-light/60 text-sm">Get started in 5 minutes</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

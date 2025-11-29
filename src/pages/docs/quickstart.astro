@@ -1,0 +1,240 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Quick Start - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <a href="/docs" class="text-nc-blue-light hover:text-white transition-colors text-sm">
+          ← Back to Documentation
+        </a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-white mb-6">Quick Start</h1>
+      <p class="text-xl text-nc-light/80 mb-12">Get up and running with Neural Commander in 5 minutes.</p>
+
+      <!-- Installation -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-nc-blue/20 flex items-center justify-center text-nc-blue-light text-sm">1</span>
+          Installation
+        </h2>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden mb-6">
+          <div class="flex border-b border-white/10">
+            <button id="tab-linux" class="px-4 py-2 text-sm font-medium text-white bg-white/5 border-b-2 border-nc-blue">Linux/Mac</button>
+            <button id="tab-windows" class="px-4 py-2 text-sm font-medium text-nc-light/60 hover:text-white">Windows</button>
+          </div>
+          <div id="content-linux" class="p-6">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Download the latest release</span>
+curl -LO https://github.com/neural-commander/nc/releases/latest/download/nc-linux-amd64
+chmod +x nc-linux-amd64
+mv nc-linux-amd64 ~/.local/bin/nc
+
+<span class="text-nc-light/50"># Verify installation</span>
+nc --version</code></pre>
+          </div>
+          <div id="content-windows" class="p-6 hidden">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Download the latest release</span>
+curl -LO https://github.com/neural-commander/nc/releases/latest/download/nc-windows-amd64.exe
+
+<span class="text-nc-light/50"># Move to your PATH</span>
+move nc-windows-amd64.exe C:\Users\YourName\bin\nc.exe
+
+<span class="text-nc-light/50"># Verify installation</span>
+nc --version</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- First Run -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-nc-blue/20 flex items-center justify-center text-nc-blue-light text-sm">2</span>
+          First Run
+        </h2>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-6">
+          <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Initialize NC for your project</span>
+<span class="text-nc-green">nc init</span>
+
+<span class="text-nc-light/50"># Start the daemon for session monitoring</span>
+<span class="text-nc-green">nc daemon start</span>
+
+<span class="text-nc-light/50"># Check project health</span>
+<span class="text-nc-green">nc audit .</span></code></pre>
+        </div>
+
+        <p class="text-nc-light/70">
+          The <code class="bg-white/5 px-2 py-1 rounded">nc init</code> command creates a <code class="bg-white/5 px-2 py-1 rounded">.nc-config.yaml</code> file in your project root with default settings.
+        </p>
+      </div>
+
+      <!-- Basic Commands -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-nc-blue/20 flex items-center justify-center text-nc-blue-light text-sm">3</span>
+          Basic Commands
+        </h2>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left p-4 text-white font-semibold">Command</th>
+                <th class="text-left p-4 text-white font-semibold">Description</th>
+              </tr>
+            </thead>
+            <tbody class="text-nc-light/80">
+              <tr class="border-b border-white/5">
+                <td class="p-4"><code class="text-nc-blue-light">nc init</code></td>
+                <td class="p-4">Initialize NC for current project</td>
+              </tr>
+              <tr class="border-b border-white/5">
+                <td class="p-4"><code class="text-nc-blue-light">nc daemon start</code></td>
+                <td class="p-4">Start background monitoring</td>
+              </tr>
+              <tr class="border-b border-white/5">
+                <td class="p-4"><code class="text-nc-blue-light">nc audit [path]</code></td>
+                <td class="p-4">Run project health audit</td>
+              </tr>
+              <tr class="border-b border-white/5">
+                <td class="p-4"><code class="text-nc-blue-light">nc session list</code></td>
+                <td class="p-4">List all sessions</td>
+              </tr>
+              <tr>
+                <td class="p-4"><code class="text-nc-blue-light">nc docs health</code></td>
+                <td class="p-4">Check documentation health</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- New Project Workflow -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-nc-blue/20 flex items-center justify-center text-nc-blue-light text-sm">4</span>
+          New Project Setup
+        </h2>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-6">
+          <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># 1. Initialize NC</span>
+<span class="text-nc-green">nc init</span>
+
+<span class="text-nc-light/50"># 2. Generate AI guardrails</span>
+<span class="text-nc-green">nc guardrails init --claude-md</span>
+
+<span class="text-nc-light/50"># 3. Set up test scaffolding</span>
+<span class="text-nc-green">nc test init</span>
+
+<span class="text-nc-light/50"># 4. Check IDE compatibility</span>
+<span class="text-nc-green">nc test ide-compat</span>
+
+<span class="text-nc-light/50"># 5. Start daemon</span>
+<span class="text-nc-green">nc daemon start</span></code></pre>
+        </div>
+      </div>
+
+      <!-- Configuration -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-nc-blue/20 flex items-center justify-center text-nc-blue-light text-sm">5</span>
+          Configuration
+        </h2>
+
+        <p class="text-nc-light/70 mb-6">Neural Commander stores configuration in <code class="bg-white/5 px-2 py-1 rounded">.nc-config.yaml</code>:</p>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-6">
+          <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-blue-light">version:</span> "1.0"
+<span class="text-nc-blue-light">project:</span>
+  <span class="text-nc-blue-light">name:</span> my-project
+  <span class="text-nc-blue-light">type:</span> api
+
+<span class="text-nc-blue-light">daemon:</span>
+  <span class="text-nc-blue-light">check_interval:</span> 30s
+  <span class="text-nc-blue-light">api_port:</span> 7669
+
+<span class="text-nc-blue-light">alerts:</span>
+  <span class="text-nc-blue-light">desktop_notifications:</span> true
+  <span class="text-nc-blue-light">slack_webhook:</span> ""
+
+<span class="text-nc-blue-light">tier:</span> community</code></pre>
+        </div>
+
+        <h3 class="text-lg font-bold text-white mb-4">Environment Variables</h3>
+        <div class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left p-4 text-white font-semibold">Variable</th>
+                <th class="text-left p-4 text-white font-semibold">Description</th>
+              </tr>
+            </thead>
+            <tbody class="text-nc-light/80">
+              <tr class="border-b border-white/5">
+                <td class="p-4"><code class="text-nc-warning">NC_HOME</code></td>
+                <td class="p-4">NC data directory (default: <code>~/.neural-commander</code>)</td>
+              </tr>
+              <tr class="border-b border-white/5">
+                <td class="p-4"><code class="text-nc-warning">NC_API_PORT</code></td>
+                <td class="p-4">API server port (default: 7669)</td>
+              </tr>
+              <tr>
+                <td class="p-4"><code class="text-nc-warning">NC_LOG_LEVEL</code></td>
+                <td class="p-4">Log level (debug, info, warn, error)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-8 border border-white/10">
+        <h2 class="text-xl font-bold text-white mb-4">Next Steps</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <a href="/docs/cli" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">⌨️</span>
+            <div>
+              <div class="text-white font-medium">CLI Reference</div>
+              <div class="text-nc-light/60 text-sm">Complete command documentation</div>
+            </div>
+          </a>
+          <a href="/docs/api" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">🔌</span>
+            <div>
+              <div class="text-white font-medium">API Reference</div>
+              <div class="text-nc-light/60 text-sm">Programmatic access</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const tabLinux = document.getElementById('tab-linux');
+  const tabWindows = document.getElementById('tab-windows');
+  const contentLinux = document.getElementById('content-linux');
+  const contentWindows = document.getElementById('content-windows');
+
+  tabLinux?.addEventListener('click', () => {
+    tabLinux.classList.add('text-white', 'bg-white/5', 'border-nc-blue');
+    tabLinux.classList.remove('text-nc-light/60');
+    tabWindows?.classList.remove('text-white', 'bg-white/5', 'border-nc-blue');
+    tabWindows?.classList.add('text-nc-light/60');
+    contentLinux?.classList.remove('hidden');
+    contentWindows?.classList.add('hidden');
+  });
+
+  tabWindows?.addEventListener('click', () => {
+    tabWindows.classList.add('text-white', 'bg-white/5', 'border-nc-blue');
+    tabWindows.classList.remove('text-nc-light/60');
+    tabLinux?.classList.remove('text-white', 'bg-white/5', 'border-nc-blue');
+    tabLinux?.classList.add('text-nc-light/60');
+    contentWindows?.classList.remove('hidden');
+    contentLinux?.classList.add('hidden');
+  });
+</script>

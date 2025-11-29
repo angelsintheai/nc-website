@@ -1,0 +1,418 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const coreCommands = [
+  {
+    name: 'nc init',
+    description: 'Initialize Neural Commander for a project',
+    usage: 'nc init [project-path]',
+    options: [
+      { flag: '--name string', desc: 'Project name (default: directory name)' },
+      { flag: '--type string', desc: 'Project type (api, cli, web-app, etc.)' },
+    ],
+  },
+  {
+    name: 'nc daemon',
+    description: 'Manage the NC daemon for background monitoring',
+    usage: 'nc daemon <command>',
+    options: [
+      { flag: 'start', desc: 'Start daemon' },
+      { flag: 'stop', desc: 'Stop daemon' },
+      { flag: 'status', desc: 'Show status' },
+      { flag: '--api', desc: 'Start with API server (port 7669)' },
+    ],
+  },
+  {
+    name: 'nc audit',
+    description: 'Run a comprehensive project health audit',
+    usage: 'nc audit [project-path]',
+    options: [
+      { flag: '--save', desc: 'Save results to database' },
+      { flag: '--include-external', desc: 'Include external dependencies' },
+      { flag: '-v, --verbose', desc: 'Verbose output' },
+    ],
+  },
+];
+
+const docsCommands = [
+  {
+    name: 'nc docs health',
+    description: 'Check documentation health across your project',
+    usage: 'nc docs health [project-path]',
+    output: ['Total documents found', 'Coverage score (0-100)', 'Missing documentation areas', 'Stale documents'],
+  },
+  {
+    name: 'nc docs search',
+    description: 'Full-text search across all project documentation',
+    usage: 'nc docs search "query string"',
+    options: [
+      { flag: '--type string', desc: 'Filter by doc type (md, yaml, etc.)' },
+      { flag: '--limit int', desc: 'Limit results (default: 10)' },
+    ],
+  },
+];
+
+const testCommands = [
+  {
+    name: 'nc test init',
+    description: 'Generate E2E test scaffolding for a project',
+    usage: 'nc test init [project-path]',
+    options: [
+      { flag: '--framework string', desc: 'Test framework (jest, pytest, go-test, vitest)' },
+      { flag: '--dry-run', desc: 'Preview without creating files' },
+      { flag: '--learn', desc: 'Learn patterns from other projects (Pro)' },
+      { flag: '--coverage', desc: 'Include coverage gap analysis (Pro)' },
+    ],
+    frameworks: ['JavaScript/TypeScript: Jest, Vitest, Mocha', 'Python: Pytest, unittest', 'Go: Go test', 'Ruby: RSpec'],
+  },
+  {
+    name: 'nc test ide-compat',
+    description: 'Check IDE compatibility and configuration completeness',
+    usage: 'nc test ide-compat [project-path]',
+    options: [
+      { flag: '--ide string', desc: 'Focus on specific IDE (vscode, jetbrains, cursor, neovim)' },
+      { flag: '--all-projects', desc: 'Check all projects (Pro)' },
+      { flag: '--json', desc: 'Output as JSON' },
+      { flag: '--summary', desc: 'Brief summary only' },
+    ],
+    checks: ['VS Code configuration (.vscode/)', 'JetBrains configuration (.idea/)', 'Cursor IDE (.cursorrules)', 'EditorConfig (.editorconfig)', 'Claude Code readiness (CLAUDE.md)', 'Language-specific configs'],
+  },
+];
+
+const guardrailCommands = [
+  {
+    name: 'nc guardrails init',
+    description: 'Generate AI assistant guardrails for a project',
+    usage: 'nc guardrails init [project-path]',
+    options: [
+      { flag: '--type string', desc: 'Override project type (trading-bot, web-app, database, api, cli, infrastructure)' },
+      { flag: '--dry-run', desc: 'Preview without creating files' },
+      { flag: '--claude-md', desc: 'Also output CLAUDE.md section' },
+    ],
+  },
+  {
+    name: 'nc guardrails export',
+    description: 'Export guardrails as CLAUDE.md section',
+    usage: 'nc guardrails export [project-path]',
+    options: [
+      { flag: '--format string', desc: 'Output format (claude-md, yaml, json)' },
+    ],
+  },
+];
+
+const sessionCommands = [
+  {
+    name: 'nc session list',
+    description: 'List all development sessions',
+    usage: 'nc session list',
+  },
+  {
+    name: 'nc session show',
+    description: 'Show session details',
+    usage: 'nc session show [id]',
+  },
+  {
+    name: 'nc session resume',
+    description: 'Resume previous session',
+    usage: 'nc session resume [id]',
+  },
+  {
+    name: 'nc session watch',
+    description: 'Watch for new sessions',
+    usage: 'nc session watch',
+  },
+];
+
+const reqCommands = [
+  {
+    name: 'nc requirements list',
+    description: 'List all requirements',
+    usage: 'nc requirements list',
+  },
+  {
+    name: 'nc requirements show',
+    description: 'Show specific requirement',
+    usage: 'nc requirements show REQ-001',
+  },
+  {
+    name: 'nc requirements create',
+    description: 'Create new requirement',
+    usage: 'nc requirements create',
+  },
+  {
+    name: 'nc requirements sync',
+    description: 'Sync with upstream (Pro)',
+    usage: 'nc requirements sync',
+  },
+];
+---
+
+<Layout title="CLI Reference - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <a href="/docs" class="text-nc-blue-light hover:text-white transition-colors text-sm">
+          ← Back to Documentation
+        </a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-white mb-6">CLI Reference</h1>
+      <p class="text-xl text-nc-light/80 mb-12">Complete command line documentation for Neural Commander.</p>
+
+      <!-- Table of Contents -->
+      <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-12">
+        <h2 class="text-lg font-bold text-white mb-4">Contents</h2>
+        <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+          <li><a href="#core" class="text-nc-blue-light hover:text-white">Core Commands</a></li>
+          <li><a href="#docs" class="text-nc-blue-light hover:text-white">Documentation Intelligence</a></li>
+          <li><a href="#testing" class="text-nc-blue-light hover:text-white">Testing Framework</a></li>
+          <li><a href="#guardrails" class="text-nc-blue-light hover:text-white">AI Guardrails</a></li>
+          <li><a href="#sessions" class="text-nc-blue-light hover:text-white">Session Management</a></li>
+          <li><a href="#requirements" class="text-nc-blue-light hover:text-white">Requirements Management</a></li>
+        </ul>
+      </div>
+
+      <!-- Core Commands -->
+      <div id="core" class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-6">Core Commands</h2>
+        {coreCommands.map((cmd) => (
+          <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-4">
+            <h3 class="text-xl font-bold text-nc-blue-light mb-2 font-mono">{cmd.name}</h3>
+            <p class="text-nc-light/80 mb-4">{cmd.description}</p>
+            <div class="bg-nc-darker rounded-xl p-4 mb-4">
+              <code class="text-nc-green text-sm">{cmd.usage}</code>
+            </div>
+            {cmd.options && (
+              <div>
+                <h4 class="text-white font-semibold text-sm mb-2">Options:</h4>
+                <ul class="space-y-1">
+                  {cmd.options.map((opt) => (
+                    <li class="text-sm">
+                      <code class="text-nc-warning">{opt.flag}</code>
+                      <span class="text-nc-light/60 ml-2">{opt.desc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- Documentation Commands -->
+      <div id="docs" class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-6">Documentation Intelligence</h2>
+        {docsCommands.map((cmd) => (
+          <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-4">
+            <h3 class="text-xl font-bold text-nc-blue-light mb-2 font-mono">{cmd.name}</h3>
+            <p class="text-nc-light/80 mb-4">{cmd.description}</p>
+            <div class="bg-nc-darker rounded-xl p-4 mb-4">
+              <code class="text-nc-green text-sm">{cmd.usage}</code>
+            </div>
+            {cmd.options && (
+              <div class="mb-4">
+                <h4 class="text-white font-semibold text-sm mb-2">Options:</h4>
+                <ul class="space-y-1">
+                  {cmd.options.map((opt) => (
+                    <li class="text-sm">
+                      <code class="text-nc-warning">{opt.flag}</code>
+                      <span class="text-nc-light/60 ml-2">{opt.desc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {cmd.output && (
+              <div>
+                <h4 class="text-white font-semibold text-sm mb-2">Output includes:</h4>
+                <ul class="space-y-1">
+                  {cmd.output.map((item) => (
+                    <li class="text-sm text-nc-light/70 flex items-center gap-2">
+                      <span class="text-nc-green">•</span> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- Testing Commands -->
+      <div id="testing" class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-6">Testing Framework</h2>
+        {testCommands.map((cmd) => (
+          <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-4">
+            <h3 class="text-xl font-bold text-nc-blue-light mb-2 font-mono">{cmd.name}</h3>
+            <p class="text-nc-light/80 mb-4">{cmd.description}</p>
+            <div class="bg-nc-darker rounded-xl p-4 mb-4">
+              <code class="text-nc-green text-sm">{cmd.usage}</code>
+            </div>
+            {cmd.options && (
+              <div class="mb-4">
+                <h4 class="text-white font-semibold text-sm mb-2">Options:</h4>
+                <ul class="space-y-1">
+                  {cmd.options.map((opt) => (
+                    <li class="text-sm">
+                      <code class="text-nc-warning">{opt.flag}</code>
+                      <span class="text-nc-light/60 ml-2">{opt.desc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {cmd.frameworks && (
+              <div class="mb-4">
+                <h4 class="text-white font-semibold text-sm mb-2">Supported Frameworks:</h4>
+                <ul class="space-y-1">
+                  {cmd.frameworks.map((fw) => (
+                    <li class="text-sm text-nc-light/70 flex items-center gap-2">
+                      <span class="text-nc-green">•</span> {fw}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {cmd.checks && (
+              <div>
+                <h4 class="text-white font-semibold text-sm mb-2">Checks:</h4>
+                <ul class="space-y-1">
+                  {cmd.checks.map((check) => (
+                    <li class="text-sm text-nc-light/70 flex items-center gap-2">
+                      <span class="text-nc-green">•</span> {check}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- Guardrails Commands -->
+      <div id="guardrails" class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-6">AI Guardrails</h2>
+        {guardrailCommands.map((cmd) => (
+          <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-4">
+            <h3 class="text-xl font-bold text-nc-blue-light mb-2 font-mono">{cmd.name}</h3>
+            <p class="text-nc-light/80 mb-4">{cmd.description}</p>
+            <div class="bg-nc-darker rounded-xl p-4 mb-4">
+              <code class="text-nc-green text-sm">{cmd.usage}</code>
+            </div>
+            {cmd.options && (
+              <div>
+                <h4 class="text-white font-semibold text-sm mb-2">Options:</h4>
+                <ul class="space-y-1">
+                  {cmd.options.map((opt) => (
+                    <li class="text-sm">
+                      <code class="text-nc-warning">{opt.flag}</code>
+                      <span class="text-nc-light/60 ml-2">{opt.desc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+
+        <!-- Project Types Table -->
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+          <h3 class="text-lg font-bold text-white mb-4">Project Types & Default Rules</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-white/10">
+                  <th class="text-left p-3 text-white font-semibold">Type</th>
+                  <th class="text-left p-3 text-white font-semibold">Key Rules</th>
+                </tr>
+              </thead>
+              <tbody class="text-nc-light/80">
+                <tr class="border-b border-white/5">
+                  <td class="p-3"><code class="text-nc-blue-light">trading-bot</code></td>
+                  <td class="p-3">Verify account, check position sizes, confirm testnet/mainnet</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="p-3"><code class="text-nc-blue-light">database</code></td>
+                  <td class="p-3">Backup before migration, verify WHERE clauses</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="p-3"><code class="text-nc-blue-light">infrastructure</code></td>
+                  <td class="p-3">Check dependent services, verify terraform plans</td>
+                </tr>
+                <tr>
+                  <td class="p-3"><code class="text-nc-blue-light">api</code></td>
+                  <td class="p-3">Verify endpoints, check rate limits</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Session Commands -->
+      <div id="sessions" class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-6">Session Management</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {sessionCommands.map((cmd) => (
+            <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+              <h3 class="text-lg font-bold text-nc-blue-light mb-2 font-mono">{cmd.name.replace('nc session ', '')}</h3>
+              <p class="text-nc-light/70 text-sm mb-3">{cmd.description}</p>
+              <code class="text-nc-green text-xs">{cmd.usage}</code>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Requirements Commands -->
+      <div id="requirements" class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-6">Requirements Management</h2>
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          {reqCommands.map((cmd) => (
+            <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+              <h3 class="text-lg font-bold text-nc-blue-light mb-2 font-mono">{cmd.name.replace('nc requirements ', '')}</h3>
+              <p class="text-nc-light/70 text-sm mb-3">{cmd.description}</p>
+              <code class="text-nc-green text-xs">{cmd.usage}</code>
+            </div>
+          ))}
+        </div>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+          <h3 class="text-lg font-bold text-white mb-4">Requirement Schema</h3>
+          <div class="bg-nc-darker rounded-xl p-4">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-blue-light">id:</span> REQ-NC-001
+<span class="text-nc-blue-light">title:</span> Session Crash Detection
+<span class="text-nc-blue-light">status:</span> implemented
+<span class="text-nc-blue-light">priority:</span> high
+<span class="text-nc-blue-light">category:</span> core
+<span class="text-nc-blue-light">description:</span> Detect and recover from Claude Code session crashes
+<span class="text-nc-blue-light">acceptance_criteria:</span>
+  - Daemon monitors session process
+  - Desktop notification on crash
+  - Session state preserved</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-8 border border-white/10">
+        <h2 class="text-xl font-bold text-white mb-4">Related Documentation</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <a href="/docs/api" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">🔌</span>
+            <div>
+              <div class="text-white font-medium">API Reference</div>
+              <div class="text-nc-light/60 text-sm">REST API documentation</div>
+            </div>
+          </a>
+          <a href="/docs/quickstart" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">🚀</span>
+            <div>
+              <div class="text-white font-medium">Quick Start</div>
+              <div class="text-nc-light/60 text-sm">Get started in 5 minutes</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
