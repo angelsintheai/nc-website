@@ -1,0 +1,212 @@
+---
+const rewards = [
+  { action: 'Friend starts trial', credit: '1 month free', icon: 'check' },
+  { action: 'Friend goes Pro monthly', credit: '+1 month free', icon: 'check' },
+  { action: 'Friend goes Pro annual', credit: '+2 months free', icon: 'check' },
+  { action: 'Friend joins Community Edition', credit: '10,000 GIVEKUDOS tokens', icon: 'token', special: true },
+];
+---
+
+<section class="bg-gradient-to-r from-nc-blue/10 via-nc-dark to-nc-blue/10 border-t border-b border-white/10 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <!-- Left: Value Prop -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nc-green/10 border border-nc-green/20 mb-4">
+          <span class="text-nc-green text-sm font-medium">Referral Program</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+          Refer a Dev Friend, Earn Free Months
+        </h2>
+        <p class="text-nc-light/70 mb-6">
+          Know a developer who'd love Neural Commander? Send them an invite and earn Pro credits when they sign up.
+        </p>
+
+        <!-- Reward Tiers -->
+        <div class="space-y-3">
+          {rewards.map((reward) => (
+            <div class={`flex items-center gap-3 ${reward.special ? 'bg-nc-warning/5 -mx-2 px-2 py-2 rounded-lg border border-nc-warning/20' : ''}`}>
+              <div class={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${reward.special ? 'bg-nc-warning/20' : 'bg-nc-green/20'}`}>
+                {reward.special ? (
+                  <svg class="w-4 h-4 text-nc-warning" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L10 6.477V16h2a1 1 0 110 2H8a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" />
+                  </svg>
+                ) : (
+                  <svg class="w-4 h-4 text-nc-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                )}
+              </div>
+              <span class="text-nc-light/80 text-sm">
+                <span class={`font-medium ${reward.special ? 'text-nc-warning' : 'text-white'}`}>{reward.action}</span> = <span class={reward.special ? 'text-nc-warning font-semibold' : ''}>{reward.credit}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-nc-light/50 text-xs mt-4">
+          Credits stack! Refer multiple friends for even more rewards. Add your Counterparty address to receive GIVEKUDOS tokens.
+        </p>
+      </div>
+
+      <!-- Right: Referral Form -->
+      <div class="bg-nc-darker rounded-2xl p-6 border border-white/10">
+        <form id="referral-form" class="space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <!-- Your Info -->
+            <div>
+              <label for="referrer-name" class="block text-white text-sm font-medium mb-2">Your Name</label>
+              <input
+                type="text"
+                id="referrer-name"
+                name="referrerName"
+                placeholder="Your name"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-nc-light/40 focus:outline-none focus:border-nc-blue text-sm"
+              />
+            </div>
+            <div>
+              <label for="referrer-email" class="block text-white text-sm font-medium mb-2">Your Email</label>
+              <input
+                type="email"
+                id="referrer-email"
+                name="referrerEmail"
+                placeholder="you@example.com"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-nc-light/40 focus:outline-none focus:border-nc-blue text-sm"
+              />
+            </div>
+          </div>
+
+          <!-- Counterparty Address (optional) -->
+          <div>
+            <label for="counterparty-address" class="block text-sm font-medium mb-2">
+              <span class="text-white">Counterparty Address</span>
+              <span class="text-nc-warning ml-1">(for GIVEKUDOS)</span>
+              <span class="text-nc-light/40 ml-1">- optional</span>
+            </label>
+            <input
+              type="text"
+              id="counterparty-address"
+              name="counterpartyAddress"
+              placeholder="1YourCounterpartyAddress..."
+              pattern="^1[a-km-zA-HJ-NP-Z1-9]{25,34}$"
+              class="w-full px-4 py-3 rounded-xl bg-white/5 border border-nc-warning/30 text-white placeholder-nc-light/40 focus:outline-none focus:border-nc-warning text-sm font-mono"
+            />
+            <p class="text-nc-light/40 text-xs mt-1">Earn 10K GIVEKUDOS when your friend joins Community Edition</p>
+          </div>
+
+          <div class="border-t border-white/10 pt-4">
+            <p class="text-nc-light/60 text-xs mb-3">Friend's details (we'll send them an invite)</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <!-- Friend's Info -->
+            <div>
+              <label for="friend-name" class="block text-white text-sm font-medium mb-2">Friend's Name</label>
+              <input
+                type="text"
+                id="friend-name"
+                name="friendName"
+                placeholder="Their name"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-nc-light/40 focus:outline-none focus:border-nc-blue text-sm"
+              />
+            </div>
+            <div>
+              <label for="friend-email" class="block text-white text-sm font-medium mb-2">Friend's Email</label>
+              <input
+                type="email"
+                id="friend-email"
+                name="friendEmail"
+                placeholder="friend@example.com"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-nc-light/40 focus:outline-none focus:border-nc-blue text-sm"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            id="referral-submit"
+            class="w-full px-6 py-3 rounded-xl bg-nc-green hover:bg-nc-green/90 text-white font-semibold text-sm transition-all hover:scale-[1.02]"
+          >
+            Send Invite
+          </button>
+
+          <p class="text-nc-light/40 text-xs text-center">
+            We'll email your friend with your personal invite. No spam, ever.
+          </p>
+        </form>
+
+        <!-- Success State (hidden by default) -->
+        <div id="referral-success" class="hidden text-center py-6">
+          <div class="text-4xl mb-3">🎉</div>
+          <h3 class="text-xl font-bold text-white mb-2">Invite Sent!</h3>
+          <p class="text-nc-light/70 text-sm mb-4">We've emailed your friend. You'll get credit when they sign up.</p>
+          <button
+            type="button"
+            id="referral-another"
+            class="text-nc-blue-light hover:text-white text-sm transition-colors"
+          >
+            Refer another friend
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('referral-form') as HTMLFormElement;
+  const submitButton = document.getElementById('referral-submit') as HTMLButtonElement;
+  const successDiv = document.getElementById('referral-success') as HTMLDivElement;
+  const anotherButton = document.getElementById('referral-another') as HTMLButtonElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const referrerName = (document.getElementById('referrer-name') as HTMLInputElement)?.value;
+    const referrerEmail = (document.getElementById('referrer-email') as HTMLInputElement)?.value;
+    const counterpartyAddress = (document.getElementById('counterparty-address') as HTMLInputElement)?.value;
+    const friendName = (document.getElementById('friend-name') as HTMLInputElement)?.value;
+    const friendEmail = (document.getElementById('friend-email') as HTMLInputElement)?.value;
+
+    if (!referrerName || !referrerEmail || !friendName || !friendEmail) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    try {
+      const response = await fetch('/api/referral', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ referrerName, referrerEmail, counterpartyAddress, friendName, friendEmail }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        form.classList.add('hidden');
+        successDiv.classList.remove('hidden');
+      } else {
+        throw new Error(data.error || 'Something went wrong');
+      }
+    } catch (error) {
+      alert(error instanceof Error ? error.message : 'Failed to send invite. Please try again.');
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send Invite';
+    }
+  });
+
+  anotherButton?.addEventListener('click', () => {
+    form.reset();
+    form.classList.remove('hidden');
+    successDiv.classList.add('hidden');
+    submitButton.disabled = false;
+    submitButton.textContent = 'Send Invite';
+  });
+</script>

@@ -8,6 +8,7 @@ interface WaitlistData {
   email: string;
   name?: string;
   type: 'waitlist' | 'foundation100';
+  newsletter?: boolean;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -26,7 +27,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { email, name, type } = req.body as WaitlistData;
+    const { email, name, type, newsletter = true } = req.body as WaitlistData;
 
     if (!email || !email.includes('@')) {
       return res.status(400).json({ error: 'Valid email required' });
@@ -97,7 +98,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // 3. Add to SendGrid contact list (optional but recommended)
-    await addToContactList(email, name, type);
+    await addToContactList(email, name, type, newsletter);
 
     return res.status(200).json({
       success: true,
@@ -110,7 +111,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 }
 
-async function addToContactList(email: string, name: string | undefined, type: string) {
+async function addToContactList(email: string, name: string | undefined, type: string, newsletter: boolean) {
   if (!SENDGRID_API_KEY) return;
 
   try {
@@ -127,6 +128,7 @@ async function addToContactList(email: string, name: string | undefined, type: s
           custom_fields: {
             signup_type: type,
             signup_date: new Date().toISOString(),
+            newsletter_opt_in: newsletter ? 'yes' : 'no',
           },
         }],
       }),
