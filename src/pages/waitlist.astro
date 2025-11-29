@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const benefits = [
+  'Early access to v0.99 beta (Q4 2025)',
+  'Free Community tier forever',
+  'Priority onboarding support',
+  'Shape the product roadmap',
+];
+
+const foundation100Benefits = [
+  'Lifetime Pro license (never pay again)',
+  'All future Pro features included',
+  'Founding member badge',
+  'Priority support forever',
+  'Vote on product roadmap',
+];
+
+const spotsLeft = 87;
+---
+
+<Layout title="Join the Waitlist - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <!-- Hero -->
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-blue/10 border border-nc-blue/20 mb-6">
+          <span class="w-2 h-2 bg-nc-green rounded-full animate-pulse"></span>
+          <span class="text-nc-blue-light text-sm font-medium">v0.99 Beta Coming Q4 2025</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          Join the <span class="gradient-text">Waitlist</span>
+        </h1>
+        <p class="text-xl text-nc-light/80 max-w-2xl mx-auto">
+          Be among the first to experience Neural Commander. Get early beta access
+          and help shape the future of AI-assisted development.
+        </p>
+      </div>
+
+      <!-- Free Waitlist Signup -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-8">
+        <h2 class="text-2xl font-bold text-white mb-4">Free Beta Access</h2>
+        <p class="text-nc-light/80 mb-6">
+          Join the waitlist for free. You'll get early access to the v0.99 beta
+          and the Community tier forever.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-white font-semibold mb-3">What you'll get:</h3>
+            <ul class="space-y-2">
+              {benefits.map((benefit) => (
+                <li class="flex items-center gap-2">
+                  <span class="text-nc-green">✓</span>
+                  <span class="text-nc-light/80">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <form class="space-y-4" id="waitlist-form">
+              <div>
+                <label for="email" class="block text-white text-sm font-medium mb-2">Email address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                  class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-nc-light/40 focus:outline-none focus:border-nc-blue"
+                />
+              </div>
+              <div>
+                <label for="name" class="block text-white text-sm font-medium mb-2">Name (optional)</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-nc-light/40 focus:outline-none focus:border-nc-blue"
+                />
+              </div>
+              <button
+                type="submit"
+                class="w-full px-6 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-[1.02]"
+              >
+                Join Free Waitlist
+              </button>
+              <p class="text-nc-light/40 text-xs text-center">
+                No spam, ever. Unsubscribe anytime.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Foundation 100 Upgrade -->
+      <div class="relative">
+        <div class="absolute -inset-1 bg-gradient-to-r from-nc-blue via-nc-green to-nc-blue rounded-2xl blur-lg opacity-40"></div>
+        <div class="relative bg-nc-darker rounded-2xl p-8 border-2 border-nc-blue">
+          <div class="flex flex-col lg:flex-row gap-8">
+            <div class="flex-1">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nc-warning/10 border border-nc-warning/20 mb-4">
+                <span class="text-nc-warning text-sm font-bold">LAUNCH SPECIAL</span>
+                <span class="text-nc-light/60 text-sm">Only {spotsLeft} spots left</span>
+              </div>
+
+              <h2 class="text-2xl font-bold text-white mb-2">Foundation 100</h2>
+              <p class="text-nc-light/80 mb-4">
+                Upgrade to lifetime Pro for a one-time payment. Join our founding members
+                and never pay a subscription.
+              </p>
+
+              <div class="flex items-baseline gap-3 mb-6">
+                <span class="text-5xl font-bold text-white">$97</span>
+                <span class="text-nc-light/60">USD one-time</span>
+                <span class="text-nc-light/40 line-through">$144/year</span>
+              </div>
+
+              <ul class="space-y-2 mb-6">
+                {foundation100Benefits.map((benefit) => (
+                  <li class="flex items-center gap-2">
+                    <span class="text-nc-green">✓</span>
+                    <span class="text-nc-light/80 text-sm">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="lg:w-80 flex flex-col justify-center">
+              <a
+                href="/foundation-100"
+                class="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-nc-blue to-nc-green hover:opacity-90 text-white font-bold text-lg text-center transition-all hover:scale-[1.02] mb-3"
+              >
+                Claim Foundation 100 Spot
+              </a>
+              <p class="text-nc-light/40 text-xs text-center">
+                Reserve now, pay when beta launches
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="mt-16">
+        <h2 class="text-xl font-bold text-white mb-6 text-center">Common Questions</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">When will I get access?</h3>
+            <p class="text-nc-light/70 text-sm">Beta access begins Q4 2025. Waitlist members will be invited in order of signup.</p>
+          </div>
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">Is the Community tier really free?</h3>
+            <p class="text-nc-light/70 text-sm">Yes! The Community tier is free forever.</p>
+          </div>
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">What's the difference between free and Foundation 100?</h3>
+            <p class="text-nc-light/70 text-sm">Foundation 100 gives you lifetime Pro features. Free tier has basic scanning with 1 project limit.</p>
+          </div>
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">Can I upgrade later?</h3>
+            <p class="text-nc-light/70 text-sm">Yes, but Foundation 100 pricing ($97 lifetime) is only available for the first 100 users.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('waitlist-form') as HTMLFormElement;
+  const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+  const originalButtonText = submitButton?.textContent || 'Join Free Waitlist';
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = (document.getElementById('email') as HTMLInputElement)?.value;
+    const name = (document.getElementById('name') as HTMLInputElement)?.value;
+
+    if (!email) {
+      alert('Please enter your email address');
+      return;
+    }
+
+    // Update button state
+    submitButton.disabled = true;
+    submitButton.textContent = 'Joining...';
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name, type: 'waitlist' }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Success - show confirmation
+        form.innerHTML = `
+          <div class="text-center py-8">
+            <div class="text-5xl mb-4">🎉</div>
+            <h3 class="text-2xl font-bold text-white mb-2">You're on the list!</h3>
+            <p class="text-nc-light/80">Check your email for confirmation.</p>
+          </div>
+        `;
+      } else {
+        throw new Error(data.error || 'Something went wrong');
+      }
+    } catch (error) {
+      alert(error instanceof Error ? error.message : 'Failed to join waitlist. Please try again.');
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+  });
+</script>

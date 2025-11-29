@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const capabilities = [
+  {
+    icon: '🔄',
+    title: 'Multi-Agent Coordination',
+    description: 'Orchestrate multiple Claude Code sessions working on different aspects of your project simultaneously.',
+  },
+  {
+    icon: '💾',
+    title: 'Session State Persistence',
+    description: 'Never lose context. All session states are automatically saved and can be resumed at any time.',
+  },
+  {
+    icon: '💉',
+    title: 'Automatic Context Injection',
+    description: 'Relevant project context is automatically injected into each session based on the task at hand.',
+  },
+  {
+    icon: '🧠',
+    title: 'Cross-Session Memory',
+    description: 'Learnings and decisions from one session inform all future sessions across your project.',
+  },
+  {
+    icon: '📊',
+    title: 'Health-Aware Scheduling',
+    description: 'Tasks are prioritized based on project health scores, tackling the most critical issues first.',
+  },
+  {
+    icon: '🔔',
+    title: 'Active Alerts System',
+    description: 'Real-time notifications for uncommitted changes, failing tests, and other critical events.',
+  },
+];
+---
+
+<Layout title="AI Project Coordinator - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Hero -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-blue/10 border border-nc-blue/20 mb-6">
+          <span class="text-nc-blue text-sm font-medium">v2.0 - Q3 2026</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <span class="text-5xl">🤖</span> AI Project Coordinator
+        </h1>
+        <p class="text-xl text-nc-light/80 max-w-2xl mx-auto">
+          Multi-agent orchestration that manages Claude Code sessions intelligently.
+          Your AI workforce, coordinated.
+        </p>
+      </div>
+
+      <!-- Capabilities Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {capabilities.map((cap) => (
+          <div class="bg-nc-dark rounded-2xl p-6 border border-white/10 hover:border-nc-blue/50 transition-colors">
+            <div class="text-4xl mb-4">{cap.icon}</div>
+            <h3 class="text-white font-semibold text-lg mb-2">{cap.title}</h3>
+            <p class="text-nc-light/70">{cap.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Preview -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-16">
+        <h2 class="text-2xl font-bold text-white mb-6 text-center">How It Works</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-nc-blue/20 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">1️⃣</span>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Define Tasks</h3>
+            <p class="text-nc-light/70 text-sm">Break your project into parallel workstreams</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-nc-blue/20 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">2️⃣</span>
+            </div>
+            <h3 class="text-white font-semibold mb-2">NC Coordinates</h3>
+            <p class="text-nc-light/70 text-sm">AI agents work in parallel with shared context</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-nc-blue/20 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">3️⃣</span>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Results Merge</h3>
+            <p class="text-nc-light/70 text-sm">Changes are validated and merged intelligently</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Waitlist CTA -->
+      <div class="text-center bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-12 border border-white/10">
+        <h2 class="text-2xl font-bold text-white mb-4">Be First to Access v2.0</h2>
+        <p class="text-nc-light/80 mb-8">Join the waitlist and get early access when we launch.</p>
+        <a
+          href="/community"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105"
+        >
+          Join Waitlist
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

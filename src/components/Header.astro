@@ -1,0 +1,99 @@
+---
+const navItems = [
+  { href: '/features', label: 'Features' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/docs', label: 'Docs' },
+  { href: '/about', label: 'About' },
+  { href: '/community', label: 'Community' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-nc-darker/80 backdrop-blur-lg border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 text-white hover:text-nc-blue-light transition-colors">
+        <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="url(#gradient)"/>
+          <path d="M8 16L12 12L16 16L20 12L24 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 20L12 16L16 20L20 16L24 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#4a9eff"/>
+              <stop offset="1" stop-color="#3d8ce6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="font-bold text-lg">Neural Commander</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-nc-light/80 hover:text-white transition-colors text-sm font-medium"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center gap-4">
+        <a
+          href="/investors"
+          class="hidden sm:inline-flex text-nc-light/80 hover:text-white transition-colors text-sm font-medium"
+        >
+          Investors
+        </a>
+        <a
+          href="/waitlist"
+          class="inline-flex items-center px-4 py-2 rounded-lg bg-nc-blue hover:bg-nc-blue-dark text-white text-sm font-medium transition-colors"
+        >
+          Get Started
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="md:hidden p-2 text-nc-light hover:text-white"
+        aria-label="Toggle menu"
+        id="mobile-menu-btn"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden" id="mobile-menu">
+    <div class="px-4 py-4 space-y-2 bg-nc-dark border-t border-white/10">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="block px-4 py-2 text-nc-light/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="/investors"
+        class="block px-4 py-2 text-nc-light/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+      >
+        Investors
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

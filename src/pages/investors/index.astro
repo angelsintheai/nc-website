@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const keyMetrics = [
+  { label: 'TAM', value: '60M+', description: 'developers globally' },
+  { label: 'SAM', value: '~200K', description: 'AI-assisted developers' },
+  { label: 'Pro Price', value: '$12/mo', description: 'subscription' },
+  { label: 'Gross Margin', value: '93-96%', description: 'software-based' },
+  { label: 'Year 1 ARR', value: '$265K', description: 'projected' },
+  { label: 'Year 3 ARR', value: '$3.3M', description: 'projected' },
+];
+
+const documents = [
+  { title: 'One-Pager', href: '/investors/one-pager', description: 'Print-ready investor summary', icon: '📋' },
+  { title: 'Executive Summary', href: '/investors/overview', description: 'Detailed company overview', icon: '📄' },
+  { title: 'Product Vision', href: '/investors/vision', description: 'v1.0 → v3.0 + Liberation Tech', icon: '🔮' },
+  { title: 'Corporate Structure', href: '/investors/structure', description: 'AV/NC dual-entity & IP strategy', icon: '🏛️' },
+  { title: 'Financial Model', href: '/investors/financials', description: 'Pricing, projections, unit economics', icon: '📊' },
+  { title: 'Market Validation', href: '/investors/market', description: 'TAM/SAM/SOM and demand evidence', icon: '🌍' },
+  { title: 'Team', href: '/investors/team', description: 'Founder background and experience', icon: '👤' },
+  { title: 'FAQ', href: '/investors/faq', description: 'Common investor questions', icon: '❓' },
+];
+---
+
+<Layout title="Investors - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Hero -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-blue/10 border border-nc-blue/20 mb-6">
+          <span class="text-nc-blue text-sm font-medium">Investor Portal</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          The Persistent Intelligence Layer for
+          <span class="gradient-text">AI-Assisted Development</span>
+        </h1>
+        <p class="text-xl text-nc-light/80 max-w-2xl mx-auto">
+          Neural Commander is solving the $15B/year context loss problem affecting 60M+ developers.
+        </p>
+      </div>
+
+      <!-- Key Metrics -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-16">
+        <h2 class="text-xl font-bold text-white mb-6 text-center">Key Metrics</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {keyMetrics.map((metric) => (
+            <div class="text-center">
+              <div class="text-2xl font-bold text-nc-blue-light mb-1">{metric.value}</div>
+              <div class="text-white font-medium text-sm">{metric.label}</div>
+              <div class="text-nc-light/60 text-xs">{metric.description}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Investment Thesis -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-nc-dark rounded-2xl p-8 border border-white/10">
+          <h2 class="text-xl font-bold text-white mb-4">The Problem</h2>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-nc-error">✗</span>
+              <span class="text-nc-light/80">AI assistants forget context between sessions</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-nc-error">✗</span>
+              <span class="text-nc-light/80">10+ hours monthly lost to context rebuilding</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-nc-error">✗</span>
+              <span class="text-nc-light/80">$15,000/year per developer in lost productivity</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-nc-error">✗</span>
+              <span class="text-nc-light/80">No persistent project intelligence layer exists</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-nc-dark rounded-2xl p-8 border border-white/10">
+          <h2 class="text-xl font-bold text-white mb-4">The Opportunity</h2>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-nc-green">✓</span>
+              <span class="text-nc-light/80">60M+ developers using AI tools (and growing)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-nc-green">✓</span>
+              <span class="text-nc-light/80">$45B developer tools market by 2027</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-nc-green">✓</span>
+              <span class="text-nc-light/80">First mover in persistent project intelligence</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-nc-green">✓</span>
+              <span class="text-nc-light/80">IDE-agnostic, local-first, BYOK model</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Document Navigation -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center">Due Diligence Materials</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {documents.map((doc) => (
+            <a
+              href={doc.href}
+              class="bg-nc-dark rounded-2xl p-6 border border-white/10 hover:border-nc-blue/50 transition-colors group"
+            >
+              <div class="text-4xl mb-4">{doc.icon}</div>
+              <h3 class="text-white font-semibold mb-2 group-hover:text-nc-blue-light transition-colors">
+                {doc.title}
+              </h3>
+              <p class="text-nc-light/60 text-sm">{doc.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-12 border border-white/10">
+        <h2 class="text-2xl font-bold text-white mb-4">Ready to Learn More?</h2>
+        <p class="text-nc-light/80 mb-8">Schedule a call to discuss the investment opportunity.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="mailto:investors@neuralcommander.ai"
+            class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105"
+          >
+            Schedule a Call
+          </a>
+          <a
+            href="/investors/one-pager"
+            class="inline-flex items-center px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-lg transition-all border border-white/10"
+          >
+            View One-Pager
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

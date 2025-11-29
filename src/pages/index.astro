@@ -1,16 +1,336 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+const features = [
+  {
+    icon: '📊',
+    title: 'Project Health Scanner',
+    description: 'Analyze code quality, documentation coverage, and technical debt in 30 seconds.',
+    status: 'v0.99 Beta - Q4 2025',
+  },
+  {
+    icon: '🤖',
+    title: 'AI Project Coordinator',
+    description: 'Multi-agent orchestration that manages Claude Code sessions intelligently.',
+    status: 'v2.0 - Q3 2026',
+  },
+  {
+    icon: '🎯',
+    title: 'AI Product Manager',
+    description: 'Autonomous project management with stakeholder communication and sprint planning.',
+    status: 'v3.0 - Q1 2027',
+  },
+];
+
+const scannerDimensions = [
+  {
+    icon: '📝',
+    title: 'Documentation Health',
+    metrics: ['Coverage %', 'Freshness', 'Cross-references'],
+  },
+  {
+    icon: '🔧',
+    title: 'Technical Debt',
+    metrics: ['TODO count', 'Code complexity', 'Dependency age'],
+  },
+  {
+    icon: '✅',
+    title: 'Test Coverage',
+    metrics: ['Unit tests', 'Integration tests', 'Coverage gaps'],
+  },
+  {
+    icon: '📋',
+    title: 'Requirements Tracking',
+    metrics: ['REQ coverage', 'Orphaned specs', 'Linked tests'],
+  },
+];
+
+const ideLogos = ['VS Code', 'Cursor', 'JetBrains', 'Vim', 'Neovim', 'Any IDE'];
+
+const pricingTiers = [
+  { name: 'Community', price: 'Free', target: 'Solo developers', highlight: false },
+  { name: 'Pro', price: '$12/user', target: '1-4 users', highlight: true },
+  { name: 'Team', price: '$10/user', target: '5-10 users', highlight: false },
+  { name: 'Enterprise', price: 'Custom', target: '10+ users', highlight: false },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Neural Commander - Project Health Intelligence for Every Developer">
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-blue/10 border border-nc-blue/20 mb-8">
+        <span class="w-2 h-2 bg-nc-green rounded-full animate-pulse"></span>
+        <span class="text-nc-blue-light text-sm font-medium">v0.99 Beta Coming Q4 2025</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+        Project Health Intelligence<br />
+        <span class="gradient-text">for Every Developer</span>
+      </h1>
+
+      <p class="text-xl text-nc-light/80 max-w-2xl mx-auto mb-8">
+        Know your project's health in 30 seconds. Works with any IDE.
+        No lock-in, local-first, bring your own AI keys.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a
+          href="/waitlist"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-nc-blue/25"
+        >
+          Join Waitlist
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a
+          href="/docs/quickstart"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-lg transition-all border border-white/10"
+        >
+          <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+          Start Learning
+        </a>
+      </div>
+
+      <!-- IDE Logos -->
+      <div class="flex flex-wrap items-center justify-center gap-4 text-nc-light/40 text-sm">
+        <span>Works with:</span>
+        {ideLogos.map((ide) => (
+          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10">{ide}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-nc-dark/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+            The Context Loss Crisis
+          </h2>
+          <p class="text-nc-light/80 text-lg mb-6">
+            Developers lose <span class="text-nc-warning font-semibold">10+ hours monthly</span> to context switching.
+            AI assistants start every session cold, forgetting what you built yesterday.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="text-nc-error text-xl">✗</span>
+              <span class="text-nc-light/80">AI doesn't remember your project decisions</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-nc-error text-xl">✗</span>
+              <span class="text-nc-light/80">Documentation gets stale and inconsistent</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-nc-error text-xl">✗</span>
+              <span class="text-nc-light/80">Technical debt accumulates invisibly</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-nc-error text-xl">✗</span>
+              <span class="text-nc-light/80">Requirements drift from implementation</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-nc-dark rounded-2xl p-8 border border-white/10">
+          <div class="font-mono text-sm">
+            <div class="text-nc-light/40 mb-2"># Your daily context tax:</div>
+            <div class="text-nc-error">- 2.5 hours/day rebuilding context</div>
+            <div class="text-nc-error">- 30% productivity loss to AI cold starts</div>
+            <div class="text-nc-error">- $15,000/year per developer wasted</div>
+            <div class="mt-4 text-nc-light/40"># With Neural Commander:</div>
+            <div class="text-nc-green">+ 30-second project health scan</div>
+            <div class="text-nc-green">+ Persistent project intelligence</div>
+            <div class="text-nc-green">+ Context that survives sessions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution: Scanner Dimensions -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Four Dimensions of Project Health
+        </h2>
+        <p class="text-nc-light/80 text-lg max-w-2xl mx-auto">
+          The NC Scanner analyzes your project across four critical dimensions,
+          giving you actionable insights in seconds.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {scannerDimensions.map((dimension) => (
+          <div class="bg-nc-dark rounded-2xl p-6 border border-white/10 hover:border-nc-blue/50 transition-colors">
+            <div class="text-4xl mb-4">{dimension.icon}</div>
+            <h3 class="text-white font-semibold text-lg mb-3">{dimension.title}</h3>
+            <ul class="space-y-2">
+              {dimension.metrics.map((metric) => (
+                <li class="text-nc-light/60 text-sm flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 bg-nc-blue rounded-full"></span>
+                  {metric}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Evolution -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-nc-dark/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          The Evolution of AI Development
+        </h2>
+        <p class="text-nc-light/80 text-lg max-w-2xl mx-auto">
+          Neural Commander grows with your needs—from solo scanning to
+          full autonomous project management.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {features.map((feature, index) => (
+          <div class="relative bg-nc-dark rounded-2xl p-8 border border-white/10">
+            {index === 0 && (
+              <div class="absolute -top-3 left-6 px-3 py-1 bg-nc-blue text-white text-xs font-bold rounded-full">
+                BETA Q4 2025
+              </div>
+            )}
+            <div class="text-5xl mb-6">{feature.icon}</div>
+            <h3 class="text-white font-bold text-xl mb-3">{feature.title}</h3>
+            <p class="text-nc-light/70 mb-4">{feature.description}</p>
+            <span class="text-nc-blue-light text-sm font-medium">{feature.status}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentiators -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+            Built Different
+          </h2>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-nc-blue/20 flex items-center justify-center">
+                <span class="text-2xl">🏠</span>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold mb-1">Local-First</h3>
+                <p class="text-nc-light/70">Your code never leaves your machine. Complete privacy by design.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-nc-blue/20 flex items-center justify-center">
+                <span class="text-2xl">🔌</span>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold mb-1">IDE Agnostic</h3>
+                <p class="text-nc-light/70">Works with VS Code, Cursor, JetBrains, Vim, or any editor.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-nc-green/20 flex items-center justify-center">
+                <span class="text-2xl">🔑</span>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold mb-1">BYOK (Bring Your Own Keys)</h3>
+                <p class="text-nc-light/70">Use your own API keys. No markup, no middleman.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-nc-warning/20 flex items-center justify-center">
+                <span class="text-2xl">🏆</span>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold mb-1">First Mover Advantage</h3>
+                <p class="text-nc-light/70">The first persistent project intelligence layer for AI-assisted development.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-nc-blue/20 to-nc-blue-dark/20 rounded-2xl p-8 border border-white/10">
+          <div class="text-center">
+            <div class="text-6xl font-bold text-white mb-2">60M+</div>
+            <div class="text-nc-light/70 mb-6">developers globally using AI tools</div>
+            <div class="text-6xl font-bold gradient-text mb-2">$45B</div>
+            <div class="text-nc-light/70">developer tools market by 2027</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Preview -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-nc-dark/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Simple, Transparent Pricing
+        </h2>
+        <p class="text-nc-light/80 text-lg">
+          Start free, scale as you grow. No hidden fees.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        {pricingTiers.map((tier) => (
+          <div class={`rounded-2xl p-6 border ${tier.highlight ? 'bg-nc-blue/10 border-nc-blue' : 'bg-nc-dark border-white/10'}`}>
+            <h3 class="text-white font-semibold mb-2">{tier.name}</h3>
+            <div class="text-3xl font-bold text-white mb-1">
+              {tier.price}
+              {tier.price !== 'Free' && tier.price !== 'Custom' && <span class="text-nc-light/60 text-base font-normal">/mo</span>}
+            </div>
+            <p class="text-nc-light/60 text-sm">{tier.target}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/pricing" class="text-nc-blue-light hover:text-white transition-colors">
+          View full pricing details →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+        Ready to understand your project's health?
+      </h2>
+      <p class="text-nc-light/80 text-lg mb-8">
+        Join thousands of developers using Neural Commander to maintain
+        perfect project clarity.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/waitlist"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-nc-blue/25"
+        >
+          Join Waitlist
+        </a>
+        <a
+          href="/docs/quickstart"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-lg transition-all border border-white/10"
+        >
+          Start Learning
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

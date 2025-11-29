@@ -1,0 +1,256 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const foundation100 = {
+  name: 'Foundation 100',
+  price: '$97',
+  period: 'one-time',
+  description: 'Lifetime Pro license for our first 100 supporters. Join the waitlist for v0.99 beta access.',
+  features: [
+    'Lifetime Pro access (never pay again)',
+    'Early v0.99 beta access',
+    'Founding member badge',
+    'Priority support forever',
+    'All future Pro features included',
+    'Shape the product roadmap',
+  ],
+  spotsLeft: 87, // Update this as spots fill
+};
+
+const tiers = [
+  {
+    name: 'Community',
+    price: 'Free',
+    period: 'forever',
+    description: 'Perfect for solo developers exploring project health.',
+    features: [
+      'Project Health Scanner',
+      '4-dimension analysis',
+      'Basic health reports',
+      'Community support',
+      '1 project limit',
+    ],
+    cta: 'Get Started Free',
+    ctaLink: '/waitlist',
+    highlight: false,
+  },
+  {
+    name: 'Pro',
+    price: '$12',
+    period: '/user/month',
+    description: 'For individuals and small teams (1-4 users).',
+    features: [
+      'Everything in Community',
+      'Unlimited projects',
+      'Session persistence',
+      'Historical trending',
+      'Export to PDF/JSON',
+      'Email support',
+      'Early access to v2.0',
+    ],
+    cta: 'Start Pro Trial',
+    ctaLink: '/waitlist',
+    highlight: true,
+  },
+  {
+    name: 'Team',
+    price: '$10',
+    period: '/user/month',
+    description: 'For growing teams (5-10 users). Save 17%.',
+    features: [
+      'Everything in Pro',
+      '17% volume discount',
+      'Shared project dashboards',
+      'Team health aggregation',
+      'Slack/Discord integration',
+      'Priority support',
+      'Custom onboarding',
+    ],
+    cta: 'Start Team Trial',
+    ctaLink: '/waitlist',
+    highlight: false,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    description: 'For large organizations (10+ users).',
+    features: [
+      'Everything in Team',
+      'Unlimited team members',
+      'SSO/SAML integration',
+      'On-premise deployment',
+      'Custom integrations',
+      'SLA guarantee',
+      'Dedicated success manager',
+    ],
+    cta: 'Contact Sales',
+    ctaLink: 'mailto:enterprise@neuralcommander.ai',
+    highlight: false,
+  },
+];
+
+const faqs = [
+  {
+    q: 'Can I use my own API keys?',
+    a: 'Yes! Neural Commander is BYOK (Bring Your Own Keys). We never touch your API costs.',
+  },
+  {
+    q: 'Is my code sent to the cloud?',
+    a: 'No. Neural Commander runs locally. Your code never leaves your machine.',
+  },
+  {
+    q: 'What IDEs are supported?',
+    a: 'All of them! NC is IDE-agnostic and works with VS Code, Cursor, JetBrains, Vim, and any editor.',
+  },
+  {
+    q: 'Can I cancel anytime?',
+    a: 'Yes. No long-term contracts. Cancel anytime with one click.',
+  },
+  {
+    q: 'Is there a free trial for paid plans?',
+    a: 'Yes! Pro and Team plans include a 14-day free trial.',
+  },
+];
+---
+
+<Layout title="Pricing - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Hero -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          Simple, <span class="gradient-text">Transparent</span> Pricing
+        </h1>
+        <p class="text-xl text-nc-light/80 max-w-2xl mx-auto">
+          Start free, scale as you grow. No hidden fees, no API markups.
+        </p>
+      </div>
+
+      <!-- Foundation 100 Launch Special -->
+      <div class="mb-16 relative">
+        <div class="absolute -inset-1 bg-gradient-to-r from-nc-blue via-nc-blue to-nc-blue rounded-2xl blur-lg opacity-50"></div>
+        <div class="relative bg-nc-darker rounded-2xl p-8 border-2 border-nc-blue">
+          <div class="flex flex-col lg:flex-row items-center gap-8">
+            <div class="flex-1">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nc-warning/10 border border-nc-warning/20 mb-4">
+                <span class="text-nc-warning text-sm font-bold">LAUNCH SPECIAL</span>
+                <span class="text-nc-light/60 text-sm">Only {foundation100.spotsLeft} spots left</span>
+              </div>
+              <h2 class="text-3xl font-bold text-white mb-2">{foundation100.name}</h2>
+              <p class="text-nc-light/80 mb-4">{foundation100.description}</p>
+              <div class="flex items-baseline gap-2 mb-6">
+                <span class="text-5xl font-bold text-white">{foundation100.price}</span>
+                <span class="text-nc-light/60">USD {foundation100.period}</span>
+                <span class="text-nc-light/40 line-through ml-2">$144/year</span>
+              </div>
+              <ul class="grid sm:grid-cols-2 gap-2">
+                {foundation100.features.map((feature) => (
+                  <li class="flex items-center gap-2">
+                    <span class="text-nc-green">✓</span>
+                    <span class="text-nc-light/80 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="flex-shrink-0">
+              <a
+                href="/foundation-100"
+                class="inline-flex items-center px-8 py-4 rounded-xl bg-gradient-to-r from-nc-blue to-nc-blue hover:opacity-90 text-white font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-nc-blue/25"
+              >
+                Join Foundation 100
+                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </a>
+              <p class="text-nc-light/40 text-xs text-center mt-2">Early beta access + lifetime Pro</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        {tiers.map((tier) => (
+          <div class={`rounded-2xl p-6 border flex flex-col ${tier.highlight ? 'bg-nc-blue/10 border-nc-blue ring-2 ring-nc-blue/50' : 'bg-nc-dark border-white/10'}`}>
+            {tier.highlight && (
+              <div class="text-center mb-4">
+                <span class="px-3 py-1 bg-nc-blue text-white text-xs font-bold rounded-full">MOST POPULAR</span>
+              </div>
+            )}
+            <h3 class="text-white font-bold text-xl mb-2">{tier.name}</h3>
+            <div class="mb-4">
+              <span class="text-4xl font-bold text-white">{tier.price}</span>
+              <span class="text-nc-light/60">{tier.period}</span>
+            </div>
+            <p class="text-nc-light/70 text-sm mb-6">{tier.description}</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              {tier.features.map((feature) => (
+                <li class="flex items-start gap-2">
+                  <span class="text-nc-green mt-1">✓</span>
+                  <span class="text-nc-light/80 text-sm">{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={tier.ctaLink}
+              class={`w-full py-3 rounded-xl text-center font-semibold transition-all ${
+                tier.highlight
+                  ? 'bg-nc-blue hover:bg-nc-blue-dark text-white'
+                  : 'bg-white/5 hover:bg-white/10 text-white border border-white/10'
+              }`}
+            >
+              {tier.cta}
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- Unit Economics -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-20">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center">Why These Prices?</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-nc-green mb-2">93-96%</div>
+            <div class="text-white font-semibold mb-1">Gross Margin</div>
+            <div class="text-nc-light/60 text-sm">Software-based, highly efficient</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-nc-blue mb-2">0%</div>
+            <div class="text-white font-semibold mb-1">API Markup</div>
+            <div class="text-nc-light/60 text-sm">BYOK means you pay OpenAI/Anthropic directly</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-nc-blue mb-2">$0</div>
+            <div class="text-white font-semibold mb-1">To Start</div>
+            <div class="text-nc-light/60 text-sm">Community tier is free forever</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="mb-20">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {faqs.map((faq) => (
+            <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+              <h3 class="text-white font-semibold mb-2">{faq.q}</h3>
+              <p class="text-nc-light/70">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <p class="text-nc-light/80 mb-6">Ready to understand your project's health?</p>
+        <a
+          href="/waitlist"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105"
+        >
+          Join Waitlist
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

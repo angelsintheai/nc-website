@@ -1,43 +1,79 @@
-# Astro Starter Kit: Minimal
+# Neural Commander Website
 
-```sh
-npm create astro@latest -- --template minimal
+Marketing website for [Neural Commander](https://neuralcommander.ai) - Liberation Technology for AI-Assisted Development.
+
+## Tech Stack
+
+- **Framework**: [Astro](https://astro.build/) 5.x
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) 4.x
+- **Deployment**: [Vercel](https://vercel.com/)
+- **Email**: [SendGrid](https://sendgrid.com/)
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project Structure
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
+```
+nc-website/
+├── api/                    # Vercel serverless functions
+│   └── waitlist.ts         # Waitlist/Foundation 100 signup
+├── public/                 # Static assets
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/         # Reusable components
+│   ├── layouts/            # Page layouts
+│   ├── pages/              # Routes
+│   │   ├── about/          # About pages
+│   │   ├── docs/           # Documentation
+│   │   ├── features/       # Feature pages
+│   │   ├── investors/      # Investor portal
+│   │   ├── waitlist.astro  # Waitlist signup
+│   │   └── ...
+│   └── styles/             # Global styles
+├── vercel.json             # Vercel config
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Environment Variables
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Required for production:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```env
+SENDGRID_API_KEY=your_sendgrid_api_key
+```
 
-## 🧞 Commands
+## Deployment
 
-All commands are run from the root of the project, from a terminal:
+This site auto-deploys to Vercel on push to `main`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **Production**: [neuralcommander.ai](https://neuralcommander.ai)
+- **Preview**: Auto-generated for PRs
 
-## 👀 Want to learn more?
+## Related Repositories
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Repository | Description |
+|------------|-------------|
+| [neural-commander](https://github.com/angelsintheai/neural-commander) | MIT Community Edition CLI |
+| nc-commercial (private) | Commercial tier features |
+| nc-desktop (private) | Desktop application |
+
+## License
+
+MIT License - see [LICENSE](LICENSE)
+
+---
+
+© 2025 Neural Commander Pty Ltd • IP held by Artilect Ventures Pty Ltd

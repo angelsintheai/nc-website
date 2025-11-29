@@ -1,0 +1,175 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const dimensions = [
+  {
+    icon: '📝',
+    title: 'Documentation Health',
+    description: 'Measure completeness, freshness, and cross-referencing of your project documentation.',
+    metrics: ['Coverage percentage', 'Last updated timestamps', 'Orphaned docs detection', 'Cross-reference integrity'],
+    score: '85/100',
+  },
+  {
+    icon: '🔧',
+    title: 'Technical Debt',
+    description: 'Track TODO comments, code complexity, and dependency staleness across your codebase.',
+    metrics: ['TODO/FIXME count', 'Cyclomatic complexity', 'Dependency age analysis', 'Code smell detection'],
+    score: '72/100',
+  },
+  {
+    icon: '✅',
+    title: 'Test Coverage',
+    description: 'Analyze test file distribution, coverage gaps, and testing patterns.',
+    metrics: ['Test file ratio', 'Coverage gaps', 'Test naming patterns', 'Integration test presence'],
+    score: '68/100',
+  },
+  {
+    icon: '📋',
+    title: 'Requirements Tracking',
+    description: 'Validate requirements coverage and alignment between specs and implementation.',
+    metrics: ['REQ file coverage', 'Orphaned requirements', 'Implementation links', 'Acceptance criteria'],
+    score: '91/100',
+  },
+];
+
+const commands = [
+  { cmd: 'nc scan', desc: 'Run full project health scan' },
+  { cmd: 'nc scan --docs', desc: 'Documentation health only' },
+  { cmd: 'nc scan --debt', desc: 'Technical debt analysis' },
+  { cmd: 'nc scan --watch', desc: 'Continuous monitoring mode' },
+  { cmd: 'nc report', desc: 'Generate exportable report' },
+  { cmd: 'nc test ide-compat', desc: 'Check IDE/AI compatibility' },
+  { cmd: 'nc test init', desc: 'Generate E2E test scaffolding' },
+];
+
+const proFeatures = [
+  {
+    icon: '🔌',
+    title: 'IDE Compatibility Checker',
+    description: 'Score your project\'s AI-readiness across VS Code, Cursor, JetBrains, Neovim.',
+    tier: 'Community (basic) / Pro (cross-project)',
+    metrics: ['0-100 score with A-F grading', 'Claude Code readiness', 'Extension detection', 'Config file analysis'],
+  },
+  {
+    icon: '🧪',
+    title: 'E2E Test Generator',
+    description: 'Auto-generate test scaffolding for Go, Node, Python, Rust projects.',
+    tier: 'Community (basic) / Pro (pattern learning)',
+    metrics: ['Auto-detect language/framework', 'CI workflow generation', 'Coverage gap detection', 'Pattern learning from codebase'],
+  },
+];
+---
+
+<Layout title="Project Health Scanner - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Hero -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-blue/10 border border-nc-blue/20 mb-6">
+          <span class="w-2 h-2 bg-nc-blue rounded-full animate-pulse"></span>
+          <span class="text-nc-blue-light text-sm font-medium">v0.99 Beta - Q4 2025</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <span class="text-5xl">📊</span> Project Health Scanner
+        </h1>
+        <p class="text-xl text-nc-light/80 max-w-2xl mx-auto">
+          Know your project's health in 30 seconds. Four dimensions of analysis,
+          actionable insights, zero guesswork.
+        </p>
+      </div>
+
+      <!-- Four Dimensions -->
+      <div class="mb-20">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center">Four Dimensions of Health</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {dimensions.map((dim) => (
+            <div class="bg-nc-dark rounded-2xl p-6 border border-white/10">
+              <div class="flex items-start gap-4">
+                <div class="text-4xl">{dim.icon}</div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-white font-semibold text-lg">{dim.title}</h3>
+                    <span class="text-nc-green font-mono font-bold">{dim.score}</span>
+                  </div>
+                  <p class="text-nc-light/70 text-sm mb-4">{dim.description}</p>
+                  <div class="flex flex-wrap gap-2">
+                    {dim.metrics.map((metric) => (
+                      <span class="px-2 py-1 bg-white/5 rounded text-xs text-nc-light/60">{metric}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Quick Start -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-20">
+        <h2 class="text-2xl font-bold text-white mb-6">Quick Start</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-white font-semibold mb-4">Installation</h3>
+            <div class="bg-nc-darker rounded-xl p-4 font-mono text-sm">
+              <div class="text-nc-light/60"># Install globally</div>
+              <div class="text-nc-green">npm install -g @neural-commander/cli</div>
+              <div class="mt-4 text-nc-light/60"># Or run directly</div>
+              <div class="text-nc-green">npx @neural-commander/cli scan</div>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-4">Commands</h3>
+            <div class="space-y-2">
+              {commands.map((c) => (
+                <div class="flex items-center gap-4">
+                  <code class="text-nc-blue-light font-mono text-sm">{c.cmd}</code>
+                  <span class="text-nc-light/60 text-sm">{c.desc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pro Features -->
+      <div class="mb-20">
+        <h2 class="text-2xl font-bold text-white mb-4 text-center">Pro Features</h2>
+        <p class="text-nc-light/70 text-center mb-8 max-w-2xl mx-auto">
+          Unlock advanced testing and compatibility tools with NC Pro.
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          {proFeatures.map((feature) => (
+            <div class="bg-nc-dark rounded-2xl p-6 border border-nc-blue/30">
+              <div class="flex items-start gap-4">
+                <div class="text-4xl">{feature.icon}</div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-white font-semibold text-lg">{feature.title}</h3>
+                    <span class="text-xs px-2 py-1 bg-nc-blue/20 text-nc-blue-light rounded-full">Pro</span>
+                  </div>
+                  <p class="text-nc-light/70 text-sm mb-4">{feature.description}</p>
+                  <div class="text-xs text-nc-light/50 mb-3">{feature.tier}</div>
+                  <div class="flex flex-wrap gap-2">
+                    {feature.metrics.map((metric) => (
+                      <span class="px-2 py-1 bg-white/5 rounded text-xs text-nc-light/60">{metric}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <a
+          href="/waitlist"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105"
+        >
+          Join Waitlist
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

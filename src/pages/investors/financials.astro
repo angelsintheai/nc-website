@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Financial Model - Neural Commander Investors">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <a href="/investors" class="text-nc-blue-light hover:text-white transition-colors text-sm">
+          ← Back to Investor Portal
+        </a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-white mb-8">Financial Model</h1>
+
+      <div class="prose prose-invert max-w-none">
+        <!-- Pricing Tiers -->
+        <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-8">
+          <h2 class="text-2xl font-bold text-white mb-6 mt-0">Pricing Structure</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-white/10">
+                  <th class="text-left text-nc-light/60 pb-3">Tier</th>
+                  <th class="text-right text-nc-light/60 pb-3">Price</th>
+                  <th class="text-left text-nc-light/60 pb-3 pl-4">Target</th>
+                  <th class="text-right text-nc-light/60 pb-3">Gross Margin</th>
+                </tr>
+              </thead>
+              <tbody class="text-nc-light/80">
+                <tr class="border-b border-white/5">
+                  <td class="py-3 text-white font-medium">Community</td>
+                  <td class="text-right">Free</td>
+                  <td class="pl-4">Solo developers</td>
+                  <td class="text-right">—</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="py-3 text-white font-medium">Pro (1-4 users)</td>
+                  <td class="text-right text-nc-blue-light">$12/user/mo</td>
+                  <td class="pl-4">Individuals & small teams</td>
+                  <td class="text-right text-nc-green">93%</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="py-3 text-white font-medium">Team (5-10 users)</td>
+                  <td class="text-right text-nc-blue-light">$10/user/mo</td>
+                  <td class="pl-4">Growing teams (17% discount)</td>
+                  <td class="text-right text-nc-green">95%</td>
+                </tr>
+                <tr>
+                  <td class="py-3 text-white font-medium">Enterprise (10+)</td>
+                  <td class="text-right text-nc-blue-light">Custom</td>
+                  <td class="pl-4">Large organizations</td>
+                  <td class="text-right text-nc-green">96%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Unit Economics -->
+        <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-8">
+          <h2 class="text-2xl font-bold text-white mb-6 mt-0">Unit Economics</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="text-4xl font-bold text-nc-blue-light mb-2">$144</div>
+              <div class="text-white font-medium">Annual Pro Revenue</div>
+              <div class="text-nc-light/60 text-sm">per user</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-nc-green mb-2">93%+</div>
+              <div class="text-white font-medium">Gross Margin</div>
+              <div class="text-nc-light/60 text-sm">software-based</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-nc-blue mb-2">&lt;$15</div>
+              <div class="text-white font-medium">CAC Target</div>
+              <div class="text-nc-light/60 text-sm">PLG motion</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revenue Projections -->
+        <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-8">
+          <h2 class="text-2xl font-bold text-white mb-6 mt-0">Revenue Projections</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-white/10">
+                  <th class="text-left text-nc-light/60 pb-3">Metric</th>
+                  <th class="text-right text-nc-light/60 pb-3">Year 1</th>
+                  <th class="text-right text-nc-light/60 pb-3">Year 2</th>
+                  <th class="text-right text-nc-light/60 pb-3">Year 3</th>
+                </tr>
+              </thead>
+              <tbody class="text-nc-light/80">
+                <tr class="border-b border-white/5">
+                  <td class="py-3 text-white font-medium">Free Users</td>
+                  <td class="text-right">18,400</td>
+                  <td class="text-right">76,000</td>
+                  <td class="text-right">229,200</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="py-3 text-white font-medium">Pro Users</td>
+                  <td class="text-right">1,840</td>
+                  <td class="text-right">7,600</td>
+                  <td class="text-right">22,920</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="py-3 text-white font-medium">Team Subscriptions</td>
+                  <td class="text-right">18</td>
+                  <td class="text-right">76</td>
+                  <td class="text-right">229</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="py-3 text-white font-medium">Pro MRR</td>
+                  <td class="text-right text-nc-green">$22,080</td>
+                  <td class="text-right text-nc-green">$91,200</td>
+                  <td class="text-right text-nc-green">$275,040</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="py-3 text-white font-medium">Team MRR</td>
+                  <td class="text-right text-nc-green">$1,782</td>
+                  <td class="text-right text-nc-green">$7,524</td>
+                  <td class="text-right text-nc-green">$22,671</td>
+                </tr>
+                <tr class="bg-white/5">
+                  <td class="py-3 text-white font-bold">Total ARR</td>
+                  <td class="text-right text-nc-blue-light font-bold">$265K</td>
+                  <td class="text-right text-nc-blue-light font-bold">$1.1M</td>
+                  <td class="text-right text-nc-blue-light font-bold">$3.3M</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Key Assumptions -->
+        <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-8">
+          <h2 class="text-2xl font-bold text-white mb-6 mt-0">Key Assumptions</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="text-white font-semibold mb-1">Free → Pro Conversion</div>
+              <div class="text-nc-blue-light font-bold text-xl">10%</div>
+              <div class="text-nc-light/60 text-sm">Industry average: 2-5%</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="text-white font-semibold mb-1">Monthly Churn</div>
+              <div class="text-nc-blue-light font-bold text-xl">3%</div>
+              <div class="text-nc-light/60 text-sm">Dev tools average: 3-5%</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="text-white font-semibold mb-1">LTV:CAC Ratio</div>
+              <div class="text-nc-blue-light font-bold text-xl">&gt;10x</div>
+              <div class="text-nc-light/60 text-sm">Healthy: 3x+</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4">
+              <div class="text-white font-semibold mb-1">Break-Even</div>
+              <div class="text-nc-blue-light font-bold text-xl">Month 3-4</div>
+              <div class="text-nc-light/60 text-sm">At current run rate</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Use of Funds -->
+        <div class="bg-nc-dark rounded-2xl p-8 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-6 mt-0">Use of Funds (Seed Round)</h2>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-white font-medium">Engineering (v2.0 + v3.0)</span>
+                <span class="text-nc-blue-light">50%</span>
+              </div>
+              <div class="h-2 bg-white/10 rounded-full">
+                <div class="h-2 bg-nc-blue rounded-full" style="width: 50%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-white font-medium">GTM & Marketing</span>
+                <span class="text-nc-blue-light">30%</span>
+              </div>
+              <div class="h-2 bg-white/10 rounded-full">
+                <div class="h-2 bg-nc-blue rounded-full" style="width: 30%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-white font-medium">Operations & Infrastructure</span>
+                <span class="text-nc-blue-light">20%</span>
+              </div>
+              <div class="h-2 bg-white/10 rounded-full">
+                <div class="h-2 bg-nc-green rounded-full" style="width: 20%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 flex justify-between">
+        <a href="/investors/vision" class="text-nc-blue-light hover:text-white transition-colors">
+          ← Product Vision
+        </a>
+        <a href="/investors/market" class="text-nc-blue-light hover:text-white transition-colors">
+          Market Validation →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

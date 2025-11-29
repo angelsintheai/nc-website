@@ -1,0 +1,297 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="One-Pager - Neural Commander Investors">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8 flex justify-between items-center">
+        <a href="/investors" class="text-nc-blue-light hover:text-white transition-colors text-sm">
+          ← Back to Investor Portal
+        </a>
+        <button onclick="window.print()" class="text-nc-light/60 hover:text-white transition-colors text-sm flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+          </svg>
+          Print / Save PDF
+        </button>
+      </div>
+
+      <!-- Header -->
+      <div class="text-center mb-12 print:mb-8">
+        <h1 class="text-4xl font-bold text-white mb-2">Neural Commander</h1>
+        <p class="text-xl text-nc-blue-light">Liberation Technology for AI-Assisted Development</p>
+      </div>
+
+      <!-- Two-column layout -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- Left Column -->
+        <div class="space-y-6">
+          <!-- The Problem -->
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+              <span class="text-nc-error">✗</span> The Problem
+            </h2>
+            <ul class="text-nc-light/80 text-sm space-y-2">
+              <li>• AI assistants forget everything between sessions</li>
+              <li>• 10+ hours/month lost to context rebuilding</li>
+              <li>• $15,000/year per developer wasted</li>
+              <li>• No persistent project intelligence layer exists</li>
+            </ul>
+          </div>
+
+          <!-- The Solution -->
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+              <span class="text-nc-green">✓</span> The Solution
+            </h2>
+            <p class="text-nc-light/80 text-sm mb-3">
+              Persistent project intelligence that survives AI sessions:
+            </p>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="bg-white/5 rounded p-2">
+                <div class="text-nc-blue-light font-bold">v0.99</div>
+                <div class="text-white">Health Scanner</div>
+              </div>
+              <div class="bg-white/5 rounded p-2">
+                <div class="text-nc-green font-bold">v2.0</div>
+                <div class="text-white">AI Coordinator</div>
+              </div>
+              <div class="bg-white/5 rounded p-2">
+                <div class="text-nc-warning font-bold">v3.0</div>
+                <div class="text-white">AI Product Manager</div>
+              </div>
+              <div class="bg-white/5 rounded p-2">
+                <div class="text-nc-blue-light font-bold">Future</div>
+                <div class="text-white">Federated Network</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Differentiators -->
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h2 class="text-lg font-bold text-white mb-3">Why We Win</h2>
+            <div class="grid grid-cols-2 gap-2 text-sm">
+              <div class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span>
+                <span class="text-nc-light/80">Local-first</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span>
+                <span class="text-nc-light/80">IDE-agnostic</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span>
+                <span class="text-nc-light/80">BYOK model</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span>
+                <span class="text-nc-light/80">First mover</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span>
+                <span class="text-nc-light/80">Open source core</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span>
+                <span class="text-nc-light/80">93%+ margins</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="space-y-6">
+          <!-- Market -->
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h2 class="text-lg font-bold text-white mb-3">Market Opportunity</h2>
+            <div class="grid grid-cols-3 gap-2 text-center mb-4">
+              <div>
+                <div class="text-2xl font-bold text-nc-blue-light">60M+</div>
+                <div class="text-nc-light/60 text-xs">TAM (devs)</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-nc-blue">$45B</div>
+                <div class="text-nc-light/60 text-xs">Dev tools 2027</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-nc-green">$15B</div>
+                <div class="text-nc-light/60 text-xs">Context loss/yr</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Financials -->
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h2 class="text-lg font-bold text-white mb-3">Financial Projections</h2>
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="text-nc-light/60 text-xs">
+                  <th class="text-left pb-2">Metric</th>
+                  <th class="text-right pb-2">Y1</th>
+                  <th class="text-right pb-2">Y2</th>
+                  <th class="text-right pb-2">Y3</th>
+                </tr>
+              </thead>
+              <tbody class="text-nc-light/80">
+                <tr>
+                  <td class="py-1 text-white">ARR</td>
+                  <td class="text-right">$265K</td>
+                  <td class="text-right">$1.1M</td>
+                  <td class="text-right text-nc-green font-bold">$3.3M</td>
+                </tr>
+                <tr>
+                  <td class="py-1 text-white">Pro Users</td>
+                  <td class="text-right">1,840</td>
+                  <td class="text-right">7,600</td>
+                  <td class="text-right">22,900</td>
+                </tr>
+                <tr>
+                  <td class="py-1 text-white">Gross Margin</td>
+                  <td class="text-right">93%</td>
+                  <td class="text-right">95%</td>
+                  <td class="text-right">96%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Corporate Structure -->
+          <div class="bg-nc-dark rounded-xl p-6 border border-nc-blue/30">
+            <h2 class="text-lg font-bold text-white mb-3">Corporate Structure</h2>
+            <div class="text-sm space-y-2">
+              <div class="flex justify-between">
+                <span class="text-nc-light/70">IP Holder:</span>
+                <span class="text-white">Artilect Ventures (AV)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-nc-light/70">Operating Co:</span>
+                <span class="text-white">Neural Commander (NC)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-nc-light/70">IP Royalty:</span>
+                <span class="text-nc-blue-light font-bold">7.777%</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-nc-light/70">Community License:</span>
+                <span class="text-nc-green">MIT (FOSS)</span>
+              </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-white/10 text-xs text-nc-light/60">
+              Two investment paths: IP royalty stream (AV) or operational growth (NC)
+            </div>
+          </div>
+
+          <!-- Pricing -->
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h2 class="text-lg font-bold text-white mb-3">Pricing</h2>
+            <div class="grid grid-cols-4 gap-2 text-center text-xs">
+              <div class="bg-white/5 rounded p-2">
+                <div class="text-white font-bold">Free</div>
+                <div class="text-nc-light/60">Community</div>
+              </div>
+              <div class="bg-nc-blue/20 rounded p-2 border border-nc-blue/50">
+                <div class="text-white font-bold">$12/u</div>
+                <div class="text-nc-light/60">Pro</div>
+              </div>
+              <div class="bg-white/5 rounded p-2">
+                <div class="text-white font-bold">$10/u</div>
+                <div class="text-nc-light/60">Team</div>
+              </div>
+              <div class="bg-white/5 rounded p-2">
+                <div class="text-white font-bold">Custom</div>
+                <div class="text-nc-light/60">Enterprise</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- Founder -->
+        <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+          <h2 class="text-lg font-bold text-white mb-3">Founder</h2>
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-nc-blue/20 flex items-center justify-center text-3xl">
+              👨‍💻
+            </div>
+            <div>
+              <div class="text-white font-bold">Bradley Hughes</div>
+              <div class="text-nc-light/60 text-sm">30+ years tech & governance</div>
+              <div class="text-nc-light/60 text-xs mt-1">
+                Ex-Councillor (9 yrs, $150M budget) • Co-founder Blockchain Sydney • Founder Artilect Ventures
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Long-term Vision -->
+        <div class="bg-gradient-to-br from-nc-blue/10 to-nc-green/10 rounded-xl p-6 border border-white/10">
+          <h2 class="text-lg font-bold text-white mb-3">Liberation Technology Vision</h2>
+          <div class="text-sm text-nc-light/80 space-y-2">
+            <p><strong class="text-white">Near-term:</strong> Persistent project intelligence (SaaS)</p>
+            <p><strong class="text-white">Mid-term:</strong> Autonomy Alliance (federated network)</p>
+            <p><strong class="text-white">Long-term:</strong> Beautiful Economy (distributed AI)</p>
+          </div>
+          <div class="mt-3 text-xs text-nc-light/60">
+            Open source core • Trademark protected • Fork-friendly • Protocol open
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center bg-nc-dark rounded-xl p-8 border border-white/10 print:hidden">
+        <h2 class="text-xl font-bold text-white mb-2">Ready to Learn More?</h2>
+        <p class="text-nc-light/70 mb-6">Schedule a call to discuss the investment opportunity.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="mailto:investors@neuralcommander.ai"
+            class="inline-flex items-center px-6 py-3 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold transition-all"
+          >
+            Schedule a Call
+          </a>
+          <a
+            href="/investors/structure"
+            class="inline-flex items-center px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold transition-all border border-white/10"
+          >
+            View Corporate Structure
+          </a>
+        </div>
+      </div>
+
+      <!-- Print Footer -->
+      <div class="hidden print:block mt-8 pt-4 border-t border-white/20 text-center">
+        <p class="text-nc-light/60 text-sm">
+          investors@neuralcommander.ai | neuralcommander.ai/investors
+        </p>
+        <p class="text-nc-light/40 text-xs mt-2">
+          © 2025 Neural Commander Pty Ltd • IP held by Artilect Ventures Pty Ltd
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @media print {
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    .bg-nc-dark {
+      background: #f8f8f8 !important;
+      border-color: #ddd !important;
+    }
+    .text-white, .text-nc-light\/80, .text-nc-light\/70, .text-nc-light\/60 {
+      color: #333 !important;
+    }
+    .text-nc-blue-light, .text-nc-blue, .text-nc-green, .text-nc-warning {
+      color: #1a1a1a !important;
+      font-weight: bold;
+    }
+    section {
+      padding-top: 1rem !important;
+    }
+  }
+</style>

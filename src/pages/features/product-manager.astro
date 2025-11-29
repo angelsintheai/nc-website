@@ -1,0 +1,139 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const visionItems = [
+  {
+    icon: '📅',
+    title: 'Automated Sprint Planning',
+    description: 'AI analyzes your backlog, estimates complexity, and creates balanced sprints automatically.',
+  },
+  {
+    icon: '📊',
+    title: 'Stakeholder Reporting',
+    description: 'Generate executive summaries, progress reports, and risk assessments on demand.',
+  },
+  {
+    icon: '🗺️',
+    title: 'Roadmap Generation',
+    description: 'Turn requirements into visual roadmaps with dependencies and milestones.',
+  },
+  {
+    icon: '⚠️',
+    title: 'Risk Assessment',
+    description: 'Proactive identification of blockers, dependencies, and potential delays.',
+  },
+  {
+    icon: '💬',
+    title: 'Stakeholder Communication',
+    description: 'AI-drafted updates for different audiences—technical teams, executives, clients.',
+  },
+  {
+    icon: '📈',
+    title: 'Velocity Tracking',
+    description: 'Learn from past sprints to improve future estimates and planning.',
+  },
+];
+---
+
+<Layout title="AI Product Manager - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Hero -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-warning/10 border border-nc-warning/20 mb-6">
+          <span class="text-nc-warning text-sm font-medium">v3.0 - Q1 2027</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <span class="text-5xl">🎯</span> AI Product Manager
+        </h1>
+        <p class="text-xl text-nc-light/80 max-w-2xl mx-auto">
+          The future of project management. Autonomous planning, stakeholder communication,
+          and sprint execution—all AI-driven.
+        </p>
+      </div>
+
+      <!-- Vision Statement -->
+      <div class="bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-8 border border-white/10 mb-16 text-center">
+        <blockquote class="text-2xl text-white font-light italic mb-4">
+          "Every developer deserves a product manager. AI makes that possible."
+        </blockquote>
+        <p class="text-nc-light/60">— Bradley Hughes, Founder</p>
+      </div>
+
+      <!-- Capabilities -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center">Vision: v3.0 Capabilities</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visionItems.map((item) => (
+            <div class="bg-nc-dark rounded-2xl p-6 border border-white/10">
+              <div class="text-4xl mb-4">{item.icon}</div>
+              <h3 class="text-white font-semibold text-lg mb-2">{item.title}</h3>
+              <p class="text-nc-light/70">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-16">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center">Product Evolution</h2>
+        <div class="relative">
+          <div class="absolute left-1/2 top-0 bottom-0 w-px bg-white/10"></div>
+          <div class="space-y-12">
+            <div class="relative flex items-center">
+              <div class="flex-1 text-right pr-8">
+                <div class="text-nc-blue font-bold">v0.99 Beta - Q4 2025</div>
+                <div class="text-white font-semibold">Project Health Scanner</div>
+              </div>
+              <div class="w-4 h-4 bg-nc-blue rounded-full z-10"></div>
+              <div class="flex-1 pl-8">
+                <div class="text-nc-light/70">Scan • Analyze • Report</div>
+              </div>
+            </div>
+            <div class="relative flex items-center">
+              <div class="flex-1 text-right pr-8">
+                <div class="text-nc-green font-bold">v1.0 - Q1 2026</div>
+                <div class="text-white font-semibold">AI-Enhanced Scanner</div>
+              </div>
+              <div class="w-4 h-4 bg-nc-green rounded-full z-10"></div>
+              <div class="flex-1 pl-8">
+                <div class="text-nc-light/70">AI-powered insights</div>
+              </div>
+            </div>
+            <div class="relative flex items-center">
+              <div class="flex-1 text-right pr-8">
+                <div class="text-nc-blue font-bold">v2.0 - Q3 2026</div>
+                <div class="text-white font-semibold">AI Project Coordinator</div>
+              </div>
+              <div class="w-4 h-4 bg-nc-blue rounded-full z-10"></div>
+              <div class="flex-1 pl-8">
+                <div class="text-nc-light/70">Orchestrate • Persist • Coordinate</div>
+              </div>
+            </div>
+            <div class="relative flex items-center">
+              <div class="flex-1 text-right pr-8">
+                <div class="text-nc-warning font-bold">v3.0 - Q1 2027</div>
+                <div class="text-white font-semibold">AI Product Manager</div>
+              </div>
+              <div class="w-4 h-4 bg-nc-warning rounded-full z-10"></div>
+              <div class="flex-1 pl-8">
+                <div class="text-nc-light/70">Plan • Communicate • Execute</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <p class="text-nc-light/80 mb-6">Start with v1.0 today and grow with the platform.</p>
+        <a
+          href="/waitlist"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105"
+        >
+          Join Waitlist
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

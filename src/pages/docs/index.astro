@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Documentation - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          Documentation
+        </h1>
+        <p class="text-xl text-nc-light/80">
+          Everything you need to get started with Neural Commander.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-16">
+        <a href="/docs/quickstart" class="bg-nc-dark rounded-2xl p-6 border border-white/10 hover:border-nc-blue/50 transition-colors group">
+          <div class="text-4xl mb-4">🚀</div>
+          <h2 class="text-white font-bold text-xl mb-2 group-hover:text-nc-blue-light transition-colors">Quick Start</h2>
+          <p class="text-nc-light/70">Get up and running in 5 minutes</p>
+        </a>
+
+        <a href="/docs/scanner" class="bg-nc-dark rounded-2xl p-6 border border-white/10 hover:border-nc-blue/50 transition-colors group">
+          <div class="text-4xl mb-4">📊</div>
+          <h2 class="text-white font-bold text-xl mb-2 group-hover:text-nc-blue-light transition-colors">Scanner Guide</h2>
+          <p class="text-nc-light/70">Deep dive into project health scanning</p>
+        </a>
+
+        <a href="/docs/cli" class="bg-nc-dark rounded-2xl p-6 border border-white/10 hover:border-nc-blue/50 transition-colors group">
+          <div class="text-4xl mb-4">⌨️</div>
+          <h2 class="text-white font-bold text-xl mb-2 group-hover:text-nc-blue-light transition-colors">CLI Reference</h2>
+          <p class="text-nc-light/70">Complete command line documentation</p>
+        </a>
+
+        <a href="/docs/api" class="bg-nc-dark rounded-2xl p-6 border border-white/10 hover:border-nc-blue/50 transition-colors group">
+          <div class="text-4xl mb-4">🔌</div>
+          <h2 class="text-white font-bold text-xl mb-2 group-hover:text-nc-blue-light transition-colors">API Reference</h2>
+          <p class="text-nc-light/70">Programmatic access to NC features</p>
+        </a>
+      </div>
+
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 text-center">
+        <h2 class="text-xl font-bold text-white mb-4">Documentation Coming Soon</h2>
+        <p class="text-nc-light/70 mb-6">
+          Full documentation is being prepared for the v0.99 beta launch.
+          Join the waitlist to get early access.
+        </p>
+        <a
+          href="/community"
+          class="inline-flex items-center px-6 py-3 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold transition-colors"
+        >
+          Join Community
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

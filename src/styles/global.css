@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Neural Commander Design Tokens */
+@theme {
+  /* Primary Brand Colors - NC Blue (matches desktop app) */
+  --color-nc-blue: #4a9eff;
+  --color-nc-blue-dark: #3d8ce6;
+  --color-nc-blue-light: #6bb3ff;
+
+  /* Secondary - Purple (accent only) */
+  --color-nc-purple: #8B5CF6;
+  --color-nc-purple-dark: #7C3AED;
+  --color-nc-purple-light: #A78BFA;
+
+  --color-nc-green: #10B981;
+  --color-nc-green-dark: #059669;
+  --color-nc-green-light: #34D399;
+
+  /* Neutral Colors */
+  --color-nc-dark: #1E293B;
+  --color-nc-darker: #0F172A;
+  --color-nc-light: #F1F5F9;
+  --color-nc-lighter: #F8FAFC;
+
+  /* Accent Colors */
+  --color-nc-warning: #F59E0B;
+  --color-nc-error: #EF4444;
+  --color-nc-info: #6366F1;
+
+  /* Typography Scale */
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-nc-darker);
+  color: var(--color-nc-light);
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+/* Link Styles - only for prose/text links, not buttons */
+a:not([class*="bg-"]):not([class*="btn"]) {
+  color: var(--color-nc-blue-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:not([class*="bg-"]):not([class*="btn"]):hover {
+  color: var(--color-nc-blue);
+}
+
+/* Focus States */
+*:focus-visible {
+  outline: 2px solid var(--color-nc-blue);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-nc-blue);
+  color: white;
+}
+
+/* Gradient Utilities */
+.gradient-blue {
+  background: linear-gradient(135deg, var(--color-nc-blue) 0%, var(--color-nc-blue-dark) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-nc-blue-light) 0%, var(--color-nc-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

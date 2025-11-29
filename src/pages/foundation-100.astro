@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const benefits = [
+  { icon: '🎫', title: 'Lifetime Pro License', desc: 'Never pay a subscription again. One payment, forever access.' },
+  { icon: '🚀', title: 'Early Beta Access', desc: 'Be first to test v0.99 beta when it launches in Q4 2025.' },
+  { icon: '🏆', title: 'Founding Member Badge', desc: 'Exclusive badge in Discord and product UI.' },
+  { icon: '💬', title: 'Priority Support', desc: 'Direct access to the founder for support and feedback.' },
+  { icon: '🔮', title: 'Future Features Included', desc: 'All Pro features from v1.0, v2.0, and beyond.' },
+  { icon: '🗳️', title: 'Shape the Roadmap', desc: 'Vote on features and influence product direction.' },
+];
+
+const spotsLeft = 87;
+---
+
+<Layout title="Foundation 100 - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <!-- Hero -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-warning/10 border border-nc-warning/20 mb-6">
+          <span class="text-nc-warning font-bold">LAUNCH SPECIAL</span>
+          <span class="text-nc-light/60">·</span>
+          <span class="text-nc-light/80">{spotsLeft} of 100 spots remaining</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          Foundation <span class="gradient-text">100</span>
+        </h1>
+
+        <p class="text-xl text-nc-light/80 max-w-2xl mx-auto mb-8">
+          Become one of our first 100 supporters. Get lifetime Pro access for a one-time payment of $97 USD.
+        </p>
+
+        <div class="flex items-center justify-center gap-4 mb-8">
+          <span class="text-6xl font-bold text-white">$97</span>
+          <div class="text-left">
+            <div class="text-nc-light/60 line-through">$144/year</div>
+            <div class="text-nc-green font-semibold">One-time, forever</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid sm:grid-cols-2 gap-6 mb-16">
+        {benefits.map((benefit) => (
+          <div class="bg-nc-dark rounded-2xl p-6 border border-white/10">
+            <div class="text-3xl mb-3">{benefit.icon}</div>
+            <h3 class="text-white font-semibold mb-2">{benefit.title}</h3>
+            <p class="text-nc-light/70 text-sm">{benefit.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- How It Works -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-16">
+        <h2 class="text-2xl font-bold text-white mb-6 text-center">How It Works</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-nc-blue/20 flex items-center justify-center mx-auto mb-4">
+              <span class="text-white font-bold">1</span>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Join Waitlist</h3>
+            <p class="text-nc-light/70 text-sm">Reserve your spot with email only</p>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-nc-blue/20 flex items-center justify-center mx-auto mb-4">
+              <span class="text-white font-bold">2</span>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Get Beta Access</h3>
+            <p class="text-nc-light/70 text-sm">Early access to v0.99 beta in Q4 2025</p>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-nc-blue/20 flex items-center justify-center mx-auto mb-4">
+              <span class="text-white font-bold">3</span>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Complete Purchase</h3>
+            <p class="text-nc-light/70 text-sm">Secure your lifetime license for $97</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-12 border border-white/10 text-center">
+        <h2 class="text-2xl font-bold text-white mb-4">Join the Foundation 100</h2>
+        <p class="text-nc-light/80 mb-8">
+          Enter your email to reserve your spot. No payment required until beta launch.
+        </p>
+        <form id="foundation100-form" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-6">
+          <input
+            type="email"
+            id="f100-email"
+            placeholder="your@email.com"
+            required
+            class="flex-1 px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-nc-light/40 focus:outline-none focus:border-nc-blue text-lg"
+          />
+          <button
+            type="submit"
+            id="f100-submit"
+            class="px-8 py-4 rounded-xl bg-gradient-to-r from-nc-blue to-nc-blue hover:opacity-90 text-white font-bold text-lg transition-all hover:scale-105"
+          >
+            Reserve Spot
+          </button>
+        </form>
+        <p class="text-nc-light/40 text-sm">
+          {spotsLeft} spots remaining · No spam, ever · Unsubscribe anytime
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div class="mt-16">
+        <h2 class="text-xl font-bold text-white mb-6 text-center">Foundation 100 FAQ</h2>
+        <div class="space-y-4 max-w-2xl mx-auto">
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">When do I pay?</h3>
+            <p class="text-nc-light/70">You only pay when the v0.99 beta is ready. Joining the waitlist is free and reserves your spot.</p>
+          </div>
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">What if I change my mind?</h3>
+            <p class="text-nc-light/70">30-day money-back guarantee after purchase. No questions asked.</p>
+          </div>
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">What does "lifetime" mean?</h3>
+            <p class="text-nc-light/70">As long as Neural Commander exists, your Pro license is valid. All future Pro features included.</p>
+          </div>
+          <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">Why only 100?</h3>
+            <p class="text-nc-light/70">We want to personally onboard our first supporters and ensure exceptional experience. This is a true founding member program.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('foundation100-form') as HTMLFormElement;
+  const submitButton = document.getElementById('f100-submit') as HTMLButtonElement;
+  const formContainer = form?.parentElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = (document.getElementById('f100-email') as HTMLInputElement)?.value;
+
+    if (!email) {
+      alert('Please enter your email address');
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Reserving...';
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, type: 'foundation100' }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && formContainer) {
+        formContainer.innerHTML = `
+          <div class="text-center py-8">
+            <div class="text-6xl mb-4">🎉</div>
+            <h3 class="text-3xl font-bold text-white mb-2">You're a Founding Member!</h3>
+            <p class="text-nc-light/80 text-lg">Check your email for confirmation and next steps.</p>
+          </div>
+        `;
+      } else {
+        throw new Error(data.error || 'Something went wrong');
+      }
+    } catch (error) {
+      alert(error instanceof Error ? error.message : 'Failed to reserve spot. Please try again.');
+      submitButton.disabled = false;
+      submitButton.textContent = 'Reserve Spot';
+    }
+  });
+</script>

@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const features = [
+  {
+    slug: 'scanner',
+    icon: '📊',
+    title: 'Project Health Scanner',
+    status: 'v0.99 Beta - Q4 2025',
+    description: 'Comprehensive project analysis in 30 seconds. Scan documentation health, technical debt, test coverage, and requirements alignment.',
+    highlights: [
+      'Four-dimension health scoring',
+      'Actionable recommendations',
+      'Historical trend tracking',
+      'Export-ready reports',
+    ],
+  },
+  {
+    slug: 'coordinator',
+    icon: '🤖',
+    title: 'AI Project Coordinator',
+    status: 'v2.0 - Q3 2026',
+    description: 'Multi-agent orchestration that manages Claude Code sessions intelligently. Automatic context injection and session persistence.',
+    highlights: [
+      'Multi-agent coordination',
+      'Session state persistence',
+      'Automatic context injection',
+      'Cross-session memory',
+    ],
+  },
+  {
+    slug: 'product-manager',
+    icon: '🎯',
+    title: 'AI Product Manager',
+    status: 'v3.0 - Q1 2027',
+    description: 'Autonomous project management with stakeholder communication, sprint planning, and requirement tracking.',
+    highlights: [
+      'Automated sprint planning',
+      'Stakeholder reporting',
+      'Roadmap generation',
+      'Risk assessment',
+    ],
+  },
+];
+---
+
+<Layout title="Features - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          Features that <span class="gradient-text">evolve with you</span>
+        </h1>
+        <p class="text-xl text-nc-light/80 max-w-2xl mx-auto">
+          From project scanning to autonomous management, Neural Commander grows with your needs.
+        </p>
+      </div>
+
+      <div class="space-y-12">
+        {features.map((feature, index) => (
+          <div class={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
+            <div class={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nc-blue/10 border border-nc-blue/20 mb-4">
+                <span class="text-nc-blue-light text-sm font-medium">{feature.status}</span>
+              </div>
+              <div class="text-5xl mb-4">{feature.icon}</div>
+              <h2 class="text-3xl font-bold text-white mb-4">{feature.title}</h2>
+              <p class="text-nc-light/80 text-lg mb-6">{feature.description}</p>
+              <ul class="space-y-3 mb-8">
+                {feature.highlights.map((highlight) => (
+                  <li class="flex items-center gap-3">
+                    <span class="text-nc-green">✓</span>
+                    <span class="text-nc-light/80">{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`/features/${feature.slug}`}
+                class="inline-flex items-center text-nc-blue-light hover:text-white transition-colors font-medium"
+              >
+                Learn more
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+            <div class={`bg-nc-dark rounded-2xl p-8 border border-white/10 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+              <div class="aspect-video bg-gradient-to-br from-nc-blue/20 to-nc-blue/20 rounded-xl flex items-center justify-center">
+                <span class="text-8xl">{feature.icon}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

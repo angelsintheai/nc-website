@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const faqs = [
+  {
+    category: 'Product',
+    questions: [
+      {
+        q: 'What exactly does Neural Commander do?',
+        a: 'Neural Commander provides persistent project intelligence for AI-assisted development. It scans your project health, maintains context between AI sessions, and will eventually coordinate multiple AI agents working on your codebase.',
+      },
+      {
+        q: 'How is this different from just using Claude Code or Cursor?',
+        a: 'Those tools are brilliant in the moment but forget everything between sessions. NC adds the persistence layer—it remembers your project structure, decisions, and context so every AI session starts informed, not cold.',
+      },
+      {
+        q: 'Why local-first instead of cloud?',
+        a: 'Privacy, speed, and cost. Your code never leaves your machine. Scans are instant (no upload time). And you pay nothing for our infrastructure—BYOK means you use your own API keys.',
+      },
+      {
+        q: 'What is the long-term vision beyond v3.0?',
+        a: 'NC is liberation technology. After v3.0, we\'re building the Autonomy Alliance Protocol—a federated network for sharing learnings and reputation. Eventually, a Beautiful Economy with distributed AI compute where developers own their tools and data.',
+      },
+    ],
+  },
+  {
+    category: 'Corporate Structure',
+    questions: [
+      {
+        q: 'Why are there two companies (AV and NC)?',
+        a: 'Artilect Ventures holds the core IP and trademarks; Neural Commander Pty Ltd operates the commercial product. This protects IP, enables dual investment paths, and ensures the open-source community edition can live forever.',
+      },
+      {
+        q: 'What is the 7.777% royalty?',
+        a: 'NC pays 7.777% of net revenue to AV for the IP license. This creates a perpetual royalty stream for IP investors while maintaining healthy 85%+ margins for NC.',
+      },
+      {
+        q: 'Can I invest in just the IP or just the operating company?',
+        a: 'Yes. AV investment = exposure to IP royalty stream (lower risk, steady growth). NC investment = exposure to operational growth (higher risk, higher potential return).',
+      },
+      {
+        q: 'Why is the Community Edition open source?',
+        a: 'Liberation technology. We want the code free so anyone can fork it, compete with us, or build on it. The trademark is protected (you can\'t call your fork "Neural Commander"), but the code is MIT licensed.',
+      },
+    ],
+  },
+  {
+    category: 'Market',
+    questions: [
+      {
+        q: 'Who are your competitors?',
+        a: 'No one is building persistent project intelligence specifically. We compete tangentially with static analysis tools (SonarQube), documentation tools (Notion), and PM tools (Linear)—but none address the AI context loss problem.',
+      },
+      {
+        q: 'Why will developers pay for this?',
+        a: 'They\'re already losing $15,000/year per developer to context rebuilding. At $12/month Pro or $10/user Team, the ROI is obvious—if NC saves even 2 hours/month, it pays for itself 10x over.',
+      },
+      {
+        q: 'What if Anthropic/OpenAI build this in?',
+        a: 'They might add longer context windows, but persistent project-specific intelligence requires local analysis and cross-session memory. That\'s not their core competency. Plus, we\'re IDE and AI-agnostic—we work with ANY assistant.',
+      },
+    ],
+  },
+  {
+    category: 'Business',
+    questions: [
+      {
+        q: 'What\'s the business model?',
+        a: 'Freemium SaaS with PLG motion. Community (free) → Pro ($12/user/mo) → Team ($10/user/mo, 5-10 users) → Enterprise (custom). 93%+ gross margins because it\'s local-first software with no infrastructure costs.',
+      },
+      {
+        q: 'Why BYOK (Bring Your Own Keys)?',
+        a: 'It removes our biggest cost center and aligns incentives. We focus on value, not API arbitrage. Developers prefer it because they control costs and there\'s no vendor lock-in.',
+      },
+      {
+        q: 'What are the key metrics you\'re tracking?',
+        a: 'Free → Pro conversion (target: 10%), monthly churn (target: <3%), LTV:CAC ratio (target: >10x), and time-to-value (target: <5 minutes to first scan).',
+      },
+    ],
+  },
+  {
+    category: 'Investment',
+    questions: [
+      {
+        q: 'How much are you raising?',
+        a: 'Contact us to discuss the current round. We\'re looking for investors who understand developer tools and can provide strategic value beyond capital.',
+      },
+      {
+        q: 'What will the funds be used for?',
+        a: '50% Engineering (v2.0 and v3.0 development), 30% GTM & Marketing, 20% Operations & Infrastructure.',
+      },
+      {
+        q: 'What\'s the timeline to profitability?',
+        a: 'We expect to break even at the unit economics level by month 3-4 of v1.0 launch, with company profitability dependent on hiring pace and growth investment.',
+      },
+    ],
+  },
+];
+---
+
+<Layout title="Investor FAQ - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <a href="/investors" class="text-nc-blue-light hover:text-white transition-colors text-sm">
+          ← Back to Investor Portal
+        </a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-white mb-8">Investor FAQ</h1>
+
+      <div class="space-y-12">
+        {faqs.map((category) => (
+          <div>
+            <h2 class="text-xl font-bold text-nc-blue-light mb-6">{category.category}</h2>
+            <div class="space-y-4">
+              {category.questions.map((faq) => (
+                <div class="bg-nc-dark rounded-xl p-6 border border-white/10">
+                  <h3 class="text-white font-semibold mb-3">{faq.q}</h3>
+                  <p class="text-nc-light/70 m-0">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16 text-center bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-12 border border-white/10">
+        <h2 class="text-2xl font-bold text-white mb-4">More Questions?</h2>
+        <p class="text-nc-light/80 mb-8">We're happy to discuss anything not covered here.</p>
+        <a
+          href="mailto:investors@neuralcommander.ai"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105"
+        >
+          Contact Us
+        </a>
+      </div>
+
+      <div class="mt-12 flex justify-between">
+        <a href="/investors/structure" class="text-nc-blue-light hover:text-white transition-colors">
+          ← Corporate Structure
+        </a>
+        <a href="/investors" class="text-nc-blue-light hover:text-white transition-colors">
+          Investor Portal →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
