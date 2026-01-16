@@ -98,9 +98,9 @@ const PUBLIC_TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '
               class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-nc-blue appearance-none"
               style="background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 20 20%22 fill=%22%239ca3af%22><path fill-rule=%22evenodd%22 d=%22M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z%22 clip-rule=%22evenodd%22/></svg>'); background-position: right 1rem center; background-repeat: no-repeat; background-size: 1.25rem;"
             >
-              <option value="" disabled selected class="text-nc-light/40">Select an option...</option>
+              <option value="" disabled selected style="background: #1a1a2e; color: #9ca3af;">Select an option...</option>
               {discoveryOptions.map((opt) => (
-                <option value={opt.value}>{opt.label}</option>
+                <option value={opt.value} style="background: #1a1a2e; color: white;">{opt.label}</option>
               ))}
             </select>
           </div>
