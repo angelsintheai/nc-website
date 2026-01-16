@@ -5,8 +5,8 @@ const features = [
   {
     icon: '📊',
     title: 'Project Health Scanner',
-    description: 'Analyze code quality, documentation coverage, and technical debt in 30 seconds.',
-    status: 'v0.99 Beta - Q4 2025',
+    description: 'Comprehensive project health audit analyzing code quality, documentation coverage, and technical debt.',
+    status: 'v0.98.1 Alpha - Available Now',
   },
   {
     icon: '🤖',
@@ -31,17 +31,17 @@ const scannerDimensions = [
   {
     icon: '🔧',
     title: 'Technical Debt',
-    metrics: ['TODO count', 'Code complexity', 'Dependency age'],
+    metrics: ['TODO count', 'Code complexity', 'Large files'],
   },
   {
     icon: '✅',
-    title: 'Test Coverage',
-    metrics: ['Unit tests', 'Integration tests', 'Coverage gaps'],
+    title: 'Code Quality',
+    metrics: ['FIXME count', 'Long functions', 'File organization'],
   },
   {
     icon: '📋',
     title: 'Requirements Tracking',
-    metrics: ['REQ coverage', 'Orphaned specs', 'Linked tests'],
+    metrics: ['REQ coverage', 'Implementation status', 'Violations'],
   },
 ];
 
@@ -59,9 +59,9 @@ const pricingTiers = [
   <!-- Hero Section -->
   <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-blue/10 border border-nc-blue/20 mb-8">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-green/10 border border-nc-green/20 mb-8">
         <span class="w-2 h-2 bg-nc-green rounded-full animate-pulse"></span>
-        <span class="text-nc-blue-light text-sm font-medium">v0.99 Beta Coming Q4 2025</span>
+        <span class="text-nc-green text-sm font-medium">v0.98.1 Alpha Available Now</span>
       </div>
 
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
@@ -70,16 +70,16 @@ const pricingTiers = [
       </h1>
 
       <p class="text-xl text-nc-light/80 max-w-2xl mx-auto mb-8">
-        Know your project's health in 30 seconds. Works with any IDE.
+        Comprehensive project health audit. Works with any IDE.
         No lock-in, local-first, bring your own AI keys.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
         <a
-          href="/waitlist"
-          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-nc-blue/25"
+          href="/alpha"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-green hover:bg-nc-green/90 text-white font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-nc-green/25"
         >
-          Join Waitlist
+          Request Alpha Access
           <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
           </svg>
@@ -114,7 +114,7 @@ const pricingTiers = [
             The Context Loss Crisis
           </h2>
           <p class="text-nc-light/80 text-lg mb-6">
-            Developers lose <span class="text-nc-warning font-semibold">10+ hours monthly</span> to context switching.
+            Developers lose <span class="text-nc-warning font-semibold">5+ hours weekly</span> to context switching.
             AI assistants start every session cold, forgetting what you built yesterday.
           </p>
           <ul class="space-y-4">
@@ -139,13 +139,16 @@ const pricingTiers = [
         <div class="bg-nc-dark rounded-2xl p-8 border border-white/10">
           <div class="font-mono text-sm">
             <div class="text-nc-light/40 mb-2"># Your daily context tax:</div>
-            <div class="text-nc-error">- 2.5 hours/day rebuilding context</div>
-            <div class="text-nc-error">- 30% productivity loss to AI cold starts</div>
-            <div class="text-nc-error">- $15,000/year per developer wasted</div>
+            <div class="text-nc-error">- 23 min to refocus after each interruption*</div>
+            <div class="text-nc-error">- Up to 40% productivity loss from task switching*</div>
+            <div class="text-nc-error">- $50,000/year per developer wasted*</div>
             <div class="mt-4 text-nc-light/40"># With Neural Commander:</div>
-            <div class="text-nc-green">+ 30-second project health scan</div>
+            <div class="text-nc-green">+ Comprehensive project health audit</div>
             <div class="text-nc-green">+ Persistent project intelligence</div>
             <div class="text-nc-green">+ Context that survives sessions</div>
+          </div>
+          <div class="mt-4 text-nc-light/30 text-xs">
+            *Sources: Carnegie Mellon, Psychology Today, Gallup research on developer productivity
           </div>
         </div>
       </div>
@@ -201,8 +204,8 @@ const pricingTiers = [
         {features.map((feature, index) => (
           <div class="relative bg-nc-dark rounded-2xl p-8 border border-white/10">
             {index === 0 && (
-              <div class="absolute -top-3 left-6 px-3 py-1 bg-nc-blue text-white text-xs font-bold rounded-full">
-                BETA Q4 2025
+              <div class="absolute -top-3 left-6 px-3 py-1 bg-nc-green text-white text-xs font-bold rounded-full">
+                ALPHA AVAILABLE
               </div>
             )}
             <div class="text-5xl mb-6">{feature.icon}</div>
@@ -247,8 +250,17 @@ const pricingTiers = [
                 <span class="text-2xl">🔑</span>
               </div>
               <div>
-                <h3 class="text-white font-semibold mb-1">BYOK (Bring Your Own Keys)</h3>
-                <p class="text-nc-light/70">Use your own API keys. No markup, no middleman.</p>
+                <h3 class="text-white font-semibold mb-1">AI Optional (BYOK)</h3>
+                <p class="text-nc-light/70">Core features work without AI. Add Ollama (free) or your own cloud API keys.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-nc-blue/20 flex items-center justify-center">
+                <span class="text-2xl">📡</span>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold mb-1">Works Offline</h3>
+                <p class="text-nc-light/70">Zero telemetry, no cloud required. Full functionality on planes and secure networks.</p>
               </div>
             </div>
             <div class="flex gap-4">
@@ -314,15 +326,15 @@ const pricingTiers = [
         Ready to understand your project's health?
       </h2>
       <p class="text-nc-light/80 text-lg mb-8">
-        Join thousands of developers using Neural Commander to maintain
-        perfect project clarity.
+        Neural Commander v0.98.1 alpha is available now.
+        Request access to start testing today.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
-          href="/waitlist"
-          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-nc-blue/25"
+          href="/alpha"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-green hover:bg-nc-green/90 text-white font-semibold text-lg transition-all hover:scale-105 shadow-lg shadow-nc-green/25"
         >
-          Join Waitlist
+          Request Alpha Access
         </a>
         <a
           href="/docs/quickstart"
