@@ -24,11 +24,13 @@ const tiers = [
     period: 'forever',
     description: 'Perfect for solo developers exploring project health.',
     features: [
-      'Project Health Scanner',
-      '4-dimension analysis',
-      'Basic health reports',
+      'Full CLI functionality',
+      'Project health scanning',
+      'NC Desktop app*',
+      'AI Writing Assistant*',
+      'AI Guardrails**',
+      'Local Ollama models',
       'Community support',
-      '1 project limit',
     ],
     cta: 'Get Started Free',
     ctaLink: '/waitlist',
@@ -42,11 +44,12 @@ const tiers = [
     features: [
       'Everything in Community',
       'Unlimited projects',
-      'Session persistence',
-      'Historical trending',
-      'Export to PDF/JSON',
+      'Unlimited AI Writing Assistant',
+      'BYOK: OpenAI & Anthropic support',
+      'Session checkpointing & persistence',
+      'Cross-project intelligence (Coming Q2 2026)',
+      'Usage analytics (Coming Q1 2026)',
       'Email support',
-      'Early access to v2.0',
     ],
     cta: 'Start Pro Trial',
     ctaLink: '/waitlist',
@@ -60,9 +63,9 @@ const tiers = [
     features: [
       'Everything in Pro',
       '17% volume discount',
-      'Shared project dashboards',
-      'Team health aggregation',
-      'Slack/Discord integration',
+      'Shared project dashboards (Coming Q3 2026)',
+      'Team health aggregation (Coming Q3 2026)',
+      'Slack/Discord integration (Coming Q2 2026)',
       'Priority support',
       'Custom onboarding',
     ],
@@ -78,8 +81,8 @@ const tiers = [
     features: [
       'Everything in Team',
       'Unlimited team members',
-      'SSO/SAML integration',
-      'On-premise deployment',
+      'SSO/SAML integration (Coming Q4 2026)',
+      'On-premise deployment (Coming Q4 2026)',
       'Custom integrations',
       'SLA guarantee',
       'Dedicated success manager',
@@ -92,12 +95,16 @@ const tiers = [
 
 const faqs = [
   {
+    q: 'Do I need AI to use Neural Commander?',
+    a: 'No! Core features like project audits, session persistence, and the dashboard work without any AI. AI features are optional enhancements.',
+  },
+  {
     q: 'Can I use my own API keys?',
-    a: 'Yes! Neural Commander is BYOK (Bring Your Own Keys). We never touch your API costs.',
+    a: 'Yes! NC is BYOK (Bring Your Own Keys). Use Ollama locally for free, or add cloud API keys. We never markup AI costs.',
   },
   {
     q: 'Is my code sent to the cloud?',
-    a: 'No. Neural Commander runs locally. Your code never leaves your machine.',
+    a: 'No. Neural Commander runs locally. Your code never leaves your machine unless you explicitly configure cloud AI.',
   },
   {
     q: 'What IDEs are supported?',
@@ -108,8 +115,8 @@ const faqs = [
     a: 'Yes. No long-term contracts. Cancel anytime with one click.',
   },
   {
-    q: 'Is there a free trial for paid plans?',
-    a: 'Yes! Pro and Team plans include a 14-day free trial.',
+    q: 'Does NC auto-detect Ollama?',
+    a: 'Yes! If Ollama is running, NC automatically detects it and enables AI features. No configuration needed.',
   },
 ];
 ---
@@ -135,7 +142,6 @@ const faqs = [
             <div class="flex-1">
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nc-warning/10 border border-nc-warning/20 mb-4">
                 <span class="text-nc-warning text-sm font-bold">LAUNCH SPECIAL</span>
-                <span class="text-nc-light/60 text-sm">Only {foundation100.spotsLeft} spots left</span>
               </div>
               <h2 class="text-3xl font-bold text-white mb-2">{foundation100.name}</h2>
               <p class="text-nc-light/80 mb-4">{foundation100.description}</p>
@@ -206,14 +212,20 @@ const faqs = [
         ))}
       </div>
 
+      <!-- Footnotes -->
+      <div class="text-center mb-8 text-nc-light/60 text-sm">
+        <p>* NC Desktop and AI Writing Assistant limited to 1 project in Community tier</p>
+        <p>** AI Guardrails generate safety rules for AI coding assistants like Claude Code</p>
+      </div>
+
       <!-- Unit Economics -->
       <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-20">
         <h2 class="text-2xl font-bold text-white mb-8 text-center">Why These Prices?</h2>
         <div class="grid md:grid-cols-3 gap-8">
           <div class="text-center">
-            <div class="text-4xl font-bold text-nc-green mb-2">93-96%</div>
-            <div class="text-white font-semibold mb-1">Gross Margin</div>
-            <div class="text-nc-light/60 text-sm">Software-based, highly efficient</div>
+            <div class="text-4xl font-bold text-nc-green mb-2">100%</div>
+            <div class="text-white font-semibold mb-1">Local-First</div>
+            <div class="text-nc-light/60 text-sm">Your code never leaves your machine</div>
           </div>
           <div class="text-center">
             <div class="text-4xl font-bold text-nc-blue mb-2">0%</div>
@@ -225,6 +237,43 @@ const faqs = [
             <div class="text-white font-semibold mb-1">To Start</div>
             <div class="text-nc-light/60 text-sm">Community tier is free forever</div>
           </div>
+        </div>
+      </div>
+
+      <!-- AI Features -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-nc-blue/30 mb-20">
+        <h2 class="text-2xl font-bold text-white mb-4 text-center">AI Features (Optional)</h2>
+        <p class="text-nc-light/70 text-center mb-8 max-w-2xl mx-auto">
+          Core features work without any AI provider. Add AI for enhanced capabilities.
+        </p>
+        <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div>
+            <h3 class="text-lg font-semibold text-nc-green mb-3">Free: Local AI with Ollama</h3>
+            <p class="text-nc-light/70 text-sm mb-3">
+              NC auto-detects Ollama. Run AI locally, keep everything private.
+            </p>
+            <ul class="space-y-2 text-nc-light/80 text-sm">
+              <li class="flex items-center gap-2"><span class="text-nc-green">✓</span> Completely free (your hardware)</li>
+              <li class="flex items-center gap-2"><span class="text-nc-green">✓</span> Maximum privacy</li>
+              <li class="flex items-center gap-2"><span class="text-nc-green">✓</span> Works offline</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-nc-blue-light mb-3">BYOK: Cloud AI</h3>
+            <p class="text-nc-light/70 text-sm mb-3">
+              Add your own OpenAI, Anthropic, or other API keys.
+            </p>
+            <ul class="space-y-2 text-nc-light/80 text-sm">
+              <li class="flex items-center gap-2"><span class="text-nc-blue-light">✓</span> Pay your provider directly</li>
+              <li class="flex items-center gap-2"><span class="text-nc-blue-light">✓</span> No NC markup</li>
+              <li class="flex items-center gap-2"><span class="text-nc-blue-light">✓</span> Use latest models</li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center mt-6">
+          <a href="/docs/ai-setup" class="text-nc-blue-light hover:text-white text-sm">
+            Learn more about AI setup →
+          </a>
         </div>
       </div>
 

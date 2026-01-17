@@ -20,29 +20,29 @@ const phases = [
   {
     number: 2,
     name: 'THE ACCELERATOR',
-    theme: 'Desktop app + focus management + cross-project intelligence',
+    theme: 'Cross-project intelligence + advanced analytics',
     target: 'Pro Edition',
-    timeline: 'Q1 2026',
-    status: 'planned',
-    progress: 0,
+    timeline: 'Q1-Q2 2026',
+    status: 'active',
+    progress: 15,
     milestones: [
-      { name: 'NC Desktop MVP', status: 'planned', items: ['Electron App', 'Project Dashboard', 'Real-time Alerts', 'Session Recovery'] },
-      { name: 'SNT Focus System', status: 'planned', items: ['Single Next Target', 'Focus Drift Detection', 'CLAUDE.md Injection', 'Progress Tracking'] },
-      { name: 'Cross-Project Intelligence', status: 'planned', items: ['Pattern Library', 'Consistency Checker', 'Convention Harvester'] },
+      { name: 'Foundation (Q1)', status: 'in-progress', items: ['Encrypted Backup', 'Custom Alerts', 'Webhook Integrations', 'Usage Analytics'] },
+      { name: 'Cross-Project Intelligence (Q2)', status: 'planned', items: ['Project Registry', 'Pattern Extraction', 'Global Learnings', 'Multi-Project Dashboard'] },
+      { name: 'Advanced Integrations (Q2)', status: 'planned', items: ['Slack/Discord Notifications', 'MCP Server Complete', 'IDE Plugins'] },
     ],
   },
   {
     number: 3,
     name: 'THE PLATFORM',
-    theme: 'Enterprise features + team collaboration',
+    theme: 'Team collaboration + cloud services + enterprise',
     target: 'Team/Enterprise Edition',
-    timeline: 'Q2 2026',
+    timeline: 'Q3-Q4 2026',
     status: 'future',
     progress: 0,
     milestones: [
-      { name: 'Team Features', status: 'future', items: ['Shared Dashboards', 'Role-Based Access', 'Audit Logging'] },
-      { name: 'Team SNT', status: 'future', items: ['Team-level Targets', 'SNT Inheritance', 'Focus Analytics', 'Sprint Integration'] },
-      { name: 'Cloud Services', status: 'future', items: ['NC Cloud Sync', 'Team Analytics', 'Enterprise SSO'] },
+      { name: 'Cloud & Sync (Q3)', status: 'future', items: ['NC Cloud Backend', 'Sync Protocol', 'Team Sharing', 'Audit Logging'] },
+      { name: 'Team Features (Q3)', status: 'future', items: ['Shared Dashboards', 'Team Health Aggregation', 'Compliance Reports'] },
+      { name: 'Enterprise (Q4)', status: 'future', items: ['SSO/SAML Integration', 'On-Premise Deployment', 'Role-Based Access', 'SLA Tooling'] },
     ],
   },
 ];
@@ -61,8 +61,8 @@ const tiers = [
       { name: 'CI/CD plugins', included: true },
       { name: 'BYOK (OpenAI/Anthropic)', included: false },
       { name: 'Unlimited projects', included: false },
-      { name: 'Cross-project intelligence', included: false },
-      { name: 'Team dashboards', included: false },
+      { name: 'Cross-project intelligence (Q2 2026)', included: false },
+      { name: 'Team dashboards (Q3 2026)', included: false },
     ],
   },
   {
@@ -78,8 +78,8 @@ const tiers = [
       { name: 'CI/CD plugins', included: true },
       { name: 'BYOK (OpenAI/Anthropic)', included: true },
       { name: 'Unlimited projects', included: true },
-      { name: 'Cross-project intelligence', included: true },
-      { name: 'Team dashboards', included: false },
+      { name: 'Cross-project intelligence (Q2 2026)', included: true },
+      { name: 'Team dashboards (Q3 2026)', included: false },
     ],
   },
   {
@@ -95,8 +95,8 @@ const tiers = [
       { name: 'CI/CD plugins', included: true },
       { name: 'BYOK (OpenAI/Anthropic)', included: true },
       { name: 'Unlimited projects', included: true },
-      { name: 'Cross-project intelligence', included: true },
-      { name: 'Team dashboards', included: true },
+      { name: 'Cross-project intelligence (Q2 2026)', included: true },
+      { name: 'Team dashboards (Q3 2026)', included: true },
     ],
   },
 ];
@@ -114,13 +114,13 @@ const tiers = [
       </p>
 
       <!-- Current Status Badge -->
-      <div class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-nc-warning/10 border border-nc-warning/30">
+      <div class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-nc-green/10 border border-nc-green/30">
         <div class="flex items-center gap-2">
-          <span class="w-3 h-3 bg-nc-warning rounded-full animate-pulse"></span>
-          <span class="text-nc-warning font-semibold">Phase 1: The Foundation</span>
+          <span class="w-3 h-3 bg-nc-green rounded-full"></span>
+          <span class="text-nc-green font-semibold">Phase 1: Complete</span>
         </div>
         <span class="text-nc-light/60">|</span>
-        <span class="text-white font-bold">85% Complete</span>
+        <span class="text-nc-warning font-bold">Phase 2: In Progress</span>
       </div>
     </div>
   </section>
@@ -308,7 +308,7 @@ const tiers = [
   <section class="pb-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto text-center">
       <p class="text-nc-light/40 text-sm">
-        Last updated: November 2025 • This roadmap is updated regularly based on community feedback
+        Last updated: January 2026 • This roadmap is updated regularly based on community feedback
       </p>
     </div>
   </section>
