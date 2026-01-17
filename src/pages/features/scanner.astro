@@ -12,34 +12,33 @@ const dimensions = [
   {
     icon: '🔧',
     title: 'Technical Debt',
-    description: 'Track TODO comments, code complexity, and dependency staleness across your codebase.',
-    metrics: ['TODO/FIXME count', 'Cyclomatic complexity', 'Dependency age analysis', 'Code smell detection'],
+    description: 'Track TODO comments, code complexity signals, and file organization across your codebase.',
+    metrics: ['TODO/FIXME/HACK count', 'Long functions (>100 lines)', 'Large files (>1000 lines)', 'Complexity score'],
     score: '72/100',
   },
   {
     icon: '✅',
-    title: 'Test Coverage',
-    description: 'Analyze test file distribution, coverage gaps, and testing patterns.',
-    metrics: ['Test file ratio', 'Coverage gaps', 'Test naming patterns', 'Integration test presence'],
+    title: 'Code Quality',
+    description: 'Analyze code organization, identify problem areas, and track quality signals.',
+    metrics: ['Language detection', 'Lines of code', 'File size distribution', 'Comment density'],
     score: '68/100',
   },
   {
     icon: '📋',
     title: 'Requirements Tracking',
-    description: 'Validate requirements coverage and alignment between specs and implementation.',
-    metrics: ['REQ file coverage', 'Orphaned requirements', 'Implementation links', 'Acceptance criteria'],
+    description: 'Validate requirements coverage and track implementation status.',
+    metrics: ['REQ file detection', 'Implementation status', 'Violation tracking', 'Coverage percentage'],
     score: '91/100',
   },
 ];
 
 const commands = [
-  { cmd: 'nc scan', desc: 'Run full project health scan' },
-  { cmd: 'nc scan --docs', desc: 'Documentation health only' },
-  { cmd: 'nc scan --debt', desc: 'Technical debt analysis' },
-  { cmd: 'nc scan --watch', desc: 'Continuous monitoring mode' },
-  { cmd: 'nc report', desc: 'Generate exportable report' },
-  { cmd: 'nc test ide-compat', desc: 'Check IDE/AI compatibility' },
-  { cmd: 'nc test init', desc: 'Generate E2E test scaffolding' },
+  { cmd: 'nc audit .', desc: 'Run full project health audit' },
+  { cmd: 'nc audit --quick', desc: 'Fast scan (<30s target)' },
+  { cmd: 'nc audit -o', desc: 'Save markdown report to file' },
+  { cmd: 'nc audit -o ./reports/', desc: 'Save to directory' },
+  { cmd: 'nc audit --format json', desc: 'Output as JSON' },
+  { cmd: 'nc audit --focus subdir', desc: 'Focus on subdirectory' },
 ];
 
 const proFeatures = [
@@ -65,15 +64,15 @@ const proFeatures = [
     <div class="max-w-7xl mx-auto">
       <!-- Hero -->
       <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-blue/10 border border-nc-blue/20 mb-6">
-          <span class="w-2 h-2 bg-nc-blue rounded-full animate-pulse"></span>
-          <span class="text-nc-blue-light text-sm font-medium">v0.99 Beta - Q4 2025</span>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nc-green/10 border border-nc-green/20 mb-6">
+          <span class="w-2 h-2 bg-nc-green rounded-full animate-pulse"></span>
+          <span class="text-nc-green text-sm font-medium">v0.98.1 Alpha - Available Now</span>
         </div>
         <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
           <span class="text-5xl">📊</span> Project Health Scanner
         </h1>
         <p class="text-xl text-nc-light/80 max-w-2xl mx-auto">
-          Know your project's health in 30 seconds. Four dimensions of analysis,
+          Comprehensive project health audit. Four dimensions of analysis,
           actionable insights, zero guesswork.
         </p>
       </div>
@@ -107,14 +106,27 @@ const proFeatures = [
       <!-- Quick Start -->
       <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-20">
         <h2 class="text-2xl font-bold text-white mb-6">Quick Start</h2>
+
+        <!-- Available Now Notice -->
+        <div class="bg-nc-green/10 border border-nc-green/30 rounded-xl p-4 mb-6 flex items-start gap-3">
+          <span class="text-nc-green">✅</span>
+          <div>
+            <p class="text-nc-green font-medium text-sm">v0.98.1 Alpha Available Now</p>
+            <p class="text-nc-light/60 text-xs mt-1">
+              <a href="/alpha" class="text-nc-green hover:text-white underline">Request alpha access</a> to download the latest release.
+            </p>
+          </div>
+        </div>
+
         <div class="grid md:grid-cols-2 gap-8">
           <div>
             <h3 class="text-white font-semibold mb-4">Installation</h3>
             <div class="bg-nc-darker rounded-xl p-4 font-mono text-sm">
-              <div class="text-nc-light/60"># Install globally</div>
-              <div class="text-nc-green">npm install -g @neural-commander/cli</div>
-              <div class="mt-4 text-nc-light/60"># Or run directly</div>
-              <div class="text-nc-green">npx @neural-commander/cli scan</div>
+              <div class="text-nc-light/60"># Download from GitHub releases (requires alpha access)</div>
+              <div class="text-nc-green">chmod +x neural-commander-linux-amd64</div>
+              <div class="text-nc-green">mv neural-commander-linux-amd64 ~/.local/bin/nc</div>
+              <div class="mt-4 text-nc-light/60"># Run your first audit</div>
+              <div class="text-nc-green">nc audit --quick -o ./</div>
             </div>
           </div>
           <div>
@@ -164,10 +176,10 @@ const proFeatures = [
       <!-- CTA -->
       <div class="text-center">
         <a
-          href="/waitlist"
-          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-blue hover:bg-nc-blue-dark text-white font-semibold text-lg transition-all hover:scale-105"
+          href="/alpha"
+          class="inline-flex items-center px-8 py-4 rounded-xl bg-nc-green hover:bg-nc-green/90 text-white font-semibold text-lg transition-all hover:scale-105"
         >
-          Join Waitlist
+          Request Alpha Access
         </a>
       </div>
     </div>
