@@ -13,13 +13,10 @@ const coreCommands = [
   },
   {
     name: 'nc daemon',
-    description: 'Manage the NC daemon for background monitoring',
-    usage: 'nc daemon <command>',
+    description: 'Run NC daemon with REST API (7669) and MCP server (7671)',
+    usage: 'nc daemon [flags]',
     options: [
-      { flag: 'start', desc: 'Start daemon' },
-      { flag: 'stop', desc: 'Stop daemon' },
-      { flag: 'status', desc: 'Show status' },
-      { flag: '--api', desc: 'Start with API server (port 7669)' },
+      { flag: '--no-api', desc: 'Disable REST API server (MCP only)' },
     ],
   },
   {
@@ -157,7 +154,19 @@ const reqCommands = [
       </div>
 
       <h1 class="text-4xl font-bold text-white mb-6">CLI Reference</h1>
-      <p class="text-xl text-nc-light/80 mb-12">Complete command line documentation for Neural Commander.</p>
+      <p class="text-xl text-nc-light/80 mb-8">Complete command line documentation for Neural Commander.</p>
+
+      <!-- Coming Soon Banner -->
+      <div class="bg-nc-warning/10 border border-nc-warning/30 rounded-xl p-4 mb-12 flex items-start gap-3">
+        <span class="text-nc-warning text-xl">🚧</span>
+        <div>
+          <p class="text-nc-warning font-medium">Coming Soon — Beta Waitlist Goal: 100 signups</p>
+          <p class="text-nc-light/70 text-sm mt-1">
+            CLI downloads will be available when our beta waitlist reaches 100 developers.
+            <a href="/waitlist" class="text-nc-blue-light hover:text-white underline">Join the waitlist</a> to get early access.
+          </p>
+        </div>
+      </div>
 
       <!-- Table of Contents -->
       <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-12">
