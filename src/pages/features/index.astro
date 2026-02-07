@@ -7,7 +7,7 @@ const features = [
     icon: '📊',
     title: 'Project Health Scanner',
     status: 'v0.99 Beta - Q4 2025',
-    description: 'Comprehensive project analysis in 30 seconds. Scan documentation health, technical debt, test coverage, and requirements alignment.',
+    description: 'Comprehensive project health audit. Scan documentation health, technical debt, test coverage, and requirements alignment.',
     highlights: [
       'Four-dimension health scoring',
       'Actionable recommendations',
@@ -53,6 +53,91 @@ const features = [
         </h1>
         <p class="text-xl text-nc-light/80 max-w-2xl mx-auto">
           From project scanning to autonomous management, Neural Commander grows with your needs.
+        </p>
+      </div>
+
+      <!-- Core vs AI Features -->
+      <div class="grid md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto">
+        <div class="bg-nc-dark rounded-2xl p-6 border border-nc-green/30">
+          <h3 class="text-lg font-semibold text-nc-green mb-4">Works Out of the Box</h3>
+          <p class="text-nc-light/60 text-sm mb-4">No AI required for core functionality:</p>
+          <ul class="space-y-2 text-nc-light/80 text-sm">
+            <li class="flex items-center gap-2"><span class="text-nc-green">✓</span> Project Health Audits</li>
+            <li class="flex items-center gap-2"><span class="text-nc-green">✓</span> Session Persistence</li>
+            <li class="flex items-center gap-2"><span class="text-nc-green">✓</span> Desktop Dashboard</li>
+            <li class="flex items-center gap-2"><span class="text-nc-green">✓</span> Documentation Scanner</li>
+            <li class="flex items-center gap-2"><span class="text-nc-green">✓</span> Requirements Tracking</li>
+          </ul>
+        </div>
+        <div class="bg-nc-dark rounded-2xl p-6 border border-nc-blue/30">
+          <h3 class="text-lg font-semibold text-nc-blue-light mb-4">Enhanced with AI</h3>
+          <p class="text-nc-light/60 text-sm mb-4">Add Ollama (free) or cloud API keys:</p>
+          <ul class="space-y-2 text-nc-light/80 text-sm">
+            <li class="flex items-center gap-2"><span class="text-nc-blue-light">+</span> <code>ncmd chat</code> Interactive AI</li>
+            <li class="flex items-center gap-2"><span class="text-nc-blue-light">+</span> Pattern Extraction</li>
+            <li class="flex items-center gap-2"><span class="text-nc-blue-light">+</span> Smart Suggestions</li>
+            <li class="flex items-center gap-2"><span class="text-nc-blue-light">+</span> Natural Language Queries</li>
+            <li class="flex items-center gap-2"><span class="text-nc-blue-light">+</span> AI Code Analysis</li>
+          </ul>
+          <a href="/docs/ai-setup" class="inline-block mt-4 text-nc-blue-light hover:text-white text-sm">
+            Setup AI →
+          </a>
+        </div>
+      </div>
+
+      <!-- AI Guardrails Section -->
+      <div class="bg-gradient-to-br from-nc-warning/5 to-nc-warning/10 rounded-2xl p-8 border border-nc-warning/20 mb-16 max-w-4xl mx-auto">
+        <div class="flex items-start gap-4 mb-6">
+          <span class="text-4xl">🛡️</span>
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">AI Guardrails</h2>
+            <p class="text-nc-light/70">
+              Automatically generate safety rules for AI coding assistants like Claude Code, Cursor, and Copilot. NC detects your project type and connected systems, then generates appropriate directives to prevent costly mistakes.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-sm font-semibold text-nc-warning uppercase tracking-wider mb-4">How it works</h3>
+            <ol class="space-y-3 text-nc-light/80 text-sm">
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-nc-warning/20 text-nc-warning flex items-center justify-center text-xs font-bold">1</span>
+                <span>NC scans your project structure</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-nc-warning/20 text-nc-warning flex items-center justify-center text-xs font-bold">2</span>
+                <span>Detects project type (web app, API, trading bot, database, etc.)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-nc-warning/20 text-nc-warning flex items-center justify-center text-xs font-bold">3</span>
+                <span>Identifies connected systems (Postgres, Redis, Docker, etc.)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-nc-warning/20 text-nc-warning flex items-center justify-center text-xs font-bold">4</span>
+                <span>Generates safety directives injected into your AI assistant's context</span>
+              </li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-nc-warning uppercase tracking-wider mb-4">Example directives</h3>
+            <div class="space-y-2">
+              <div class="bg-nc-darker/50 rounded-lg p-3 text-sm font-mono text-nc-light/70">
+                "NEVER execute trades without explicit confirmation"
+              </div>
+              <div class="bg-nc-darker/50 rounded-lg p-3 text-sm font-mono text-nc-light/70">
+                "Always verify database connection before migrations"
+              </div>
+              <div class="bg-nc-darker/50 rounded-lg p-3 text-sm font-mono text-nc-light/70">
+                "Check for active connections before container restart"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-nc-light/50 text-xs mt-6 text-center">
+          Available in all tiers including Community Edition
         </p>
       </div>
 

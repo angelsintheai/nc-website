@@ -12,7 +12,19 @@ import Layout from '../../layouts/Layout.astro';
       </div>
 
       <h1 class="text-4xl font-bold text-white mb-6">Quick Start</h1>
-      <p class="text-xl text-nc-light/80 mb-12">Get up and running with Neural Commander in 5 minutes.</p>
+      <p class="text-xl text-nc-light/80 mb-8">Get up and running with Neural Commander in 5 minutes.</p>
+
+      <!-- Coming Soon Banner -->
+      <div class="bg-nc-warning/10 border border-nc-warning/30 rounded-xl p-4 mb-12 flex items-start gap-3">
+        <span class="text-nc-warning text-xl">🚧</span>
+        <div>
+          <p class="text-nc-warning font-medium">Coming Soon — Beta Waitlist Goal: 100 signups</p>
+          <p class="text-nc-light/70 text-sm mt-1">
+            Downloads will be available when our beta waitlist reaches 100 developers.
+            <a href="/waitlist" class="text-nc-blue-light hover:text-white underline">Join the waitlist</a> to get early access.
+          </p>
+        </div>
+      </div>
 
       <!-- Installation -->
       <div class="mb-12">
@@ -21,7 +33,7 @@ import Layout from '../../layouts/Layout.astro';
           Installation
         </h2>
 
-        <div class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden mb-6">
+        <div class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden mb-6 opacity-75">
           <div class="flex border-b border-white/10">
             <button id="tab-linux" class="px-4 py-2 text-sm font-medium text-white bg-white/5 border-b-2 border-nc-blue">Linux/Mac</button>
             <button id="tab-windows" class="px-4 py-2 text-sm font-medium text-nc-light/60 hover:text-white">Windows</button>
@@ -57,17 +69,17 @@ nc --version</code></pre>
 
         <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-6">
           <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Initialize NC for your project</span>
-<span class="text-nc-green">nc init</span>
+<span class="text-nc-green">ncmd init</span>
 
 <span class="text-nc-light/50"># Start the daemon for session monitoring</span>
-<span class="text-nc-green">nc daemon start</span>
+<span class="text-nc-green">ncmd daemon start</span>
 
 <span class="text-nc-light/50"># Check project health</span>
-<span class="text-nc-green">nc audit .</span></code></pre>
+<span class="text-nc-green">ncmd audit .</span></code></pre>
         </div>
 
         <p class="text-nc-light/70">
-          The <code class="bg-white/5 px-2 py-1 rounded">nc init</code> command creates a <code class="bg-white/5 px-2 py-1 rounded">.nc-config.yaml</code> file in your project root with default settings.
+          The <code class="bg-white/5 px-2 py-1 rounded">ncmd init</code> command creates a <code class="bg-white/5 px-2 py-1 rounded">.nc-config.yaml</code> file in your project root with default settings.
         </p>
       </div>
 
@@ -88,23 +100,23 @@ nc --version</code></pre>
             </thead>
             <tbody class="text-nc-light/80">
               <tr class="border-b border-white/5">
-                <td class="p-4"><code class="text-nc-blue-light">nc init</code></td>
+                <td class="p-4"><code class="text-nc-blue-light">ncmd init</code></td>
                 <td class="p-4">Initialize NC for current project</td>
               </tr>
               <tr class="border-b border-white/5">
-                <td class="p-4"><code class="text-nc-blue-light">nc daemon start</code></td>
+                <td class="p-4"><code class="text-nc-blue-light">ncmd daemon start</code></td>
                 <td class="p-4">Start background monitoring</td>
               </tr>
               <tr class="border-b border-white/5">
-                <td class="p-4"><code class="text-nc-blue-light">nc audit [path]</code></td>
+                <td class="p-4"><code class="text-nc-blue-light">ncmd audit [path]</code></td>
                 <td class="p-4">Run project health audit</td>
               </tr>
               <tr class="border-b border-white/5">
-                <td class="p-4"><code class="text-nc-blue-light">nc session list</code></td>
+                <td class="p-4"><code class="text-nc-blue-light">ncmd session list</code></td>
                 <td class="p-4">List all sessions</td>
               </tr>
               <tr>
-                <td class="p-4"><code class="text-nc-blue-light">nc docs health</code></td>
+                <td class="p-4"><code class="text-nc-blue-light">ncmd docs health</code></td>
                 <td class="p-4">Check documentation health</td>
               </tr>
             </tbody>
@@ -121,26 +133,68 @@ nc --version</code></pre>
 
         <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-6">
           <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># 1. Initialize NC</span>
-<span class="text-nc-green">nc init</span>
+<span class="text-nc-green">ncmd init</span>
 
 <span class="text-nc-light/50"># 2. Generate AI guardrails</span>
-<span class="text-nc-green">nc guardrails init --claude-md</span>
+<span class="text-nc-green">ncmd guardrails init --claude-md</span>
 
 <span class="text-nc-light/50"># 3. Set up test scaffolding</span>
-<span class="text-nc-green">nc test init</span>
+<span class="text-nc-green">ncmd test init</span>
 
 <span class="text-nc-light/50"># 4. Check IDE compatibility</span>
-<span class="text-nc-green">nc test ide-compat</span>
+<span class="text-nc-green">ncmd test ide-compat</span>
 
 <span class="text-nc-light/50"># 5. Start daemon</span>
-<span class="text-nc-green">nc daemon start</span></code></pre>
+<span class="text-nc-green">ncmd daemon start</span></code></pre>
         </div>
+      </div>
+
+      <!-- Optional: AI Setup -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-nc-green/20 flex items-center justify-center text-nc-green text-sm">5</span>
+          (Optional) Enable AI Features
+        </h2>
+
+        <div class="bg-nc-green/5 border border-nc-green/20 rounded-xl p-4 mb-6">
+          <p class="text-nc-light/80 text-sm">
+            <strong class="text-nc-green">Core features work without AI.</strong> This step is optional if you want AI-enhanced capabilities like <code class="bg-white/5 px-1 rounded">ncmd chat</code> and smart suggestions.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">Option A: Local AI (Free)</h3>
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Install Ollama</span>
+<span class="text-nc-green">curl -fsSL https://ollama.ai/install.sh | sh</span>
+
+<span class="text-nc-light/50"># Pull a model</span>
+<span class="text-nc-green">ollama pull llama3.2</span>
+
+<span class="text-nc-light/50"># NC auto-detects Ollama!</span>
+<span class="text-nc-green">ncmd chat "Hello!"</span></code></pre>
+          </div>
+
+          <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+            <h3 class="text-lg font-semibold text-white mb-4">Option B: Cloud AI (BYOK)</h3>
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Set your API key</span>
+<span class="text-nc-green">ncmd config set ai.provider openai</span>
+<span class="text-nc-green">ncmd config set ai.api_key sk-...</span>
+
+<span class="text-nc-light/50"># Ready to use</span>
+<span class="text-nc-green">ncmd chat "Hello!"</span></code></pre>
+          </div>
+        </div>
+
+        <p class="text-nc-light/60 text-sm">
+          <a href="/docs/ai-setup" class="text-nc-blue-light hover:text-white">Full AI setup guide →</a>
+        </p>
       </div>
 
       <!-- Configuration -->
       <div class="mb-12">
         <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-          <span class="w-8 h-8 rounded-full bg-nc-blue/20 flex items-center justify-center text-nc-blue-light text-sm">5</span>
+          <span class="w-8 h-8 rounded-full bg-nc-blue/20 flex items-center justify-center text-nc-blue-light text-sm">6</span>
           Configuration
         </h2>
 
@@ -193,12 +247,19 @@ nc --version</code></pre>
       <!-- Next Steps -->
       <div class="bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-8 border border-white/10">
         <h2 class="text-xl font-bold text-white mb-4">Next Steps</h2>
-        <div class="grid sm:grid-cols-2 gap-4">
+        <div class="grid sm:grid-cols-3 gap-4">
+          <a href="/docs/ai-setup" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">🤖</span>
+            <div>
+              <div class="text-white font-medium">AI Setup</div>
+              <div class="text-nc-light/60 text-sm">Configure Ollama or cloud AI</div>
+            </div>
+          </a>
           <a href="/docs/cli" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
             <span class="text-2xl">⌨️</span>
             <div>
               <div class="text-white font-medium">CLI Reference</div>
-              <div class="text-nc-light/60 text-sm">Complete command documentation</div>
+              <div class="text-nc-light/60 text-sm">Complete command docs</div>
             </div>
           </a>
           <a href="/docs/api" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">

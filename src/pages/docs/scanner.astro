@@ -56,25 +56,37 @@ const featureTiers = [
       </div>
 
       <h1 class="text-4xl font-bold text-white mb-6">Project Health Scanner</h1>
-      <p class="text-xl text-nc-light/80 mb-12">Deep dive into project health scanning and the four dimensions of analysis.</p>
+      <p class="text-xl text-nc-light/80 mb-8">Deep dive into project health scanning and the four dimensions of analysis.</p>
+
+      <!-- Coming Soon Banner -->
+      <div class="bg-nc-warning/10 border border-nc-warning/30 rounded-xl p-4 mb-12 flex items-start gap-3">
+        <span class="text-nc-warning text-xl">🚧</span>
+        <div>
+          <p class="text-nc-warning font-medium">Coming Soon — Beta Waitlist Goal: 100 signups</p>
+          <p class="text-nc-light/70 text-sm mt-1">
+            The scanner will be available when our beta waitlist reaches 100 developers.
+            <a href="/waitlist" class="text-nc-blue-light hover:text-white underline">Join the waitlist</a> to get early access.
+          </p>
+        </div>
+      </div>
 
       <!-- Overview -->
       <div class="bg-nc-dark rounded-2xl border border-white/10 p-8 mb-12">
         <h2 class="text-2xl font-bold text-white mb-4">Overview</h2>
         <p class="text-nc-light/80 mb-6">
           The Project Health Scanner analyzes your codebase across four key dimensions, providing a comprehensive
-          health score in under 30 seconds. It works with any programming language and integrates with your
+          health score quickly. It works with any programming language and integrates with your
           existing development workflow.
         </p>
         <div class="bg-nc-darker rounded-xl p-4">
           <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Run a full project health scan</span>
-<span class="text-nc-green">nc audit .</span>
+<span class="text-nc-green">ncmd audit .</span>
 
 <span class="text-nc-light/50"># Save results for tracking over time</span>
-<span class="text-nc-green">nc audit . --save</span>
+<span class="text-nc-green">ncmd audit . --save</span>
 
 <span class="text-nc-light/50"># Verbose output with details</span>
-<span class="text-nc-green">nc audit . -v</span></code></pre>
+<span class="text-nc-green">ncmd audit . -v</span></code></pre>
         </div>
       </div>
 
@@ -112,13 +124,13 @@ const featureTiers = [
           <h3 class="text-lg font-bold text-white mb-4">Commands</h3>
           <div class="bg-nc-darker rounded-xl p-4 mb-6">
             <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Check documentation health</span>
-<span class="text-nc-green">nc docs health</span>
+<span class="text-nc-green">ncmd docs health</span>
 
 <span class="text-nc-light/50"># Search documentation</span>
-<span class="text-nc-green">nc docs search "authentication"</span>
+<span class="text-nc-green">ncmd docs search "authentication"</span>
 
 <span class="text-nc-light/50"># Filter by type</span>
-<span class="text-nc-green">nc docs search "config" --type yaml</span></code></pre>
+<span class="text-nc-green">ncmd docs search "config" --type yaml</span></code></pre>
           </div>
 
           <h3 class="text-lg font-bold text-white mb-4">What Gets Analyzed</h3>
@@ -153,13 +165,13 @@ const featureTiers = [
 
           <div class="bg-nc-darker rounded-xl p-4 mb-6">
             <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Check all IDE compatibility</span>
-<span class="text-nc-green">nc test ide-compat</span>
+<span class="text-nc-green">ncmd test ide-compat</span>
 
 <span class="text-nc-light/50"># Focus on specific IDE</span>
-<span class="text-nc-green">nc test ide-compat --ide cursor</span>
+<span class="text-nc-green">ncmd test ide-compat --ide cursor</span>
 
 <span class="text-nc-light/50"># Output as JSON for CI</span>
-<span class="text-nc-green">nc test ide-compat --json</span></code></pre>
+<span class="text-nc-green">ncmd test ide-compat --json</span></code></pre>
           </div>
 
           <h3 class="text-lg font-bold text-white mb-4">Configuration Files Checked</h3>
@@ -208,13 +220,13 @@ const featureTiers = [
 
           <div class="bg-nc-darker rounded-xl p-4 mb-6">
             <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Generate test scaffolding</span>
-<span class="text-nc-green">nc test init</span>
+<span class="text-nc-green">ncmd test init</span>
 
 <span class="text-nc-light/50"># Specify framework</span>
-<span class="text-nc-green">nc test init --framework vitest</span>
+<span class="text-nc-green">ncmd test init --framework vitest</span>
 
 <span class="text-nc-light/50"># Preview without creating files</span>
-<span class="text-nc-green">nc test init --dry-run</span></code></pre>
+<span class="text-nc-green">ncmd test init --dry-run</span></code></pre>
           </div>
 
           <h3 class="text-lg font-bold text-white mb-4">Generated Files</h3>
@@ -249,13 +261,13 @@ const featureTiers = [
 
           <div class="bg-nc-darker rounded-xl p-4 mb-6">
             <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Generate guardrails with CLAUDE.md output</span>
-<span class="text-nc-green">nc guardrails init --claude-md</span>
+<span class="text-nc-green">ncmd guardrails init --claude-md</span>
 
 <span class="text-nc-light/50"># Override project type</span>
-<span class="text-nc-green">nc guardrails init --type trading-bot</span>
+<span class="text-nc-green">ncmd guardrails init --type trading-bot</span>
 
 <span class="text-nc-light/50"># Export existing guardrails</span>
-<span class="text-nc-green">nc guardrails export --format yaml</span></code></pre>
+<span class="text-nc-green">ncmd guardrails export --format yaml</span></code></pre>
           </div>
 
           <h3 class="text-lg font-bold text-white mb-4">Project Type Rules</h3>

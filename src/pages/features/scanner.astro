@@ -33,12 +33,12 @@ const dimensions = [
 ];
 
 const commands = [
-  { cmd: 'nc audit .', desc: 'Run full project health audit' },
-  { cmd: 'nc audit --quick', desc: 'Fast scan (<30s target)' },
-  { cmd: 'nc audit -o', desc: 'Save markdown report to file' },
-  { cmd: 'nc audit -o ./reports/', desc: 'Save to directory' },
-  { cmd: 'nc audit --format json', desc: 'Output as JSON' },
-  { cmd: 'nc audit --focus subdir', desc: 'Focus on subdirectory' },
+  { cmd: 'ncmd audit .', desc: 'Run full project health audit' },
+  { cmd: 'ncmd audit --quick', desc: 'Fast scan (<30s target)' },
+  { cmd: 'ncmd audit -o', desc: 'Save markdown report to file' },
+  { cmd: 'ncmd audit -o ./reports/', desc: 'Save to directory' },
+  { cmd: 'ncmd audit --format json', desc: 'Output as JSON' },
+  { cmd: 'ncmd audit --focus subdir', desc: 'Focus on subdirectory' },
 ];
 
 const proFeatures = [
@@ -133,7 +133,7 @@ const proFeatures = [
               <div class="text-nc-green">chmod +x neural-commander-linux-amd64</div>
               <div class="text-nc-green">mv neural-commander-linux-amd64 ~/.local/bin/nc</div>
               <div class="mt-4 text-nc-light/60"># Run your first audit</div>
-              <div class="text-nc-green">nc audit --quick -o ./</div>
+              <div class="text-nc-green">ncmd audit --quick -o ./</div>
             </div>
           </div>
           <div>

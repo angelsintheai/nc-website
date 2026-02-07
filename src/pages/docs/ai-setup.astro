@@ -1,0 +1,318 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const providers = [
+  { name: 'Ollama', type: 'Local', cost: 'Free (your hardware)', privacy: 'Maximum - data stays local', recommended: true },
+  { name: 'OpenAI', type: 'Cloud', cost: 'Pay-per-use', privacy: 'Data sent to OpenAI', recommended: false },
+  { name: 'Anthropic', type: 'Cloud', cost: 'Pay-per-use', privacy: 'Data sent to Anthropic', recommended: false },
+  { name: 'Azure OpenAI', type: 'Cloud', cost: 'Pay-per-use', privacy: 'Enterprise compliance', recommended: false },
+];
+
+const ollamaModels = [
+  { name: 'gemma2:2b', size: '1.6 GB', use: 'Quick responses, low resources' },
+  { name: 'llama3.2:3b', size: '2.0 GB', use: 'Balanced performance' },
+  { name: 'codellama:7b', size: '3.8 GB', use: 'Code-focused tasks' },
+  { name: 'llama3.1:8b', size: '4.7 GB', use: 'Best quality for most tasks' },
+  { name: 'qwen2.5-coder:7b', size: '4.7 GB', use: 'Excellent for coding' },
+];
+---
+
+<Layout title="AI Provider Setup - Neural Commander Docs">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <a href="/docs" class="text-nc-blue-light hover:text-white transition-colors text-sm">
+          ← Back to Documentation
+        </a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-white mb-6">AI Provider Setup</h1>
+      <p class="text-xl text-nc-light/80 mb-8">
+        Configure optional AI features for enhanced functionality.
+      </p>
+
+      <!-- Key Message -->
+      <div class="bg-nc-green/10 border border-nc-green/30 rounded-xl p-6 mb-12">
+        <h2 class="text-xl font-bold text-nc-green mb-3">AI is Optional</h2>
+        <p class="text-nc-light/80 mb-4">
+          Neural Commander's core features work without any AI provider. The daemon, project audits,
+          session persistence, and desktop dashboard all function out of the box.
+        </p>
+        <p class="text-nc-light/80">
+          AI features like <code class="text-nc-blue-light">ncmd chat</code>, smart suggestions, and
+          natural language queries require either local Ollama or a cloud API key.
+        </p>
+      </div>
+
+      <!-- Provider Comparison -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Provider Options</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-nc-light/60 pb-3">Provider</th>
+                <th class="text-left text-nc-light/60 pb-3">Type</th>
+                <th class="text-left text-nc-light/60 pb-3">Cost</th>
+                <th class="text-left text-nc-light/60 pb-3">Privacy</th>
+              </tr>
+            </thead>
+            <tbody class="text-nc-light/80">
+              {providers.map((p) => (
+                <tr class="border-b border-white/5">
+                  <td class="py-3 text-white font-medium">
+                    {p.name}
+                    {p.recommended && (
+                      <span class="ml-2 text-xs px-2 py-0.5 bg-nc-green/20 text-nc-green rounded-full">
+                        Recommended
+                      </span>
+                    )}
+                  </td>
+                  <td class="py-3">{p.type}</td>
+                  <td class="py-3">{p.cost}</td>
+                  <td class="py-3">{p.privacy}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Ollama Setup -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-nc-blue/30 mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-3xl">🦙</span>
+          <h2 class="text-2xl font-bold text-white">Option A: Ollama (Recommended)</h2>
+        </div>
+
+        <p class="text-nc-light/80 mb-6">
+          Ollama runs AI models locally on your machine. Free, private, and NC auto-detects it.
+        </p>
+
+        <h3 class="text-lg font-semibold text-white mb-4">1. Install Ollama</h3>
+        <div class="bg-nc-darker rounded-xl p-4 font-mono text-sm mb-6">
+          <div class="text-nc-light/60"># macOS / Linux</div>
+          <div class="text-nc-green">curl -fsSL https://ollama.ai/install.sh | sh</div>
+          <div class="mt-3 text-nc-light/60"># Windows: Download from https://ollama.ai</div>
+        </div>
+
+        <h3 class="text-lg font-semibold text-white mb-4">2. Pull a Model</h3>
+        <div class="bg-nc-darker rounded-xl p-4 font-mono text-sm mb-6">
+          <div class="text-nc-light/60"># Recommended starter model</div>
+          <div class="text-nc-green">ollama pull llama3.2</div>
+          <div class="mt-3 text-nc-light/60"># For code-focused work</div>
+          <div class="text-nc-green">ollama pull codellama:7b</div>
+        </div>
+
+        <h3 class="text-lg font-semibold text-white mb-4">3. NC Auto-Detects</h3>
+        <p class="text-nc-light/80 mb-4">
+          No configuration needed! NC automatically checks for Ollama on startup.
+        </p>
+        <div class="bg-nc-darker rounded-xl p-4 font-mono text-sm mb-6">
+          <div class="text-nc-green">$ ncmd status</div>
+          <div class="text-nc-light/60 mt-2">Neural Commander v0.99</div>
+          <div class="text-nc-light/60">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+          <div class="text-nc-light/60">Daemon: Running</div>
+          <div class="text-nc-green">AI Provider: Ollama (auto-detected)</div>
+          <div class="text-nc-light/60">Models Available: 2</div>
+          <div class="text-nc-light/60">  • llama3.2:3b (2.0 GB)</div>
+          <div class="text-nc-light/60">  • codellama:7b (3.8 GB)</div>
+        </div>
+
+        <h3 class="text-lg font-semibold text-white mb-4">Recommended Models</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left text-nc-light/60 pb-3">Model</th>
+                <th class="text-left text-nc-light/60 pb-3">Size</th>
+                <th class="text-left text-nc-light/60 pb-3">Best For</th>
+              </tr>
+            </thead>
+            <tbody class="text-nc-light/80">
+              {ollamaModels.map((m) => (
+                <tr class="border-b border-white/5">
+                  <td class="py-2 font-mono text-nc-blue-light">{m.name}</td>
+                  <td class="py-2">{m.size}</td>
+                  <td class="py-2">{m.use}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Cloud Setup -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-3xl">☁️</span>
+          <h2 class="text-2xl font-bold text-white">Option B: Cloud AI (BYOK)</h2>
+        </div>
+
+        <p class="text-nc-light/80 mb-6">
+          Bring your own API keys from OpenAI, Anthropic, or other providers.
+          You pay the provider directly - we don't charge for AI access.
+        </p>
+
+        <h3 class="text-lg font-semibold text-white mb-4">OpenAI</h3>
+        <div class="bg-nc-darker rounded-xl p-4 font-mono text-sm mb-6">
+          <div class="text-nc-green">ncmd config set ai.provider openai</div>
+          <div class="text-nc-green">ncmd config set ai.api_key sk-your-key-here</div>
+        </div>
+
+        <h3 class="text-lg font-semibold text-white mb-4">Anthropic (Claude)</h3>
+        <div class="bg-nc-darker rounded-xl p-4 font-mono text-sm mb-6">
+          <div class="text-nc-green">ncmd config set ai.provider anthropic</div>
+          <div class="text-nc-green">ncmd config set ai.api_key sk-ant-your-key-here</div>
+        </div>
+
+        <div class="bg-white/5 rounded-xl p-4">
+          <p class="text-nc-light/60 text-sm">
+            <strong class="text-white">BYOK Model:</strong> We don't markup API costs.
+            You pay your provider directly at their standard rates.
+          </p>
+        </div>
+      </div>
+
+      <!-- Features by AI Status -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">What Works Without AI?</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-nc-green mb-4">Works Without AI</h3>
+            <ul class="space-y-2 text-nc-light/80">
+              <li class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span> NC Daemon (monitoring)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span> Session Persistence
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span> Project Health Audits
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span> NC Desktop Dashboard
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span> Documentation Scanner
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span> Requirements YAML
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span> Git Integration
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-green">✓</span> Active Alerts
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-nc-blue-light mb-4">Requires AI Provider</h3>
+            <ul class="space-y-2 text-nc-light/80">
+              <li class="flex items-center gap-2">
+                <span class="text-nc-blue-light">+</span> <code>ncmd chat</code> (interactive AI)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-blue-light">+</span> Pattern Extraction
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-blue-light">+</span> Smart Suggestions
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-blue-light">+</span> Natural Language Queries
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-blue-light">+</span> AI-Enhanced Context
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-nc-blue-light">+</span> Code Analysis
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Troubleshooting -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10 mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Troubleshooting</h2>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">Ollama not detected?</h3>
+            <p class="text-nc-light/80 mb-2">Make sure Ollama is running:</p>
+            <div class="bg-nc-darker rounded-xl p-4 font-mono text-sm">
+              <div class="text-nc-green">ollama serve</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">Model too slow?</h3>
+            <p class="text-nc-light/80">
+              Try a smaller model like <code class="text-nc-blue-light">gemma2:2b</code> (1.6 GB)
+              or ensure your machine has enough RAM (8GB+ recommended for 7B models).
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-2">Cloud API errors?</h3>
+            <p class="text-nc-light/80">
+              Verify your API key is correct and has sufficient credits. Check provider status pages
+              for any outages.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="bg-nc-dark rounded-2xl p-8 border border-white/10">
+        <h2 class="text-2xl font-bold text-white mb-6">FAQ</h2>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-white font-semibold mb-2">Which provider do you recommend?</h3>
+            <p class="text-nc-light/80">
+              For privacy, Ollama. For maximum capability, Anthropic Claude or OpenAI GPT-4.
+              Many users start with Ollama and add cloud for complex tasks.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-2">Can I switch providers later?</h3>
+            <p class="text-nc-light/80">
+              Yes, anytime. Just update your configuration with <code class="text-nc-blue-light">ncmd config set ai.provider [provider]</code>.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-2">Do you charge for AI usage?</h3>
+            <p class="text-nc-light/80">
+              No. We use a BYOK (Bring Your Own Key) model. Ollama is free (uses your hardware).
+              Cloud providers bill you directly. We don't markup AI costs.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-2">What if I don't configure any AI?</h3>
+            <p class="text-nc-light/80">
+              NC works fine without AI. Core features like daemon monitoring, session persistence,
+              project audits, and the desktop dashboard all function normally.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-12 flex justify-between">
+        <a href="/docs/cli" class="text-nc-blue-light hover:text-white transition-colors">
+          ← CLI Reference
+        </a>
+        <a href="/docs/api" class="text-nc-blue-light hover:text-white transition-colors">
+          API Reference →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

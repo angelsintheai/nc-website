@@ -3,26 +3,26 @@ import Layout from '../../layouts/Layout.astro';
 
 const coreCommands = [
   {
-    name: 'nc init',
+    name: 'ncmd init',
     description: 'Initialize Neural Commander for a project',
-    usage: 'nc init [project-path]',
+    usage: 'ncmd init [project-path]',
     options: [
       { flag: '--name string', desc: 'Project name (default: directory name)' },
       { flag: '--type string', desc: 'Project type (api, cli, web-app, etc.)' },
     ],
   },
   {
-    name: 'nc daemon',
+    name: 'ncmd daemon',
     description: 'Run NC daemon with REST API (7669) and MCP server (7671)',
-    usage: 'nc daemon [flags]',
+    usage: 'ncmd daemon [flags]',
     options: [
       { flag: '--no-api', desc: 'Disable REST API server (MCP only)' },
     ],
   },
   {
-    name: 'nc audit',
+    name: 'ncmd audit',
     description: 'Run a comprehensive project health audit',
-    usage: 'nc audit [project-path]',
+    usage: 'ncmd audit [project-path]',
     options: [
       { flag: '--save', desc: 'Save results to database' },
       { flag: '--include-external', desc: 'Include external dependencies' },
@@ -33,15 +33,15 @@ const coreCommands = [
 
 const docsCommands = [
   {
-    name: 'nc docs health',
+    name: 'ncmd docs health',
     description: 'Check documentation health across your project',
-    usage: 'nc docs health [project-path]',
+    usage: 'ncmd docs health [project-path]',
     output: ['Total documents found', 'Coverage score (0-100)', 'Missing documentation areas', 'Stale documents'],
   },
   {
-    name: 'nc docs search',
+    name: 'ncmd docs search',
     description: 'Full-text search across all project documentation',
-    usage: 'nc docs search "query string"',
+    usage: 'ncmd docs search "query string"',
     options: [
       { flag: '--type string', desc: 'Filter by doc type (md, yaml, etc.)' },
       { flag: '--limit int', desc: 'Limit results (default: 10)' },
@@ -51,9 +51,9 @@ const docsCommands = [
 
 const testCommands = [
   {
-    name: 'nc test init',
+    name: 'ncmd test init',
     description: 'Generate E2E test scaffolding for a project',
-    usage: 'nc test init [project-path]',
+    usage: 'ncmd test init [project-path]',
     options: [
       { flag: '--framework string', desc: 'Test framework (jest, pytest, go-test, vitest)' },
       { flag: '--dry-run', desc: 'Preview without creating files' },
@@ -63,9 +63,9 @@ const testCommands = [
     frameworks: ['JavaScript/TypeScript: Jest, Vitest, Mocha', 'Python: Pytest, unittest', 'Go: Go test', 'Ruby: RSpec'],
   },
   {
-    name: 'nc test ide-compat',
+    name: 'ncmd test ide-compat',
     description: 'Check IDE compatibility and configuration completeness',
-    usage: 'nc test ide-compat [project-path]',
+    usage: 'ncmd test ide-compat [project-path]',
     options: [
       { flag: '--ide string', desc: 'Focus on specific IDE (vscode, jetbrains, cursor, neovim)' },
       { flag: '--all-projects', desc: 'Check all projects (Pro)' },
@@ -78,9 +78,9 @@ const testCommands = [
 
 const guardrailCommands = [
   {
-    name: 'nc guardrails init',
+    name: 'ncmd guardrails init',
     description: 'Generate AI assistant guardrails for a project',
-    usage: 'nc guardrails init [project-path]',
+    usage: 'ncmd guardrails init [project-path]',
     options: [
       { flag: '--type string', desc: 'Override project type (trading-bot, web-app, database, api, cli, infrastructure)' },
       { flag: '--dry-run', desc: 'Preview without creating files' },
@@ -88,9 +88,9 @@ const guardrailCommands = [
     ],
   },
   {
-    name: 'nc guardrails export',
+    name: 'ncmd guardrails export',
     description: 'Export guardrails as CLAUDE.md section',
-    usage: 'nc guardrails export [project-path]',
+    usage: 'ncmd guardrails export [project-path]',
     options: [
       { flag: '--format string', desc: 'Output format (claude-md, yaml, json)' },
     ],
@@ -99,47 +99,47 @@ const guardrailCommands = [
 
 const sessionCommands = [
   {
-    name: 'nc session list',
+    name: 'ncmd session list',
     description: 'List all development sessions',
-    usage: 'nc session list',
+    usage: 'ncmd session list',
   },
   {
-    name: 'nc session show',
+    name: 'ncmd session show',
     description: 'Show session details',
-    usage: 'nc session show [id]',
+    usage: 'ncmd session show [id]',
   },
   {
-    name: 'nc session resume',
+    name: 'ncmd session resume',
     description: 'Resume previous session',
-    usage: 'nc session resume [id]',
+    usage: 'ncmd session resume [id]',
   },
   {
-    name: 'nc session watch',
+    name: 'ncmd session watch',
     description: 'Watch for new sessions',
-    usage: 'nc session watch',
+    usage: 'ncmd session watch',
   },
 ];
 
 const reqCommands = [
   {
-    name: 'nc requirements list',
+    name: 'ncmd requirements list',
     description: 'List all requirements',
-    usage: 'nc requirements list',
+    usage: 'ncmd requirements list',
   },
   {
-    name: 'nc requirements show',
+    name: 'ncmd requirements show',
     description: 'Show specific requirement',
-    usage: 'nc requirements show REQ-001',
+    usage: 'ncmd requirements show REQ-001',
   },
   {
-    name: 'nc requirements create',
+    name: 'ncmd requirements create',
     description: 'Create new requirement',
-    usage: 'nc requirements create',
+    usage: 'ncmd requirements create',
   },
   {
-    name: 'nc requirements sync',
+    name: 'ncmd requirements sync',
     description: 'Sync with upstream (Pro)',
-    usage: 'nc requirements sync',
+    usage: 'ncmd requirements sync',
   },
 ];
 ---
@@ -364,7 +364,7 @@ const reqCommands = [
         <div class="grid sm:grid-cols-2 gap-4">
           {sessionCommands.map((cmd) => (
             <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
-              <h3 class="text-lg font-bold text-nc-blue-light mb-2 font-mono">{cmd.name.replace('nc session ', '')}</h3>
+              <h3 class="text-lg font-bold text-nc-blue-light mb-2 font-mono">{cmd.name.replace('ncmd session ', '')}</h3>
               <p class="text-nc-light/70 text-sm mb-3">{cmd.description}</p>
               <code class="text-nc-green text-xs">{cmd.usage}</code>
             </div>
@@ -378,7 +378,7 @@ const reqCommands = [
         <div class="grid sm:grid-cols-2 gap-4 mb-6">
           {reqCommands.map((cmd) => (
             <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
-              <h3 class="text-lg font-bold text-nc-blue-light mb-2 font-mono">{cmd.name.replace('nc requirements ', '')}</h3>
+              <h3 class="text-lg font-bold text-nc-blue-light mb-2 font-mono">{cmd.name.replace('ncmd requirements ', '')}</h3>
               <p class="text-nc-light/70 text-sm mb-3">{cmd.description}</p>
               <code class="text-nc-green text-xs">{cmd.usage}</code>
             </div>

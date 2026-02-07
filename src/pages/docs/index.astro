@@ -14,7 +14,38 @@ import Layout from '../../layouts/Layout.astro';
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6 mb-16">
+      <!-- Full Docs Link -->
+      <a href="https://docs.neuralcommander.ai" target="_blank" rel="noopener noreferrer" class="block bg-gradient-to-r from-nc-blue/20 to-nc-green/20 border border-nc-blue/30 rounded-xl p-6 mb-8 hover:border-nc-blue/50 transition-colors group">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-white font-bold text-xl mb-1 group-hover:text-nc-blue-light transition-colors">Full Documentation Portal</h2>
+            <p class="text-nc-light/70">Comprehensive guides, architecture docs, and API references at docs.neuralcommander.ai</p>
+          </div>
+          <svg class="w-6 h-6 text-nc-blue-light group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Coming Soon Notice -->
+      <div class="bg-nc-warning/10 border border-nc-warning/30 rounded-xl p-4 mb-12 flex items-start gap-3">
+        <span class="text-nc-warning text-xl">🚧</span>
+        <div>
+          <p class="text-nc-warning font-medium">Coming Soon — Beta Waitlist Goal: 100 signups</p>
+          <p class="text-nc-light/70 text-sm mt-1">
+            NC downloads will be available when our beta waitlist reaches 100 developers.
+            <a href="/waitlist" class="text-nc-blue-light hover:text-white underline">Join the waitlist</a> to get early access.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <a href="/docs/install" class="bg-nc-dark rounded-2xl p-6 border border-white/10 hover:border-nc-blue/50 transition-colors group">
+          <div class="text-4xl mb-4">📦</div>
+          <h2 class="text-white font-bold text-xl mb-2 group-hover:text-nc-blue-light transition-colors">Installation</h2>
+          <p class="text-nc-light/70">Download binaries or build from source</p>
+        </a>
+
         <a href="/docs/quickstart" class="bg-nc-dark rounded-2xl p-6 border border-white/10 hover:border-nc-blue/50 transition-colors group">
           <div class="text-4xl mb-4">🚀</div>
           <h2 class="text-white font-bold text-xl mb-2 group-hover:text-nc-blue-light transition-colors">Quick Start</h2>
@@ -37,6 +68,13 @@ import Layout from '../../layouts/Layout.astro';
           <div class="text-4xl mb-4">🔌</div>
           <h2 class="text-white font-bold text-xl mb-2 group-hover:text-nc-blue-light transition-colors">API Reference</h2>
           <p class="text-nc-light/70">Programmatic access to NC features</p>
+        </a>
+
+        <a href="/docs/ai-setup" class="bg-nc-dark rounded-2xl p-6 border border-nc-green/30 hover:border-nc-green/50 transition-colors group">
+          <div class="text-4xl mb-4">🤖</div>
+          <h2 class="text-white font-bold text-xl mb-2 group-hover:text-nc-green transition-colors">AI Setup</h2>
+          <p class="text-nc-light/70">Configure Ollama or cloud AI providers</p>
+          <span class="inline-block mt-2 text-xs text-nc-green">Optional</span>
         </a>
       </div>
 

@@ -1,0 +1,341 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Installation - Neural Commander">
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <a href="/docs" class="text-nc-blue-light hover:text-white transition-colors text-sm">
+          ← Back to Documentation
+        </a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-white mb-6">Installation</h1>
+      <p class="text-xl text-nc-light/80 mb-8">Download pre-built binaries or build from source.</p>
+
+      <!-- Version Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-nc-blue/10 border border-nc-blue/20 mb-8">
+        <span class="text-nc-blue-light font-medium">v0.99-beta</span>
+        <span class="text-nc-light/40">|</span>
+        <span class="text-nc-light/60 text-sm">Windows, macOS, Linux</span>
+      </div>
+
+      <!-- Quick Install -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Quick Install (Pre-built Binaries)</h2>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden mb-6">
+          <div class="flex border-b border-white/10">
+            <button id="tab-linux" class="px-4 py-2 text-sm font-medium text-white bg-white/5 border-b-2 border-nc-blue">Linux</button>
+            <button id="tab-macos" class="px-4 py-2 text-sm font-medium text-nc-light/60 hover:text-white">macOS</button>
+            <button id="tab-windows" class="px-4 py-2 text-sm font-medium text-nc-light/60 hover:text-white">Windows</button>
+          </div>
+
+          <div id="content-linux" class="p-6">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Download (Intel/AMD)</span>
+curl -LO https://github.com/neural-commander/nc/releases/latest/download/neural-commander-linux-amd64
+chmod +x neural-commander-linux-amd64
+sudo mv neural-commander-linux-amd64 /usr/local/bin/nc
+
+<span class="text-nc-light/50"># Or ARM64 (Raspberry Pi, etc.)</span>
+curl -LO https://github.com/neural-commander/nc/releases/latest/download/neural-commander-linux-arm64
+
+<span class="text-nc-light/50"># Verify installation</span>
+nc version</code></pre>
+          </div>
+
+          <div id="content-macos" class="p-6 hidden">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Apple Silicon (M1/M2/M3/M4)</span>
+curl -LO https://github.com/neural-commander/nc/releases/latest/download/neural-commander-mac-m1
+chmod +x neural-commander-mac-m1
+sudo mv neural-commander-mac-m1 /usr/local/bin/nc
+
+<span class="text-nc-light/50"># Intel Mac</span>
+curl -LO https://github.com/neural-commander/nc/releases/latest/download/neural-commander-darwin-amd64
+
+<span class="text-nc-light/50"># If macOS blocks the binary (Gatekeeper)</span>
+xattr -d com.apple.quarantine /usr/local/bin/nc
+
+<span class="text-nc-light/50"># Verify installation</span>
+nc version</code></pre>
+          </div>
+
+          <div id="content-windows" class="p-6 hidden">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Download from GitHub Releases</span>
+curl -LO https://github.com/neural-commander/nc/releases/latest/download/neural-commander-windows-amd64.exe
+
+<span class="text-nc-light/50"># Move to PATH (PowerShell as Admin)</span>
+move neural-commander-windows-amd64.exe C:\Windows\System32\nc.exe
+
+<span class="text-nc-light/50"># Or add to user PATH</span>
+mkdir %USERPROFILE%\bin
+move neural-commander-windows-amd64.exe %USERPROFILE%\bin\nc.exe
+
+<span class="text-nc-light/50"># Verify installation</span>
+nc version</code></pre>
+          </div>
+        </div>
+
+        <p class="text-nc-light/60 text-sm">
+          All releases available at <a href="https://github.com/neural-commander/nc/releases" class="text-nc-blue-light hover:text-white" target="_blank" rel="noopener">GitHub Releases</a>
+        </p>
+      </div>
+
+      <!-- Build from Source -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Build from Source</h2>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Prerequisites</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-white/10">
+                  <th class="text-left p-3 text-white font-semibold">Requirement</th>
+                  <th class="text-left p-3 text-white font-semibold">Version</th>
+                  <th class="text-left p-3 text-white font-semibold">Install</th>
+                </tr>
+              </thead>
+              <tbody class="text-nc-light/80">
+                <tr class="border-b border-white/5">
+                  <td class="p-3">Go</td>
+                  <td class="p-3">1.21+</td>
+                  <td class="p-3"><a href="https://golang.org/dl/" class="text-nc-blue-light hover:text-white" target="_blank">golang.org/dl</a></td>
+                </tr>
+                <tr class="border-b border-white/5">
+                  <td class="p-3">Git</td>
+                  <td class="p-3">2.0+</td>
+                  <td class="p-3"><code class="text-nc-warning">apt install git</code> / <code class="text-nc-warning">brew install git</code></td>
+                </tr>
+                <tr>
+                  <td class="p-3">Make</td>
+                  <td class="p-3">Any</td>
+                  <td class="p-3">Usually pre-installed</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6 mb-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Build Steps</h3>
+          <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># 1. Clone the repository</span>
+git clone https://github.com/neural-commander/neural-commander.git
+cd neural-commander/neural-commander-go
+
+<span class="text-nc-light/50"># 2. Build with Make (recommended)</span>
+make build-community
+
+<span class="text-nc-light/50"># Or build with Go directly</span>
+go build -o nc ./cmd/nc
+
+<span class="text-nc-light/50"># 3. Install globally</span>
+sudo cp ./dist/neural-commander /usr/local/bin/nc
+
+<span class="text-nc-light/50"># 4. Verify</span>
+nc version</code></pre>
+        </div>
+
+        <div class="bg-nc-blue/5 border border-nc-blue/20 rounded-xl p-4">
+          <p class="text-nc-light/80 text-sm">
+            <strong class="text-nc-blue-light">Cross-platform builds:</strong> Run <code class="bg-white/5 px-1 rounded">make build-all</code> to compile for all 5 platforms (Linux AMD64/ARM64, macOS Intel/Apple Silicon, Windows).
+          </p>
+        </div>
+      </div>
+
+      <!-- Platform Notes -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Platform Notes</h2>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-nc-dark rounded-xl p-5 border border-white/10">
+            <div class="text-2xl mb-3">🐧</div>
+            <h3 class="text-white font-semibold mb-2">Linux</h3>
+            <ul class="text-nc-light/70 text-sm space-y-1">
+              <li>• AMD64 and ARM64 supported</li>
+              <li>• <code class="text-nc-warning">chmod +x</code> required</li>
+              <li>• Systemd service available</li>
+            </ul>
+          </div>
+
+          <div class="bg-nc-dark rounded-xl p-5 border border-white/10">
+            <div class="text-2xl mb-3">🍎</div>
+            <h3 class="text-white font-semibold mb-2">macOS</h3>
+            <ul class="text-nc-light/70 text-sm space-y-1">
+              <li>• Native Apple Silicon binary</li>
+              <li>• No Rosetta required</li>
+              <li>• Use <code class="text-nc-warning">xattr -d</code> for Gatekeeper</li>
+            </ul>
+          </div>
+
+          <div class="bg-nc-dark rounded-xl p-5 border border-white/10">
+            <div class="text-2xl mb-3">🪟</div>
+            <h3 class="text-white font-semibold mb-2">Windows</h3>
+            <ul class="text-nc-light/70 text-sm space-y-1">
+              <li>• 64-bit only</li>
+              <li>• WSL2 auto-detected</li>
+              <li>• Native filesystem recommended</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- WSL2 Note -->
+      <div class="bg-nc-warning/10 border border-nc-warning/20 rounded-xl p-6 mb-12">
+        <div class="flex items-start gap-4">
+          <span class="text-2xl">⚡</span>
+          <div>
+            <h3 class="text-nc-warning font-semibold mb-2">WSL2 Performance Tip</h3>
+            <p class="text-nc-light/70 text-sm mb-3">
+              NC detects WSL2 automatically. For best performance, store projects in the native Linux filesystem instead of Windows mounts:
+            </p>
+            <pre class="text-sm bg-nc-darker/50 rounded-lg p-3 overflow-x-auto"><code class="text-nc-light/80"><span class="text-nc-light/50"># Slow (Windows mount)</span>
+/mnt/c/dev/projects/myproject
+
+<span class="text-nc-light/50"># Fast (Native Linux)</span>
+~/projects/myproject</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verification -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Verification</h2>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 p-6">
+          <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90"><span class="text-nc-light/50"># Check version</span>
+nc version
+
+<span class="text-nc-light/50"># Quick health scan</span>
+nc audit . --quick
+
+<span class="text-nc-light/50"># Check daemon status</span>
+nc daemon status</code></pre>
+        </div>
+      </div>
+
+      <!-- Troubleshooting -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Troubleshooting</h2>
+
+        <div class="space-y-4">
+          <div class="bg-nc-dark rounded-xl p-5 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">"Command not found"</h3>
+            <p class="text-nc-light/70 text-sm mb-3">Ensure the binary is in your PATH:</p>
+            <pre class="text-sm bg-nc-darker/50 rounded-lg p-3 overflow-x-auto"><code class="text-nc-light/80">echo $PATH
+export PATH=$PATH:/usr/local/bin</code></pre>
+          </div>
+
+          <div class="bg-nc-dark rounded-xl p-5 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">"Permission denied"</h3>
+            <pre class="text-sm bg-nc-darker/50 rounded-lg p-3 overflow-x-auto"><code class="text-nc-light/80">chmod +x /path/to/nc</code></pre>
+          </div>
+
+          <div class="bg-nc-dark rounded-xl p-5 border border-white/10">
+            <h3 class="text-white font-semibold mb-2">Build fails with Go errors</h3>
+            <pre class="text-sm bg-nc-darker/50 rounded-lg p-3 overflow-x-auto"><code class="text-nc-light/80"><span class="text-nc-light/50"># Ensure Go 1.21+</span>
+go version
+
+<span class="text-nc-light/50"># Update dependencies</span>
+go mod tidy</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uninstall -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Uninstalling</h2>
+
+        <div class="bg-nc-dark rounded-2xl border border-white/10 overflow-hidden">
+          <div class="flex border-b border-white/10">
+            <button id="uninstall-unix" class="px-4 py-2 text-sm font-medium text-white bg-white/5 border-b-2 border-nc-blue">Linux/macOS</button>
+            <button id="uninstall-win" class="px-4 py-2 text-sm font-medium text-nc-light/60 hover:text-white">Windows</button>
+          </div>
+          <div id="uninstall-unix-content" class="p-6">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90">sudo rm /usr/local/bin/nc
+rm -rf ~/.neural-commander</code></pre>
+          </div>
+          <div id="uninstall-win-content" class="p-6 hidden">
+            <pre class="text-sm overflow-x-auto"><code class="text-nc-light/90">del C:\Windows\System32\nc.exe
+rd /s %USERPROFILE%\.neural-commander</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="bg-gradient-to-br from-nc-blue/10 to-nc-blue/10 rounded-2xl p-8 border border-white/10">
+        <h2 class="text-xl font-bold text-white mb-4">Next Steps</h2>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <a href="/docs/quickstart" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">🚀</span>
+            <div>
+              <div class="text-white font-medium">Quick Start</div>
+              <div class="text-nc-light/60 text-sm">First run setup</div>
+            </div>
+          </a>
+          <a href="/docs/cli" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">⌨️</span>
+            <div>
+              <div class="text-white font-medium">CLI Reference</div>
+              <div class="text-nc-light/60 text-sm">All commands</div>
+            </div>
+          </a>
+          <a href="/docs/ai-setup" class="flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+            <span class="text-2xl">🤖</span>
+            <div>
+              <div class="text-white font-medium">AI Setup</div>
+              <div class="text-nc-light/60 text-sm">Optional AI features</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Main install tabs
+  const tabs = ['linux', 'macos', 'windows'];
+  tabs.forEach(tab => {
+    document.getElementById(`tab-${tab}`)?.addEventListener('click', () => {
+      tabs.forEach(t => {
+        const tabEl = document.getElementById(`tab-${t}`);
+        const contentEl = document.getElementById(`content-${t}`);
+        if (t === tab) {
+          tabEl?.classList.add('text-white', 'bg-white/5', 'border-nc-blue');
+          tabEl?.classList.remove('text-nc-light/60');
+          contentEl?.classList.remove('hidden');
+        } else {
+          tabEl?.classList.remove('text-white', 'bg-white/5', 'border-nc-blue');
+          tabEl?.classList.add('text-nc-light/60');
+          contentEl?.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Uninstall tabs
+  const uninstallUnix = document.getElementById('uninstall-unix');
+  const uninstallWin = document.getElementById('uninstall-win');
+  const uninstallUnixContent = document.getElementById('uninstall-unix-content');
+  const uninstallWinContent = document.getElementById('uninstall-win-content');
+
+  uninstallUnix?.addEventListener('click', () => {
+    uninstallUnix.classList.add('text-white', 'bg-white/5', 'border-nc-blue');
+    uninstallUnix.classList.remove('text-nc-light/60');
+    uninstallWin?.classList.remove('text-white', 'bg-white/5', 'border-nc-blue');
+    uninstallWin?.classList.add('text-nc-light/60');
+    uninstallUnixContent?.classList.remove('hidden');
+    uninstallWinContent?.classList.add('hidden');
+  });
+
+  uninstallWin?.addEventListener('click', () => {
+    uninstallWin.classList.add('text-white', 'bg-white/5', 'border-nc-blue');
+    uninstallWin.classList.remove('text-nc-light/60');
+    uninstallUnix?.classList.remove('text-white', 'bg-white/5', 'border-nc-blue');
+    uninstallUnix?.classList.add('text-nc-light/60');
+    uninstallWinContent?.classList.remove('hidden');
+    uninstallUnixContent?.classList.add('hidden');
+  });
+</script>
